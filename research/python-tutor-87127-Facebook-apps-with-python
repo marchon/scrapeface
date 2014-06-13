@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Re: [Tutor] Facebook apps with python &laquo; python-tutor &laquo; ActiveState List Archives</title>
+	<script type="text/javascript" language="JavaScript" src="http://code.activestate.com/lists/static/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="http://code.activestate.com/lists/static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" language="javascript" src="http://code.activestate.com/lists/static/js/jquery.tiptip.min.js"></script>
+	<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:bold&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=PT+Sans:bold' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://code.activestate.com/lists/static/css/activestyle.css" type="text/css" />
+	<link rel="stylesheet" href="http://code.activestate.com/lists/static/css/tiptip.css" type="text/css" />
+	<link rel="stylesheet" href="//www.google.com/cse/style/look/default.css" type="text/css" />
+		<link rel="alternate" href="http://code.activestate.com/lists/python-tutor/?rss_feed=25" title="RSS 2.0 news feed" type="application/rss+xml" />
+	        <link rel="canonical" href="http://code.activestate.com/lists/python-tutor/87127/" />
+    	<script type="text/javascript"> var _gaq = _gaq || [];
+	var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+	_gaq.push(['_setAccount', 'UA-20072-24']); _gaq.push(['_setDomainName', '.activestate.com']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_setAllowHash', false]); _gaq.push(['_trackPageview']);
+	(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async =
+	true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+</head>
+<body >
+<div id="as_wrapper">
+<div id="as_header_wrapper">
+<div id="as_header">
+<div id="as_navbar" class="as_navbar_short">
+	<ul id="as_sitesnav">
+		<li class="as_logo"><a href="//www.activestate.com/"><img height="18" width="90" src="/static/activestyle/img/activestate.png" title="ActiveState"/></a></li>
+		<span class="as_navsep"></span>
+		<li><a href="//community.activestate.com/">Community</a></li>
+		<span class="as_navsep">|</span>    
+		<li><a href="//code.activestate.com/"><strong>Code</strong></a></li>
+		<span class="as_navsep">|</span>
+		<li><a href="http://docs.activestate.com/">Docs</a></li>
+		<span class="as_navsep">|</span>
+		<li class="as_sitesnav_more"><a onclick="$('#as_sitesnav_downloads').slideToggle(100); return false;" href="//www.activestate.com/downloads" ><u>Downloads</u>  <small>&#9660;</small></a>
+        <ul style="display: none;" id="as_sitesnav_downloads">
+          <li><a href="//www.activestate.com/stackato/download_vm" title="Download Stackato">Stackato</a></li>
+          <li><a href="//www.activestate.com/activeperl/downloads" title="Download Perl">ActivePerl</a></li>
+          <li><a href="//www.activestate.com/activepython/downloads" title="Download Python">ActivePython</a></li>
+          <li><a href="//www.activestate.com/activetcl/downloads" title="Download Tcl">ActiveTcl</a></li>
+          <li><a href="//www.activestate.com/activeperl-pro-studio/downloads" title="Download ActivePerl Pro Studio">ActivePerl Pro Studio</a></li>
+          <li><a href="//www.activestate.com/activetcl-pro-studio/downloads" title="Download ActiveTcl Pro Studio">ActiveTcl Pro Studio</a></li>
+          <li><a href="//www.activestate.com/perl-dev-kit/downloads" title="Download Perl Dev Kit">Perl Dev Kit</a></li>
+          <li><a href="//www.activestate.com/tcl-dev-kit/downloads" title="Download Tcl Dev Kit">Tcl Dev Kit</a></li>
+          <li><a href="//www.activestate.com/komodo-ide/downloads" title="Download Komodo IDE">Komodo IDE</a></li>
+        </ul>
+      </li>
+		<span class="as_navsep">|</span>
+		<li class="as_sitesnav_more"><a href="//www.activestate.com/community" onclick="$('#as_sitesnav_more').slideToggle(100); return false;"><u>more</u> <small>&#9660;</small></a>
+			<ul id="as_sitesnav_more" style="display: none;">
+			  <li><a href="//code.activestate.com/lists">Lists</a></li>
+			  <li><a href="//bugs.activestate.com/">Bugs</a></li>
+			  <li><a href="//code.activestate.com/pypm">PyPM Index</a></li>
+			</ul>
+			<script type="text/javascript">
+			  $('body').click(function() { $('#as_sitesnav_more').hide(); $('#as_sitesnav_downloads').hide(); });
+			</script>
+		</li>
+	</ul>
+
+
+    <div id="as_accountnav">    
+      <span class="as_navsep">|</span> <a href="https://store.activestate.com/">Store</a>
+      <span class="as_navsep">|</span> <a href="https://store.activestate.com/cart/" class="icon-cart">Cart</a>
+    </div>
+
+  </div>
+  
+  <div id="as_bannerbar">
+		<div id="site_logo" class="as_banner_text">
+			<a href="/" class="as_banner_text">ActiveState Code</a> &raquo; <a href="http://code.activestate.com/lists" class="as_banner_text">Lists</a>
+		</div>
+    
+    <div id="site_nav">
+		<form action="/search/lists/" id="cse-search-box">
+		<div>
+					  <input id="list_name" type="hidden" name ="list" value="python-tutor" />
+		  		  <input id="search_query" type="text" name="q" size="20" />
+		  <input type="submit" name="sa" value="Search"/>
+		</div>
+      </form>    </div>
+    <div stye="clear:both"></div>
+  </div>
+
+</div> <!-- end of as_header -->
+
+<div id="as_sub_banner">
+	<div id="as_sub_site_nav">
+		<div id="as_sub_site_links">
+			<a title="Perl Mailing Lists" href="http://code.activestate.com/lists/group/perl">Perl Lists</a>
+			<a title="Python Mailing Lists" href="http://code.activestate.com/lists/group/python">Python Lists</a>
+			<a title="PHP Mailing Lists" href="http://code.activestate.com/lists/group/php">PHP Lists</a>
+			<a title="Ruby Mailing Lists" href="http://code.activestate.com/lists/group/ruby">Ruby Lists</a>
+			<a title="Tcl Mailing Lists" href="http://code.activestate.com/lists/group/tcl">Tcl Lists</a>
+			<a title="ActiveState Mailing Lists" href="http://code.activestate.com/lists/group/activestate">ActiveState Lists</a>
+		</div>
+	</div>
+</div> <!-- end of as_sub_banner -->
+
+</div> <!-- end of as_header_wrapper -->
+
+<div id="as_middle">
+  <div id="as_content_wrapper">
+    <div id="as_content">
+	<div id='as_contentbox'>
+
+
+
+
+<div id="news_nav">
+	<a href="http://code.activestate.com/lists/">Lists</a>
+	&raquo;
+	<a href="http://code.activestate.com/lists/python-tutor/">python-tutor</a>
+</div>
+	
+<h1 class="articlename">Re: [Tutor] Facebook apps with python</h1>
+
+<div id="as_list_article_meta">
+	<div id="as_list_article_from">
+		<strong>From:</strong>
+		Tony Pelletier &lt;tony<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=VZerO70VTjjL8du1HhMlExRDxDaOEiBGpWQldB7yH60=' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=VZerO70VTjjL8du1HhMlExRDxDaOEiBGpWQldB7yH60=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@gmail.com&gt;	</div>
+	<div id="as_list_article_date">
+		Thu, 19 Jan 2012 10:24:40 -0500	</div>
+	<div class="clearleft"></div>
+</div>
+
+<div id="as_list_article">
+	
+
+
+
+<div id='as_list_show_plaintext'><a href='#'>Show HTML formatted message</a></div><div id='as_list_article_html'><div class='as_article_html_body'><br><br><div class="gmail_quote"><blockquote class="gmail_quote" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0.8ex;border-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1ex">
+On Wed, Jan 18, 2012 at 8:34 AM, karthik s <span dir="ltr">&lt;<a href="mailto:sur<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@live.com">sur<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@live.com</a>&gt;</span> wrote:<br>
+Well, my question is simple.. <br>How do I create facebook apps with python. I have couple of interesting/ funky programs and want to make them as apps.<br>So, <br>1. What all things I should know for writing facebook apps.<br>
+2. I read that we should first upload our app to &#39;google app engine&#39; and need do link it to facebook.. Is that right?<br>3. Actually, I am not aware of Network/ Web programming.. can I be able to do that?<br>4. Please do mention a couple of books (ebooks) from which I can learn.. That will help me.</blockquote>
+<div><br></div><div><br></div><div>I don&#39;t know if this will help, but the Facebook Graph API allows you do neat things.</div><div><br></div><div><a href="https://developers.facebook.com/docs/reference/api/">https://developers.facebook.com/docs/reference/api/</a>
+</div><div><br></div><div><br></div><div>Here&#39;s something small I wrote a little while ago that just grabs all your friends profile photos and saves them with their name as the filename.  Not necessarily anything useful, but a small example of what you can do with it.  </div>
+<div><br></div><div><div>#!/usr/bin/env python</div><div><br></div><div>import os</div><div>import httplib</div><div>import json</div><div>from urllib import urlretrieve</div><div><br></div><div><br></div><div>server = &#39;<a href="http://graph.facebook.com">graph.facebook.com</a>&#39;</div>
+<div>myID = &#39;username&#39;</div><div>accessToken = &#39;this is the token&#39;</div><div>URL = &quot;/usernam/friends?access_token=&quot; + accessToken</div><div><br></div><div>def getfriends():</div><div>    conn = httplib.HTTPSConnection(server)</div>
+<div>    conn.request(&quot;GET&quot;, URL)</div><div>    response = conn.getresponse()</div><div>    data = response.read()</div><div>    list = json.loads(data)[&#39;data&#39;]</div><div>    IDs = [(friends[&#39;id&#39;], friends[&#39;name&#39;]) for friends in list]</div>
+<div>    return IDs</div><div><br></div><div><br></div><div>def getphotos():</div><div>    if not os.path.exists(&quot;photos&quot;):</div><div>        os.makedirs(&quot;photos&quot;)</div><div><br></div><div>    for id, name in getfriends():</div>
+<div>        url = &quot;<a href="https://graph.facebook.com/">https://graph.facebook.com/</a>&quot; + id + &quot;/picture&quot;</div><div>        filename = os.path.join(&quot;photos&quot;, &quot;%s.jpg&quot; % (name))</div>
+<div>        urlretrieve(url, filename)</div><div>        </div><div>def main():</div><div>    getphotos()</div><div>    </div><div>if __name__ == &#39;__main__&#39;:</div><div>    main()</div><div>    </div></div><div> </div>
+<div><br></div><blockquote class="gmail_quote" style="margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0.8ex;border-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1ex">
+ </blockquote><blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div><div dir="ltr"><div> </div> 		 	   		  </div></div>
+<br>_______________________________________________<br>
+Tutor maillist  -  <a href="mailto:Tut<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@python.org">Tut<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@python.org</a><br>
+To unsubscribe or change subscription options:<br>
+<a href="http://mail.python.org/mailman/listinfo/tutor" target="_blank">http://mail.python.org/mailman/listinfo/tutor</a><br>
+<br></blockquote></div><br>
+
+</div></div><div id='as_list_article_plaintext'><div class='as_article_plain_text'><pre>On Wed, Jan 18, 2012 at 8:34 AM, karthik s &lt;sur<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=m9C56WoHy-EbUUoVsdrz5Q==', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@live.com&gt; wrote:
+<span class='as_quoted_email'>&gt; Well, my question is simple..</span><span class='as_quoted_email'>&gt; How do I create facebook apps with python. I have couple of interesting/</span><span class='as_quoted_email'>&gt; funky programs and want to make them as apps.</span><span class='as_quoted_email'>&gt; So,</span><span class='as_quoted_email'>&gt; 1. What all things I should know for writing facebook apps.</span><span class='as_quoted_email'>&gt; 2. I read that we should first upload our app to 'google app engine' and</span><span class='as_quoted_email'>&gt; need do link it to facebook.. Is that right?</span><span class='as_quoted_email'>&gt; 3. Actually, I am not aware of Network/ Web programming.. can I be able to</span><span class='as_quoted_email'>&gt; do that?</span><span class='as_quoted_email'>&gt; 4. Please do mention a couple of books (ebooks) from which I can learn..</span><span class='as_quoted_email'>&gt; That will help me.</span>
+
+
+
+I don't know if this will help, but the Facebook Graph API allows you do
+neat things.
+
+<a href="https://developers.facebook.com/docs/reference/api/">https://developers.facebook.com/docs/reference/api/</a>
+
+
+Here's something small I wrote a little while ago that just grabs all your
+friends profile photos and saves them with their name as the filename.  Not
+necessarily anything useful, but a small example of what you can do with
+it.
+
+#!/usr/bin/env python
+
+import os
+import httplib
+import json
+from urllib import urlretrieve
+
+
+server = 'graph.facebook.com'
+myID = 'username'
+accessToken = 'this is the token'
+URL = &quot;/usernam/friends?access_token=&quot; + accessToken
+
+def getfriends():
+    conn = httplib.HTTPSConnection(server)
+    conn.request(&quot;GET&quot;, URL)
+    response = conn.getresponse()
+    data = response.read()
+    list = json.loads(data)['data']
+    IDs = [(friends['id'], friends['name']) for friends in list]
+    return IDs
+
+
+def getphotos():
+    if not os.path.exists(&quot;photos&quot;):
+        os.makedirs(&quot;photos&quot;)
+
+    for id, name in getfriends():
+        url = &quot;<a href="https://graph.facebook.com/&quot;">https://graph.facebook.com/&quot;</a> + id + &quot;/picture&quot;
+        filename = os.path.join(&quot;photos&quot;, &quot;%s.jpg&quot; % (name))
+        urlretrieve(url, filename)
+
+def main():
+    getphotos()
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+
+<span class='as_quoted_email'>&gt;</span><span class='as_quoted_email'>&gt; _______________________________________________</span><span class='as_quoted_email'>&gt; Tutor maillist  -  Tut<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@python.org</span><span class='as_quoted_email'>&gt; To unsubscribe or change subscription options:</span><span class='as_quoted_email'>&gt; <a href="http://mail.python.org/mailman/listinfo/tutor">http://mail.python.org/mailman/listinfo/tutor</a></span><span class='as_quoted_email'>&gt;</span><span class='as_quoted_email'>&gt;</span>
+
+</pre></div><div class='as_article_plain_text as_mailing_list_info'><pre>_______________________________________________
+Tutor maillist  -  Tut<a href='http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=' onclick="window.open('http://www.google.com/recaptcha/mailhide/d?k=01uFJNKBeSLW8hfjA-8d4AFA==&amp;c=xsjyPvGZLLz_eSbjIL1MmRkasZ_UzNODK4LMnW216-0=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;" title="Reveal this e-mail address">...</a>@python.org
+To unsubscribe or change subscription options:
+<a href="http://mail.python.org/mailman/listinfo/tutor">http://mail.python.org/mailman/listinfo/tutor</a>
+
+</pre></div></div>
+</div>
+
+
+<table class="as_lists_thread_navigation" id="as_lists_article_thread" cellpadding="0" cellspacing="0" border="0" align="left" width="100%">
+	<tr>
+		<th colspan="3">Recent Messages in this Thread</th>
+	</tr>
+<tr class='as_list_table_even'>
+<td class='as_tree_message_title'>
+<div class='as_artlink'><a name='87105'><a  href="http://code.activestate.com/lists/python-tutor/87105/">[Tutor] Facebook apps with python</a></div></td>
+<td nowrap='true' class='as_tree_message_author'>
+karthik s</td>
+<td nowrap='true' class='as_tree_message_date'><span class='as_lists_date'>Jan 18, 2012 01:34 pm</span></td>
+</tr>
+<tr class='as_list_table_odd'>
+<td class='as_tree_message_title'>
+<div class='as_artlink'><a name='87106'><div class='as_indent'>&nbsp;</div><a  href="http://code.activestate.com/lists/python-tutor/87106/">Re: [Tutor] Facebook apps with python</a></div></td>
+<td nowrap='true' class='as_tree_message_author'>
+Ranjith Kumar</td>
+<td nowrap='true' class='as_tree_message_date'><span class='as_lists_date'>Jan 18, 2012 01:48 pm</span></td>
+</tr>
+<tr class='as_list_table_even'>
+<td class='as_tree_message_title'>
+<div class='as_artlink'><a name='87108'><div class='as_indent'>&nbsp;</div><a  href="http://code.activestate.com/lists/python-tutor/87108/">Re: [Tutor] Facebook apps with python</a></div></td>
+<td nowrap='true' class='as_tree_message_author'>
+Alan Gauld</td>
+<td nowrap='true' class='as_tree_message_date'><span class='as_lists_date'>Jan 18, 2012 01:54 pm</span></td>
+</tr>
+<tr class='as_list_table_odd'>
+<td class='as_tree_message_title'>
+<div class='as_artlink'><div class='as_indent'>&nbsp;</div><span class='as_list_current'>Re: [Tutor] Facebook apps with python</span></div></td>
+<td nowrap='true' class='as_tree_message_author'>
+Tony Pelletier</td>
+<td nowrap='true' class='as_tree_message_date'><span class='as_lists_date'>Jan 19, 2012 03:24 pm</span></td>
+</tr>
+</table>
+
+<script>
+	$(document).ready(function() {
+		$("div#as_list_show_plaintext a").click(function(e) {
+			
+			$('div#as_list_article_html').toggle();
+			$('div#as_list_article_plaintext').toggle();
+			var link_text = $(this).html();
+			if (link_text == "Show HTML formatted message") {
+				$(this).text("Hide HTML formatted message");
+			}
+			else {
+				$(this).text("Show HTML formatted message");
+			}
+			e.preventDefault();
+		})
+	});
+</script>	</div>
+    </div> <!-- end of as_content -->
+  </div> <!-- end of as_content_wrapper -->
+
+  
+  <div id="as_sidebar_wrapper">
+	<div id="as_sidebar">
+					<div id="as_article_nav">
+									<div id="as_nav_by_thread">
+											<a class="as_prev" href="http://code.activestate.com/lists/python-tutor/87108/">&#x25C4;</a>
+										Messages in this thread
+	
+											<div class="as_next">&#x25BA</div>
+										</div>
+				
+									<div id="as_nav_by_date">
+															<div id="as_nav_prev_by_date">
+					<strong>Previous post: </strong>
+					<a href="http://code.activestate.com/lists/python-tutor/87126/">Re: [Tutor] appending to a file on a new line</a>
+					</div>
+									
+															<div id="as_nav_next_by_date">
+						<strong>Next post: </strong>
+						<a href="http://code.activestate.com/lists/python-tutor/87128/">[Tutor] finding a polymer of letters in a string</a>
+					</div>
+										</div>
+			</div>
+											<div id="as_list_rss_feed">
+					<a href="http://code.activestate.com/lists/python-tutor/?rss_feed=25"
+					   target="_blank"
+					   title="RSS 2.0 news feed">
+					Subscribe to the python-tutor RSS feed</a>
+				</div>
+				
+				<div id="as_promo">
+		<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.activestate.com/www/delivery/ajs.php':'http://ads.activestate.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=1");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://ads.activestate.com/www/delivery/ck.php?n=aa9dea02&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='//ads.activestate.com/www/delivery/avw.php?zoneid=1&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aa9dea02' border='0' alt='' /></a></noscript>
+		</div>
+	</div> <!-- end of as_sidebar -->
+  </div> <!-- end of as_sidebar_wrapper -->
+  <div class="as_clear">&nbsp;</div>
+</div> <!-- end of as_middle -->
+
+<div id="as_footer_wrapper" class="as_footer2">
+<div id="as_footer">
+
+	<div class="as_footer2_section">
+	  <h2 class="as_footer2_header">Accounts</h2>
+	  <ul id="as_account_footer">
+	    
+	  </ul>
+	
+	</div>
+	<div class="as_footer2_section">
+	  <h2 class="as_footer2_header">List Archives</h2>
+	  <ul>
+	<li><a href='http://code.activestate.com/lists/group/perl/'>Perl Lists</a></li><li><a href='http://code.activestate.com/lists/group/python/'>Python Lists</a></li><li><a href='http://code.activestate.com/lists/group/php/'>PHP Lists</a></li><li><a href='http://code.activestate.com/lists/group/ruby/'>Ruby Lists</a></li><li><a href='http://code.activestate.com/lists/group/tcl/'>Tcl Lists</a></li><li><a href='http://code.activestate.com/lists/group/activestate/'>ActiveState Lists</a></li>	    <li style="margin-top:10px"><a href="http://listserv.activestate.com/mailman/mysubs">Manage ActiveState Subscriptions</a></li>
+	  </ul>
+	</div>
+	<div class="as_footer2_section">
+	  <h2 class="as_footer2_header">Feedback & Information</h2>
+	  <ul>
+	    <li><a href="/help/feedback/?type=general">Give Site Feedback</a></li>
+	
+	    <li><a href="/help/feedback/?type=bug&subject=Problem on page '/'">Report a Site Problem</a></li>
+	    <li style="margin-top: 10px;"><a href="/about/">About</a></li>
+	    <li><a href="/help/faq/">FAQ</a></li>
+	    <li><a href="/help/terms/">Terms of Service</a></li>
+	  </ul>
+	</div>
+	<div class="as_footer2_section">
+	  <h2 class="as_footer2_header">ActiveState</h2>
+	
+	  <ul>
+	    <li class="as_footer2_feed"><a href="//www.activestate.com/blog">ActiveState Blog</a></li>
+		<li><a title="Perl Solutions" href="//www.activestate.com/perl">Perl Solutions</a></li>
+		<li><a title="Python Solutions" href="//www.activestate.com/python">Python Solutions</a></li>
+		<li><a title="Tcl Solutions" href="//www.activestate.com/tcl">Tcl Solutions</a></li>
+		<li><a title="Download Perl" href="//www.activestate.com/activeperl/downloads">Download ActivePerl</a></li>
+		<li><a title="Download Python" href="//www.activestate.com/activepython/downloads">Download ActivePython</a></li>
+		<li><a title="Download Tcl" href="//www.activestate.com/activetcl/downloads">Download ActiveTcl</a></li>
+		<li style="margin-top: 10px"><a href="//www.activestate.com/company">About ActiveState</a></li>
+		<li><a href="//www.activestate.com/company/careers">Careers</a></li>
+	  </ul>
+	</div>
+	<div class="as_footer2_copyright">
+	  <a href="//www.activestate.com/privacy_policy/">Privacy Policy</a>
+	  | <a href="//www.activestate.com/support/contact_us/">Contact Us</a>
+	
+	  | <a href="//www.activestate.com/support/faqs/">Support</a>
+	  <p>
+        &copy; 2012 ActiveState Software Inc. All rights reserved.
+        ActiveState&reg;, Komodo&reg;, ActivePerl&reg;, ActivePython&reg;, ActiveTcl&reg;,
+        and Stackato&reg; are registered trademarks of ActiveState.
+        All other marks are property of their respective owners.
+      </p>
+	</div>
+
+  
+</div> <!-- end of as_footer -->
+</div> <!-- end of as_footer_wrapper -->
+
+</div> <!-- end of as_wrapper -->
+
+<script>
+	// insert account links into top nav and footer
+       cookie_json = $.cookie("SSO_DATA");
+       account_nav = "";
+       account_footer = "";
+      if (cookie_json) {
+		cookie = eval('(' + cookie_json + ')');
+		account_nav = '<a href="https://account.activestate.com" id="profile_nav">' + cookie['email'] + '</a> <span class="as_navsep">|</span>';
+		account_nav += '<a href="https://account.activestate.com/signout/?next=' + escape(location.href) + '" id="signout_nav">Sign Out</a>';
+		account_footer = '<li><a href="https://account.activestate.com/signout/?next=' + escape(location.href) + '" id="signout_nav">Sign Out</a></li>';
+      } 
+      else {
+		account_nav = '<span>Welcome, Guest</span> <span class="as_navsep">|</span> <a href="https://account.activestate.com/signin/?next=' + escape(location.href) + '" id="signin_nav">Sign In</a>';
+		account_footer = '<li><a href="https://account.activestate.com/signin/?next=' + escape(location.href) + '" id="signin_nav">Sign In</a></li>';
+      }
+      
+	  
+	  $('document').ready(function() {
+			$("div#as_accountnav").prepend(account_nav);
+			$("ul#as_account_footer").prepend(account_footer);
+			$(".as_show_tooltip").tipTip({maxWidth: "450px", edgeOffset: 10});
+	  });
+</script>
+
+</body>
+</html>
+

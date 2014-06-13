@@ -1,0 +1,13 @@
+// go to https://www.facebook.com/YOURPROFILE/friends
+ 
+var xx = document.querySelectorAll('.fsl.fwb.fcb a')
+ 
+for (var i = 0; i<xx.length; i++){
+ 
+    if(xx[i].href === 'https://www.facebook.com/YOURPROFILE/friends#') {
+ 
+        console.log(xx[i].innerHTML);
+ 
+    }
+ 
+}

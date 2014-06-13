@@ -1,0 +1,772 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" lang="en-US" >
+<head>
+
+<script type="text/javascript">var a=new Date,b=a.getUTCHours();if(0==a.getUTCMonth()&&2012==a.getUTCFullYear()&&((18==a.getUTCDate()&&13<=b)||(19==a.getUTCDate()&&0>=b)))window.location="http://sopastrike.com/strike";</script>
+    
+<title>Penguin Dreams  &raquo; Blog Archive   &raquo; Discoverying Friend List Changes on Facebook with Python</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="Shortcut Icon" href="http://penguindreams.org/wp-content/themes/penguindreams/favicon.ico" />
+<meta name="google-site-verification" content="KzE2hCXLWj-HDD553v6RZi7BrzDc6wpbbRy1I9F1foo" />
+  <!-- SHJS Code Highlighting -->
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/sh_main.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_ruby.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_sh.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_tcl.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_sql.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_cpp.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_java.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_python.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_xml.min.js" type="text/javascript"></script>
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/shjs/lang/sh_html.min.js" type="text/javascript"></script>
+  <!-- <link href="http://penguindreams.org/wp-content/themes/penguindreams/shjs/css/sh_berries-light.css" rel="Stylesheet" type="text/css" /> -->
+  <!-- <link href="/shjs/css/sh_bipolar.css" rel="Stylesheet" type="text/css" /> -->
+  <link href="http://penguindreams.org/wp-content/themes/penguindreams/shjs/css/sh_darkblue.css" rel="Stylesheet" type="text/css" /> 
+  <!-- END SHJS -->
+
+  <script src="http://penguindreams.org/wp-content/themes/penguindreams/js/penguin.js" type="text/javascript"></script>
+
+  <link rel="alternate" type="application/rss+xml" title="Penguin Dreams RSS Feed" href="http://penguindreams.org/feed/" />
+  <link rel="pingback" href="http://penguindreams.org/xmlrpc.php" />
+  <link rel="alternate" type="application/rss+xml" title="Penguin Dreams &raquo; Discoverying Friend List Changes on Facebook with Python Comments Feed" href="http://penguindreams.org/blog/discoverying-friend-list-changes-on-facebook-with-python/feed/" />
+<link rel='stylesheet' id='sociablecss-css'  href='http://penguindreams.org/wp-content/plugins/sociable/css/sociable.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dtree.css-css'  href='http://penguindreams.org/wp-content/plugins/wp-dtree-30/wp-dtree.min.css?ver=4.3.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://penguindreams.org/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://penguindreams.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://penguindreams.org/wp-content/plugins/sociable/js/sociable.js?ver=3.8.1'></script>
+<script type='text/javascript' src='http://penguindreams.org/wp-content/plugins/sociable/js/vuible.js?ver=3.8.1'></script>
+<script type='text/javascript' src='http://penguindreams.org/wp-content/plugins/sociable/js/addtofavorites.js?ver=3.8.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPdTreeSettings = {"animate":"0","duration":"0","imgurl":"http:\/\/penguindreams.org\/wp-content\/plugins\/wp-dtree-30\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://penguindreams.org/wp-content/plugins/wp-dtree-30/wp-dtree.min.js?ver=4.3.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://penguindreams.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://penguindreams.org/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Removing the Tracking Image from Alfresco' href='http://penguindreams.org/blog/removing-the-tracking-image-from-alfresco/' />
+<link rel='next' title='Review: Cloud at Cost' href='http://penguindreams.org/blog/review-cloud-at-cost/' />
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='canonical' href='http://penguindreams.org/blog/discoverying-friend-list-changes-on-facebook-with-python/' />
+<link rel='shortlink' href='http://penguindreams.org/?p=561' />
+<script type='text/javascript'>var base_url_sociable = 'http://penguindreams.org/wp-content/plugins/sociable/'</script><script type='text/javascript' src='http://apis.google.com/js/plusone.js'></script><link rel="stylesheet" type="text/css" href="http://penguindreams.org/wp-content/plugins/wp-recaptcha/recaptcha.css" />  <link rel="stylesheet" href="http://penguindreams.org/wp-content/themes/penguindreams/style.css" type="text/css" media="screen" />
+</head>
+
+
+<body>
+  <div id="headclose">
+    <div id="header">
+       <img src="http://penguindreams.org/wp-content/themes/penguindreams/images/penguindreams.gif" alt="Penguin Dreams"  />
+    </div>
+  </div>
+
+
+
+	<div id="menu">
+		<ul>
+			<li id="wpdt-pages-widget-3" class="widget wpdt-pages"><h2 class="widgettitle">PenguinDreams</h2><div class="dtree">
+<script type='text/javascript'>
+/* <![CDATA[ */
+try{
+if(document.getElementById && document.getElementById('oclinks_pge1')){document.getElementById('oclinks_pge1').style.display = 'block';}
+var pge1 = new wpdTree('pge1', 'http://penguindreams.org/','0');
+pge1.config.useLines=0;
+pge1.config.useIcons=0;
+pge1.config.closeSameLevel=1;
+pge1.config.folderLinks=1;
+pge1.config.useSelection=0;
+pge1.a(0,'root','','','','','');
+pge1.a(22,24,'Bmcb','','projects/bmcb/','','');
+pge1.a(34,33,'Gentoo Update','','scripts/gentooupdate/','','');
+pge1.a(121,0,'News','','news/','','');
+pge1.a(373,33,'eyePodify','','scripts/eyepodify/','','');
+pge1.a(490,33,'copy_reddit','','scripts/copy_reddit/','','');
+pge1.a(27,24,'GraphMapper','','projects/graphmapper/','','');
+pge1.a(32,33,'lnSponge','','scripts/lnsponge/','','');
+pge1.a(124,0,'Assignments','','assignments/','','');
+pge1.a(25,0,'Resume','','resume/','','');
+pge1.a(26,24,'Isszy','','projects/isszy/','','');
+pge1.a(35,33,'oggfolder2mp3','','scripts/oggfolder2mp3/','','');
+pge1.a(324,0,'Tutorials','','tutorials/','','');
+pge1.a(28,24,'MplayerBuddy','','projects/mplayerbuddy/','','');
+pge1.a(31,33,'Ruby Email Script','','scripts/rubyemailscript/','','');
+pge1.a(24,0,'Projects','','projects/','','');
+pge1.a(29,24,'Rear View Mirror','','projects/rearviewmirror/','','');
+pge1.a(244,0,'Thesis','','thesis/','','');
+pge1.a(33,0,'Scripts','','scripts/','','');
+pge1.a(30,0,'Web Portfolio','','webportfolio/','','');
+pge1.a(23,0,'Work Portfolio','','workportfolio/','','');
+pge1.a(21,0,'Computers','','computers/','','');
+document.write(pge1);
+}catch(e){} /* ]]> */
+</script>
+
+<noscript>
+<li class="page_item page-item-121 current_page_parent"><a href="http://penguindreams.org/news/">News</a></li>
+<li class="page_item page-item-124"><a href="http://penguindreams.org/assignments/">Assignments</a></li>
+<li class="page_item page-item-25"><a href="http://penguindreams.org/resume/">Resume</a></li>
+<li class="page_item page-item-324"><a href="http://penguindreams.org/tutorials/">Tutorials</a></li>
+<li class="page_item page-item-24 page_item_has_children"><a href="http://penguindreams.org/projects/">Projects</a>
+<ul class='children'>
+	<li class="page_item page-item-22"><a href="http://penguindreams.org/projects/bmcb/">Bmcb</a></li>
+	<li class="page_item page-item-27"><a href="http://penguindreams.org/projects/graphmapper/">GraphMapper</a></li>
+	<li class="page_item page-item-26"><a href="http://penguindreams.org/projects/isszy/">Isszy</a></li>
+	<li class="page_item page-item-28"><a href="http://penguindreams.org/projects/mplayerbuddy/">MplayerBuddy</a></li>
+	<li class="page_item page-item-29"><a href="http://penguindreams.org/projects/rearviewmirror/">Rear View Mirror</a></li>
+</ul>
+</li>
+<li class="page_item page-item-244"><a href="http://penguindreams.org/thesis/">Thesis</a></li>
+<li class="page_item page-item-33 page_item_has_children"><a href="http://penguindreams.org/scripts/">Scripts</a>
+<ul class='children'>
+	<li class="page_item page-item-34"><a href="http://penguindreams.org/scripts/gentooupdate/">Gentoo Update</a></li>
+	<li class="page_item page-item-373"><a href="http://penguindreams.org/scripts/eyepodify/">eyePodify</a></li>
+	<li class="page_item page-item-490"><a href="http://penguindreams.org/scripts/copy_reddit/">copy_reddit</a></li>
+	<li class="page_item page-item-32"><a href="http://penguindreams.org/scripts/lnsponge/">lnSponge</a></li>
+	<li class="page_item page-item-35"><a href="http://penguindreams.org/scripts/oggfolder2mp3/">oggfolder2mp3</a></li>
+	<li class="page_item page-item-31"><a href="http://penguindreams.org/scripts/rubyemailscript/">Ruby Email Script</a></li>
+</ul>
+</li>
+<li class="page_item page-item-30"><a href="http://penguindreams.org/webportfolio/">Web Portfolio</a></li>
+<li class="page_item page-item-23"><a href="http://penguindreams.org/workportfolio/">Work Portfolio</a></li>
+<li class="page_item page-item-21"><a href="http://penguindreams.org/computers/">Computers</a></li>
+
+</noscript>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+try{
+pge1.openTo('561', true); /*wp_query object id*/
+}catch(e){} /* ]]> */
+</script>
+</div></li><li id="wpdt-archives-widget-3" class="widget wpdt-archives"><h2 class="widgettitle">Archives</h2><div class="dtree">
+<script type='text/javascript'>
+/* <![CDATA[ */
+try{
+if(document.getElementById && document.getElementById('oclinks_arc1')){document.getElementById('oclinks_arc1').style.display = 'block';}
+var arc1 = new wpdTree('arc1', 'http://penguindreams.org/','0');
+arc1.config.useLines=0;
+arc1.config.useIcons=0;
+arc1.config.closeSameLevel=1;
+arc1.config.folderLinks=0;
+arc1.config.useSelection=0;
+arc1.a(0,'root','','','','','');
+arc1.a(-1,0,'October 2013&nbsp;(2)','','2013/10/','','');
+arc1.a(-2,0,'August 2013&nbsp;(1)','','2013/08/','','');
+arc1.a(-3,0,'May 2013&nbsp;(1)','','2013/05/','','');
+arc1.a(-4,0,'April 2013&nbsp;(1)','','2013/04/','','');
+arc1.a(-5,0,'March 2013&nbsp;(2)','','2013/03/','','');
+arc1.a(-6,0,'February 2013&nbsp;(2)','','2013/02/','','');
+arc1.a(-7,0,'October 2012&nbsp;(1)','','2012/10/','','');
+arc1.a(-8,0,'August 2012&nbsp;(2)','','2012/08/','','');
+arc1.a(-9,0,'January 2012&nbsp;(1)','','2012/01/','','');
+arc1.a(-10,0,'July 2011&nbsp;(1)','','2011/07/','','');
+arc1.a(-11,0,'May 2011&nbsp;(3)','','2011/05/','','');
+arc1.a(-12,0,'April 2011&nbsp;(1)','','2011/04/','','');
+arc1.a(-13,0,'June 2010&nbsp;(1)','','2010/06/','','');
+arc1.a(-14,0,'May 2010&nbsp;(1)','','2010/05/','','');
+arc1.a(-15,0,'April 2010&nbsp;(2)','','2010/04/','','');
+arc1.a(-16,0,'March 2010&nbsp;(1)','','2010/03/','','');
+arc1.a(-17,0,'November 2009&nbsp;(2)','','2009/11/','','');
+arc1.a(-18,0,'April 2009&nbsp;(3)','','2009/04/','','');
+arc1.a(-19,0,'February 2009&nbsp;(1)','','2009/02/','','');
+arc1.a(-20,0,'January 2009&nbsp;(1)','','2009/01/','','');
+arc1.a(-21,0,'December 2008&nbsp;(4)','','2008/12/','','');
+arc1.a(-22,0,'November 2008&nbsp;(3)','','2008/11/','','');
+arc1.a(-23,0,'August 2008&nbsp;(1)','','2008/08/','','');
+arc1.a(-24,0,'July 2008&nbsp;(1)','','2008/07/','','');
+arc1.a(-25,0,'June 2008&nbsp;(2)','','2008/06/','','');
+arc1.a(-26,0,'April 2008&nbsp;(1)','','2008/04/','','');
+arc1.a(-27,0,'February 2008&nbsp;(1)','','2008/02/','','');
+arc1.a(-28,0,'January 2008&nbsp;(1)','','2008/01/','','');
+arc1.a(-29,0,'December 2007&nbsp;(3)','','2007/12/','','');
+arc1.a(-30,0,'October 2007&nbsp;(1)','','2007/10/','','');
+arc1.a(-31,0,'September 2007&nbsp;(1)','','2007/09/','','');
+arc1.a(-32,0,'August 2007&nbsp;(2)','','2007/08/','','');
+arc1.a(-33,0,'July 2007&nbsp;(1)','','2007/07/','','');
+arc1.a(-34,0,'June 2007&nbsp;(2)','','2007/06/','','');
+arc1.a(-35,0,'April 2007&nbsp;(2)','','2007/04/','','');
+arc1.a(581,-1,'Review: Cloud at Cost','','blog/review-cloud-at-cost/','','');
+arc1.a(561,-1,'Discoverying Friend List Changes on Facebook with Python','','blog/discoverying-friend-list-changes-on-facebook-with-python/','','');
+arc1.a(537,-2,'Removing the Tracking Image from Alfresco','','blog/removing-the-tracking-image-from-alfresco/','','');
+arc1.a(533,-3,'LtSense &#8211; Using Embedded Python for Sensor Networks, Wellington Python User Group','','video/ltsense-using-embedded-python-for-sensor-networks-wellington-python-user-group/','','');
+arc1.a(529,-4,'dyject &#8211; Python Dependency Injection','','blog/dyject-python-dependency-injection/','','');
+arc1.a(520,-5,'Big Sense: REST Web Services in Scala for Sensor Networks, Wellington Java User Group','','video/big-sense-rest-web-services-in-scala-for-sensor-networks-wellington-java-user-group/','','');
+arc1.a(512,-5,'Rear View Mirror v1.0 Released','','blog/rear-view-mirror-v1-0-released/','','');
+arc1.a(486,-6,'Invalid partition table in VMWare ESX','','blog/invalid-partition-table-in-vmware-esx/','','');
+arc1.a(493,-6,'Copy Reddit Subscriptions from One Account to Another','','blog/copy-reddit-subscriptions-from-one-account-to-another/','','');
+arc1.a(469,-7,'Reassigning DNS Entries in Windows/Active Directory using Powershell','','blog/reassigning-dns-entires-in-windowsactive-directory-using-powershell/','','');
+arc1.a(460,-8,'Signature Verification Between Java and Python','','blog/signature-verification-between-java-and-python/','','');
+arc1.a(455,-8,'RearViewMirror 0.8.9.3 Released','','blog/rearviewmirror-0-8-9-3-released/','','');
+arc1.a(436,-9,'Making the Thunderbird mail icon more useful on MacOS','','blog/making-the-thunderbird-mail-icon-more-useful-on-macos/','','');
+arc1.a(425,-10,'RearViewMirror 0.8.8.6 Released','','blog/rearviewmirror-0-8-8-6-released/','','');
+arc1.a(411,-11,'Storing Shibboleth IDP Logs in a Database with IP Addresses','','blog/storing-shibboleth-idp-logs-in-a-database-with-ip-addresse/','','');
+arc1.a(402,-11,'Installing subversion on SuSE Enterprise Server 10','','blog/installing-subversion-on-suse-enterprise-server-10/','','');
+arc1.a(392,-11,'Handling Grace Logins from Novell e-Directory in Shibboleth','','blog/handling-grace-logins-from-novell-e-directory-in-shibboleth/','','');
+arc1.a(384,-12,'Modifying uApprove for Microsoft SQL','','blog/modifying-uapprove-for-microsoft-sql/','','');
+arc1.a(360,-13,'My Account&#8217;s Been Hacked (No It Hasn&#8217;t)','','blog/my-accounts-been-hacked-no-it-hasnt/','','');
+arc1.a(327,-14,'Running Beans Locally that use Application Server Data Sources','','blog/running-beans-that-use-application-server-datasources-locally/','','');
+arc1.a(307,-15,'Building Java EAR files using Ant','','blog/building-java-ear-files-using-ant/','','');
+arc1.a(301,-15,'Java&#8217;s Checked Exceptions','','blog/javas-checked-exceptions/','','');
+arc1.a(290,-16,'Disappointed with Zend&#8217;s PHP5 Certification','','blog/disappointe-with-zends-php5-certification/','','');
+arc1.a(278,-17,'TweeFlood','','blog/tweeflood/','','');
+arc1.a(243,-17,'Installing Awstats on a Media Temple grid-server (gs)','','blog/installing-awstats-on-a-media-temple-grid-server-gs/','','');
+arc1.a(228,-18,'Winter at Lula Lake','','video/winter-at-lula-lake/','','');
+arc1.a(220,-18,'Season Song &#8211; Kaiser Cartel','','video/season-song-kaiser-cartel/','','');
+arc1.a(216,-18,'Okay &#8211; Kaiser Cartel (ft. Winterpills)','','video/okay-kaiser-cartel-ft-winterpills/','','');
+arc1.a(201,-19,'nVidia&#8217;s Hardware H.264 (1080p) codec for Linux','','blog/nvidias-hardware-h264-1080p-codec-in-linux/','','');
+arc1.a(191,-20,'1080 Video in Linux with CoreAVC','','blog/1080-video-in-linux-with-coreavc/','','');
+arc1.a(183,-21,'Upgrading the MacBook','','blog/upgrading-the-macbook/','','');
+arc1.a(162,-21,'Guide for New WordPressMu Administrators','','blog/guide-for-new-wordpressmu-administrators/','','');
+arc1.a(169,-21,'Joe Lance for Chattanooga','','video/joe-lance-for-chattanooga/','','');
+arc1.a(167,-21,'Rear View Mirror 0.8.8.1 Released','','blog/rear-view-mirror-0881-released/','','');
+arc1.a(154,-22,'Tennessee River Gorge Explorer','','video/tennessee-river-gorge-explorer/','','');
+arc1.a(150,-22,'Rear View Mirror 0.8.6 Released','','blog/rear-view-mirror-086-released/','','');
+arc1.a(137,-22,'BlueHost is a Failure at Customer Service','','blog/bluehost-is-a-failure-of-customer-service/','','');
+arc1.a(19,-23,'Breaking the Multi-Colored Box','','blog/breakingthemulti-coloredbox/','','');
+arc1.a(18,-24,'Converting oggs to mp3s','','blog/convertingoggstomp3s/','','');
+arc1.a(17,-25,'Simple Fours Problem','','blog/simplefoursproblem/','','');
+arc1.a(16,-25,'Scripts','','blog/Scripts/','','');
+arc1.a(15,-26,'Billary Explains It All','','blog/BillaryExplainsItAll/','','');
+arc1.a(14,-27,'Web Portfolio','','blog/WebPortfolio/','','');
+arc1.a(13,-28,'Rear View Mirror 0.8.5 Released','','blog/rearviewmirror085released/','','');
+arc1.a(12,-29,'Rear View Mirror 0.8.1 Released','','blog/rearviewmirror081released/','','');
+arc1.a(11,-29,'Rear View Mirror Initial Release','','blog/rearviewmirrorinitialrelease/','','');
+arc1.a(10,-29,'Diagnostics and the Infinite Loop','','blog/DiagnosticsandtheInfiniteLoop/','','');
+arc1.a(9,-30,'Laura E Walker','','blog/LauraEWalker/','','');
+arc1.a(8,-31,'Chattanooga Dance Inc Redesign','','blog/ChattanoogaDanceIncRedesign/','','');
+arc1.a(7,-32,'MplayerBuddy 0.51 Release','','blog/mplayerbuddy051release/','','');
+arc1.a(6,-32,'MplayerBuddy 0.5 Beta Release','','blog/mplayerbuddy05betarelease/','','');
+arc1.a(5,-33,'Projects Back On-line','','blog/ProjectsBackOn-line/','','');
+arc1.a(4,-34,'Uninstalling U3 from Flash Drives','','blog/UninstallingU3fromFlashDrives/','','');
+arc1.a(3,-34,'Assignment Updates','','blog/AssignmentUpdates/','','');
+arc1.a(2,-35,'RAID 5 Rebuild','','blog/RAID5Rebuild/','','');
+arc1.a(1,-35,'Welcome Back Cotter','','blog/welcomebackcotter/','','');
+document.write(arc1);
+}catch(e){} /* ]]> */
+</script>
+
+<noscript>
+	<li><a href='http://penguindreams.org/2013/10/'>October 2013</a></li>
+	<li><a href='http://penguindreams.org/2013/08/'>August 2013</a></li>
+	<li><a href='http://penguindreams.org/2013/05/'>May 2013</a></li>
+	<li><a href='http://penguindreams.org/2013/04/'>April 2013</a></li>
+	<li><a href='http://penguindreams.org/2013/03/'>March 2013</a></li>
+	<li><a href='http://penguindreams.org/2013/02/'>February 2013</a></li>
+	<li><a href='http://penguindreams.org/2012/10/'>October 2012</a></li>
+	<li><a href='http://penguindreams.org/2012/08/'>August 2012</a></li>
+	<li><a href='http://penguindreams.org/2012/01/'>January 2012</a></li>
+	<li><a href='http://penguindreams.org/2011/07/'>July 2011</a></li>
+	<li><a href='http://penguindreams.org/2011/05/'>May 2011</a></li>
+	<li><a href='http://penguindreams.org/2011/04/'>April 2011</a></li>
+	<li><a href='http://penguindreams.org/2010/06/'>June 2010</a></li>
+	<li><a href='http://penguindreams.org/2010/05/'>May 2010</a></li>
+	<li><a href='http://penguindreams.org/2010/04/'>April 2010</a></li>
+	<li><a href='http://penguindreams.org/2010/03/'>March 2010</a></li>
+	<li><a href='http://penguindreams.org/2009/11/'>November 2009</a></li>
+	<li><a href='http://penguindreams.org/2009/04/'>April 2009</a></li>
+	<li><a href='http://penguindreams.org/2009/02/'>February 2009</a></li>
+	<li><a href='http://penguindreams.org/2009/01/'>January 2009</a></li>
+	<li><a href='http://penguindreams.org/2008/12/'>December 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/11/'>November 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/08/'>August 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/07/'>July 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/06/'>June 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/04/'>April 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/02/'>February 2008</a></li>
+	<li><a href='http://penguindreams.org/2008/01/'>January 2008</a></li>
+	<li><a href='http://penguindreams.org/2007/12/'>December 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/10/'>October 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/09/'>September 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/08/'>August 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/07/'>July 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/06/'>June 2007</a></li>
+	<li><a href='http://penguindreams.org/2007/04/'>April 2007</a></li>
+
+</noscript>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+try{
+arc1.openTo('561', true); /*wp_query object id*/
+}catch(e){} /* ]]> */
+</script>
+</div></li><li id="search-2" class="widget widget_search"><br />
+<form method="get" id="searchform" action="http://penguindreams.org/">
+<div style="padding-left:30px;"><input type="text" value="" name="s" id="s" /><br />
+<input type="submit" id="searchsubmit" value="Search" style="margin-top:5px;" />
+</div>
+</form>
+</li>		</ul>
+		<br /><br />
+	</div>
+
+          <div class="content">
+
+	
+                <div class="navigation">
+                        <div class="alignleft">&laquo; <a href="http://penguindreams.org/blog/removing-the-tracking-image-from-alfresco/" rel="prev">Removing the Tracking Image from Alfresco</a></div>
+                        <div class="alignright"><a href="http://penguindreams.org/blog/review-cloud-at-cost/" rel="next">Review: Cloud at Cost</a> &raquo;</div>
+                </div>
+
+		<div class="articleBody" id="post-561">
+			<h2>Discoverying Friend List Changes on Facebook with Python</h2>
+
+			<div class="entry">
+				<p><a href="http://www.unfriendfinder.net/">Unfriendfinder</a> was a Firefox plugin which allowed Facebook users to detect when people left their friend list or deactivated their accounts. After three years of development, Facebook requested the removal of the extension due to violation of their terms of service. The author chose not to fight the request. In response, I&#8217;ve created <a href="https://github.com/sumdog/sumfriender">sumfriender</a>, a Python script that can detect friend list changes as well as import previous friend lists from the Unfriendfinder Firefox plugin and grease monkey scripts. <br />
+<span id="more-561"></span><br />
+Facebook claims that Unfriendfinder violated their terms of service because it altered the interface between the user and Facebook to add in new unauthorized features. But Unfriendfinder isn&#8217;t a piece of malware. It started off as a Greasemonkey script, for which there are thousands out there designed to change the way people interact with websites that they use. It&#8217;s something users choose to install to alter the way the information they receive is presented to them or interacted with.</p>
+
+<p><img src="http://penguindreams.org/files/2013/10/Selection_004.png" alt="Takedown notice on unfriendfinder.com" width="547" height="445" class="aligncenter size-full wp-image-565" /></p>
+
+<p>The following script accomplishes the same ends. In order to use it, you will need a web server to place the token capture file, Python 3 and a basic understanding of how Python scripts and Facebook authorization work. First, place the <code>fb_token.html</code> file on a web server. When you authorize this script, Facebook will redirect you to this file and its simple Javascript will display the token you&#8217;ll need for authorization. </p>
+
+
+
+<pre class="sh_python sh_sourceCode">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;body&gt;
+&lt;p&gt;FB Response &lt;span id=&quot;token&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+<script type="text/javascript">
+  document.getElementById('token').textContent = location.href.split('#')[1];
+</script>
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+
+
+<p>Facebook recommends using <code>https://www.facebook.com/connect/login_success.html</code> as the redirect <span class="caps">URL </span>for authorization of desktop apps. Although the auth token is added to the <span class="caps">URL, </span>the <code>login_success.html</code> immediately redirects to block it out. It&#8217;s meant to be run within an embedded web browser in a desktop application where the token can be picked up programmatically before the redirect. It goes by too fast for a human to copy, so for a command line app, we need to use the <code>fb_token.html</code> to capture it. </p>
+
+<p>Upload this file to a web server and then place the <span class="caps">URL </span>in the <code>sumfriender.config</code> file. Make sure this <span class="caps">URL </span>is setup in your Facebook app as a valid OAuth redirect. You will also need to add your Facebook <span class="caps">API </span>key and secrete as <code>APP_ID</code> and <code>APP_KEY</code> respectively:  </p>
+
+
+
+<pre class="sh_sourceCode">
+[FB_API]
+APP_ID=1212121212121212
+APP_KEY=abababababababababababababababab
+OAUTH_TOKEN=
+REDIRECT_URI=https://example.com/fb_token.html
+</pre>
+
+
+
+<p><img src="http://penguindreams.org/files/2013/10/Selection_005.png" alt="Facebook App Information" width="729" height="260" class="aligncenter size-full wp-image-567" /></p>
+
+<p>In the advanced section of your Facebook application settings, you&#8217;ll need to add the address to the <code>fb_token.html</code> file on your web server.</p>
+
+<p><img src="http://penguindreams.org/files/2013/10/Selection_006.png" alt="Facebook OAuth URL" width="691" height="34" class="aligncenter size-full wp-image-566" /></p>
+
+<p>If you used the previous Unfriendfinder Greasemonkey extension or the Firefox plugin, you can import your old friend database. To do so, search for either a <code>prefs.js</code> file or a <code>greasemonkey-prefs.uff.js</code> in your Firefox application data directory. This is typically in <code>~/.mozilla/firefox/xxxxxxxx.default</code> on Linux or <code>C:\Users\[Username]\AppData\Mozilla\Firefox\Profiles\xxxxxxxx.default</code> on Windows. Run the preferences javascript through <code>extract_uff.py</code> to extract the Unfriendfinder data into text files. </p>
+
+<p>Source code for <a href="http://github.com/sumdog/sumfriender/blob/master/extract_uff.py">extract_uff.py</a> on <a href="http://github.com/sumdog/sumfriender">GitHub</a></p>
+
+
+<pre class="sh_python sh_sourceCode" style="height: 200px">
+#!/usr/bin/env python3
+#
+#  extract_uff.py  -  Extracts friends/unfriends list from previous 
+#                     versions of the UnfriendFinder GreaseMonkey script 
+#                     and FireFox Plugin
+#
+#  Sumit Khanna &lt;sumit@penguindreams.org&gt; - http://penguindreams.org
+#
+#  License: Free for non-commercial use
+#
+
+
+import sys
+import re
+import json 
+import time
+import os
+
+def format_json(json_obj):
+  obj = json.loads(json_obj)
+  ret = []
+  for f in obj.items():
+    ret.append( &quot;{0:15}  {1}&quot;.format(f[0],  str(f[1]['name'].encode('utf-8'),'ascii','ignore')   ) )
+  return ret
+
+def save(name,lst):
+  i = 1
+  while os.path.exists(name):
+    name = '{0}.{1}'.format(name,i)
+    i += 1
+    
+  print(&quot;Writing {0}&quot;.format(name))
+  fd = open(name,'w')
+  for i in lst:
+    fd.write(&quot;{0}\n&quot;.format(i))
+  fd.close()
+
+def user_pref(key,json_obj):
+  section = key.split('_')[-1:][0]
+  if section == 'unfriends':
+    save('unfriends.txt',format_json(json_obj))  
+  if section == 'deactivated':
+    save('deactivated.txt',format_json(json_obj))
+  if section == 'friends':
+    save('friends.txt',format_json(json_obj))
+
+
+if __name__ == '__main__':
+
+  if len(sys.argv) &lt; 2:
+    print('Usage: extract_uff.py &lt;prefs.js|greasemonkey-prefs.uff.js&gt;')
+    exit(2)
+
+
+  fd = open(sys.argv[1], &quot;r&quot;, encoding='utf-8')
+
+  for line in fd:
+    eline = line
+    if re.search('extensions.greasemonkey.scriptvals.unfriend_finder',eline):
+      eval(eline.strip().split(';')[0])
+      
+
+</pre>
+
+
+
+<p>Running <code>extract_uff.py</code></p>
+
+
+<pre class="sh_sh sh_sourceCode">
+$ ./extract_uff.py ~/.mozilla/firefox/abcdefg.default/prefs.js 
+Writing deactivated.txt
+Writing friends.txt
+Writing unfriends.txt
+Writing deactivated.txt.1
+Writing friends.txt.1
+Writing unfriends.txt.1
+</pre>
+
+
+
+<p>If you had multiple people using the same web browser while logging into Facebook, you might get multiple files as shown above. The <code>friends.txt</code> is what will be used going forward, so select the correct one for your account and move it to <code>friends.txt</code> in the directory you will execute <code>sumfriends.py</code> from. The other files are there for your reference. </p>
+
+<p><code>sumfriends.py</code> is the script that will grab your friends list. Upon the first run, it will open a web browser for you to authorize the application. If you&#8217;ve setup your application, redirect <span class="caps">URL </span>and <code>fb_token.html</code> correctly, you will get a token you can place in the configuration file. This token will expire very quickly, so ever subsequent time the script is run, it will exchange the token for one with a longer expiration time and save it in the configuration file. It will then show you any friends that are no longer in your list, output their details to the screen, save those details to the <code>status.txt</code> file and update the <code>friends.txt</code> file with your current friends list.   </p>
+
+<p>Source code for <a href="http://github.com/sumdog/sumfriender/blob/master/sumfriends.py">sumfriends.py</a> on <a href="http://github.com/sumdog/sumfriender">GitHub</a></p>
+
+
+<pre class="sh_python sh_sourceCode" style="height: 400px">
+#!/usr/bin/env python3
+
+&quot;&quot;&quot;
+   sumfriender.py  -  A script for detecting changes in your Facebook friend list
+
+     Copyright 2013 - Sumit Khanna - PenguinDreams.org
+
+     Free for non-commercial use
+
+&quot;&quot;&quot;
+
+import time
+
+import configparser
+import urllib.request
+import urllib.parse
+import webbrowser
+import json
+import argparse
+import os
+import sys
+import time
+
+class Facebook(object):
+
+  def __init__(self,config_file):
+    config = configparser.ConfigParser()
+    config.read(config_file)
+    self.fb_app = config.get('FB_API','APP_ID')
+    self.fb_key = config.get('FB_API','APP_KEY')
+    self.redirect_uri = config.get('FB_API','REDIRECT_URI')
+    self.oauth_token = config.get('FB_API','OAUTH_TOKEN')
+
+    self.config_file = config_file
+    self.config_parser = config
+
+  def requires_auth(self):
+    return self.oauth_token.strip() == '' 
+
+  
+  def __fb_url(self,path,vars):
+    return 'https://graph.facebook.com/{0}?{1}'.format(
+      path,
+      urllib.parse.urlencode(vars))
+
+  def __make_request(self,url):
+    #print(url)
+    with urllib.request.urlopen(url) as html:
+      return str( html.read() , 'ascii' , 'ignore' )
+
+  def login(self):
+    webbrowser.open(self.__fb_url('oauth/authorize',
+      { 'type' : 'user_agent' , 
+        'client_id' : self.fb_app , 
+        'redirect_uri' : self.redirect_uri,
+        'response_type' : 'token' ,
+        'scope' : 'user_friends'
+      }
+    ))
+
+  def __friends_as_dict(self,obj):
+    ret = {}
+    for f in obj:
+      ret[f['id']] = f['name']
+    return ret
+
+  def friend_list(self):
+    obj = json.loads((self.__make_request(self.__fb_url('me/friends',
+      { 'access_token' : self.oauth_token }
+    ))))
+    friends = self.__friends_as_dict(obj['data'])
+    while 'paging' in obj and 'next' in obj['paging']:
+      obj = json.loads(self.__make_request(obj['paging']['next']))
+      if len(obj['data']) &gt; 0:
+        friends.update(self.__friends_as_dict(obj['data']))
+    return friends
+
+  def user_active(self,uid):
+    try:
+      obj = json.loads(self.__make_request(self.__fb_url(uid,
+        { 'access_token' : self.oauth_token }
+      )))
+      return 'id' in obj
+    except urllib.error.HTTPError:
+      return False
+
+  def extend_token(self):
+    &quot;Requests a new OAUTH token with extended expiration time and saves it to the config file&quot;
+    token = urllib.parse.parse_qs(self.__make_request(self.__fb_url('oauth/access_token',{
+      'client_id' : self.fb_app ,
+      'client_secret' : self.fb_key ,
+      'grant_type' : 'fb_exchange_token' ,
+      'fb_exchange_token' : self.oauth_token
+    })))['access_token'][0]
+
+    self.config_parser.set('FB_API','OAUTH_TOKEN',token)
+    fd = open(self.config_file,'w+')
+    self.config_parser.write(fd)
+    fd.close()
+
+
+class StatusWriter(object):
+
+  def __init__(self,status_file,stdout=False):
+    self.__fd = open(status_file,'a')
+    self.__screen = stdout
+
+  def write(self,line):
+    self.__fd.write('{0}\n'.format(line))
+    if self.__screen:
+      print(line)
+
+  def __del__(self):
+    self.__fd.close()
+
+
+def load_old_friends(data_file):
+  oldfriend = open(data_file,'r')
+  data = {}
+  for of in oldfriend:
+    parts = of.split(&quot; &quot;)
+    data[parts[0]] = &quot; &quot;.join(parts[1:]).strip()
+  return data
+  
+def save_friends(data_file,list):
+  fd = open(data_file,'w')
+  for f in list:
+    fd.write( &quot;{0:15}  {1}\n&quot;.format(f,  str(list[f].encode('utf-8'),'ascii','ignore')   ) )
+  fd.close()
+
+
+
+if __name__ == '__main__':
+
+
+  parser = argparse.ArgumentParser(
+    description='A script to scan for changes in Facebook friend statuses',
+    epilog='Copyright 2013 Sumit Khanna. Free for non-commercial use. PenguinDreams.org')
+  #usage='%prog [-c config file] [-f friends file] [-s status file]'
+
+  parser.add_argument('-v','--version', action='version', version='%(prog)s 0.1')
+  parser.add_argument('-c',help='configuration file with API/AUTH keys [default: %(default)s]',
+    default='sumfriender.config',metavar='config')
+  parser.add_argument('-f',help='friend list db file [default: %(default)s]',
+    default='friends.txt',metavar='friend_db')
+  parser.add_argument('-l',help='status log file [default: %(default)s]',
+    default='status.txt',metavar='log')
+  parser.add_argument('-s',help='supress writing status to standard out', action='store_true')
+
+  args = parser.parse_args()
+
+  if not os.path.exists(args.c):
+    print('Configuration file {0} does not exist'.format(args.c), file=sys.stderr)
+    sys.exit(2)
+
+  fb = Facebook(args.c)
+  if fb.requires_auth():
+    print(&quot;You need a login key. Copy your access token to the OAUTH_TOKEN field in the configuration file.&quot;,file=sys.stderr)
+    fb.login()
+    sys.exit(3)
+  else:
+
+    #Let's renew our token so it doesn't expire
+    fb.extend_token()
+
+    cur_friends = fb.friend_list()  
+
+    if not os.path.exists(args.f):
+      print(&quot;{0} not found. Creating initial friends list&quot;.format(args.f))
+      save_friends(args.f,cur_friends)
+    else:
+
+      old_friends = load_old_friends(args.f)
+      out = StatusWriter(args.l, not args.s)
+      heading = False
+
+      for uid in old_friends:
+        if uid not in cur_friends:
+
+          if not heading:
+            date = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)
+            out.write(date)
+            out.write('----------------------')
+            heading = True
+
+          status = 'is no longer in your friends list' if fb.user_active(uid) else 'has been deactivated or has disabled application access'
+          output = &quot;Friend {0} ({1}) {2}&quot;.format(old_friends[uid],uid,status)
+
+          out.write(output)
+
+      if heading:
+        out.write('')    
+
+      save_friends(args.f,cur_friends,)
+</pre>
+
+
+
+<p>I do not distribute any application keys or secretes. You&#8217;ll have to set those up yourself. Be aware you might be violating Facebook&#8217;s terms of service by using this script. You&#8217;ll want to run this script at regular intervals using a scheduler such as cron. Since it only displays output when there are changes to your friends, you can combine it with my <a href="/scripts/rubyemailscript/">Ruby E-mail Script</a> to send you e-mail notifications on changes. </p>
+
+<p>So you might be asking, why do I care if someone removes me as a friend on Facebook? Am I placing putting too much importance on my on-line life? Well honestly, I rarely use Facebook for anything other than Instant Message and promoting my own websites and projects. I just find it interesting what lengths Facebook would go to ensure users only experience their service in the way Facebook intended. </p>
+
+<p>Facebook&#8217;s primary source of income is their ad revenue. Everything they do is carefully engineered to increase your interaction time. Don&#8217;t like a new interface change? It was probably put before a focus group to make sure you dislike it enough that you spend time trying to learn how to use it, but not so much you stop interacting with it entirely. Even your feed is filtered to avoid content from friends with opinions contrary to your own, in what Eli Pariser calls <a href="http://www.ted.com/talks/eli_pariser_beware_online_filter_bubbles.html">The Filter Bubble</a>.</p>
+
+<p>What bothers me is that Facebook would even request a take-down from Unfriendfinder. Is writing software that changes the way we interact with a website a violation of terms of service? How can it possibly infringe on intellectual property? If I built a custom web browser that added lots of additional context to the content of web pages, do the owners of those web pages have any right to demand I stop distributing my custom web browser? What does this imply about ad blocking software? What about augmented reality displays? Could a building owner sue for an advertisement a pair of glasses overlays on the building? If data is sent to your computer, whether it be audio, video or web pages, what software you chose to view and interpret that data should be up to you. </p>
+
+<p>With the way technology is moving, I think that in the future, we&#8217;ll see more people move off closed private networks like Facebook, Google and Twitter and to more public and open platforms. We&#8217;ll see more open source solutions, with standard publishing interfaces, that will allow more control of what people post and share and more portability for moving that data between services.</p><!-- Start Sociable --><div class="sociable"><ul class='clearfix'><li><a title="Twitter" style="Twitter16_6" rel="nofollow" target="_blank" href="http://twitter.com/intent/tweet?text=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python%20-%20http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F%20  "><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/twitter.png" title="Twitter" alt="Twitter" /></a></li><li><a title="Facebook" style="Facebook16_6" rel="nofollow" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;t=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/facebook.png" title="Facebook" alt="Facebook" /></a></li><li><a title="email" style="email16_6" rel="nofollow" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to&su=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&body=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&ui=2&tf=1&shva=1"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/gmail.png" title="email" alt="email" /></a></li><li><a title="LinkedIn" style="LinkedIn16_6" rel="nofollow" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;source=Penguin+Dreams+&amp;summary=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/linkedin.png" title="LinkedIn" alt="LinkedIn" /></a></li><li><a title="StumbleUpon" style="StumbleUpon16_6" rel="nofollow" target="_blank" href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/stumbleupon.png" title="StumbleUpon" alt="StumbleUpon" /></a></li><li><a title="Delicious" style="Delicious16_6" rel="nofollow" target="_blank" href="http://delicious.com/post?url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;notes=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/delicious.png" title="Delicious" alt="Delicious" /></a></li><li><a title="Reddit" style="Reddit16_6" rel="nofollow" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/reddit.png" title="Reddit" alt="Reddit" /></a></li></ul><div onMouseout="fixOnMouseOut(this,event,'post-561')" id="sociable-post-561" style="display:none;">   
+
+    <div style="top: auto; left: auto; display: block;" id="sociable">
+
+
+
+		<div class="popup">
+
+			<div class="content">
+
+				<ul><li style="heigth:16px;width:16px"><a  title="Myspace" style="Reddit16_6" rel="nofollow" target="_blank" href="http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;t=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/myspace.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Digg" style="Reddit16_6" rel="nofollow" target="_blank" href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;bodytext=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/digg.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Google Bookmarks" style="Reddit16_6" rel="nofollow" target="_blank" href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;annotation=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/google.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="HackerNews" style="Reddit16_6" rel="nofollow" target="_blank" href="http://news.ycombinator.com/submitlink?u=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;t=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/hacker_news.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="MSNReporter" style="Reddit16_6" rel="nofollow" target="_blank" href="http://reporter.es.msn.com/?fn=contribute&amp;Title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;URL=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;cat_id=6&amp;tag_id=31&amp;Remark=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/msn.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="BlinkList" style="Reddit16_6" rel="nofollow" target="_blank" href="http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;Title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/blinklist.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Sphinn" style="Reddit16_6" rel="nofollow" target="_blank" href="http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/sphinn.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Posterous" style="Reddit16_6" rel="nofollow" target="_blank" href="http://posterous.com/share?linkto=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;selection=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/posterous.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Tumblr" style="Reddit16_6" rel="nofollow" target="_blank" href="http://www.tumblr.com/share?v=3&amp;u=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;t=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;s=%22Unfriendfinder%22%3Ahttp%3A%2F%2Fwww.unfriendfinder.net%2F%20was%20a%20Firefox%20plugin%20which%20allowed%20Facebook%20users%20to%20detect%20when%20people%20left%20their%20friend%20list%20or%20deactivated%20their%20accounts.%20After%20three%20years%20of%20development%2C%20Facebook%20requested%20the%20removal%20of%20the%20exte"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/tumblr.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a  title="Google Reader" style="Reddit16_6" rel="nofollow" target="_blank" href="http://www.google.com/reader/link?url=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;title=Discoverying%20Friend%20List%20Changes%20on%20Facebook%20with%20Python&amp;srcURL=http%3A%2F%2Fpenguindreams.org%2Fblog%2Fdiscoverying-friend-list-changes-on-facebook-with-python%2F&amp;srcTitle=Penguin+Dreams+"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/googlebuzz.png" title="Reddit" alt="Reddit" /></a></li><li style="heigth:16px;width:16px"><a class="option6_16" style="cursor:pointer;background-position:-64px 0px" rel="nofollow" title="Add to favorites - doesn't work in Chrome"  onClick="javascript:AddToFavorites();"></a></li><li style="heigth:16px;width:16px"><a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,'post-561')"><img class="sociable-hovers" src="http://penguindreams.org/wp-content/plugins/sociable/images/original/more.png" title="Reddit" alt="Reddit" /></a></li></ul>			
+
+			</div>        
+
+		  <a style="cursor:pointer" onclick="hide_sociable('post-561',true)" class="close">
+
+		  <img onclick="hide_sociable('post-561',true)" title="close" src="http://penguindreams.org/wp-content/plugins/sociable/images/closelabel.png">
+
+		  </a>
+
+		</div>
+
+	</div> 
+
+  </div></div><div class='sociable' style='float:none'><ul class='clearfix'><li id="Google_p"><g:plusone annotation="bubble" href="http://penguindreams.org/blog/discoverying-friend-list-changes-on-facebook-with-python/" size="medium"></g:plusone></li></ul></div><!-- End Sociable -->
+								<p>Tags: <a href="http://penguindreams.org/tag/facebook/" rel="tag">facebook</a>, <a href="http://penguindreams.org/tag/graph-api/" rel="tag">graph api</a>, <a href="http://penguindreams.org/tag/oauth/" rel="tag">oauth</a>, <a href="http://penguindreams.org/tag/python/" rel="tag">python</a>, <a href="http://penguindreams.org/tag/unfriend/" rel="tag">unfriend</a></p>
+				<p class="postmetadata alt">
+					<small>
+						This entry was posted
+												on Tuesday, October 15th, 2013 at 4:07 pm						and is filed under <a href="http://penguindreams.org/category/blog/" title="View all posts in Blog" rel="category tag">Blog</a>.
+						You can follow any responses to this entry through the <a href='http://penguindreams.org/blog/discoverying-friend-list-changes-on-facebook-with-python/feed/'>RSS 2.0</a> feed.
+
+													You can skip to the end and leave a response. Pinging is currently not allowed.
+
+						
+					</small>
+				</p>
+
+			</div>
+		</div>
+
+	
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+<div class="comment">
+<h3 id="respond">Leave a Reply</h3>
+
+
+<form action="http://penguindreams.org/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="561" />
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c1469cb594" /></p>                <script type='text/javascript'>
+                    var RecaptchaOptions = { theme : 'red', lang : 'en' , tabindex : 5 };
+                </script><script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LdWis8SAAAAAI_0zUsmohl69uIv4oeiHRQnayyv"></script>
+
+	<noscript>
+  		<iframe src="http://www.google.com/recaptcha/api/noscript?k=6LdWis8SAAAAAI_0zUsmohl69uIv4oeiHRQnayyv" height="300" width="500" frameborder="0"></iframe><br/>
+  		<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+	</noscript>                        <div id="recaptcha-submit-btn-area">&nbsp;</div>
+                        <noscript>
+                         <style type='text/css'>#submit {display:none;}</style>
+                         <input name="submit" type="submit" id="submit-alt" tabindex="6" value="Submit Comment"/> 
+                        </noscript>
+</form>
+</div>
+
+
+	
+        </div>
+
+<div id="footer">
+                <script type="text/javascript">
+                var sub = document.getElementById('submit');
+                document.getElementById('recaptcha-submit-btn-area').appendChild (sub);
+                document.getElementById('submit').tabIndex = 6;
+                if ( typeof _recaptcha_wordpress_savedcomment != 'undefined') {
+                        document.getElementById('comment').value = _recaptcha_wordpress_savedcomment;
+                }
+                document.getElementById('recaptcha_table').style.direction = 'ltr';
+                </script></div>
+</body>
+</html>
+
+<!-- Dynamic page generated in 3.861 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-06-13 00:49:33 -->
+
+<!-- super cache -->

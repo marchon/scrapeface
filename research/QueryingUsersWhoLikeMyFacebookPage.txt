@@ -1,0 +1,53 @@
+Querying Users who 'like' my Facebook Page
+
+
+ 
+I was wondering if it was possible to query the following:
+
+List of (all) users who like my facebook page, and
+Additional information those users have made publicly available (beyond first and last name)
+Basically looking to generate detailed marketing stats of users who like my facebook page, if possible. Any suggestions AOpor alternatives welcome.
+
+Thank you.
+
+I am afraid this is NOT possible, follow this bug for more information.
+
+Another proof is the
+page_fan
+table you will notice that only the
+uid
+field is indexable so you need to know the user id to search it and not the
+page_id
+, as you know if user "likes" page this would mean he is "fan" of that page.
+
+After being actively working with the Facebook API for while now, and following the announcements and API releases (and deprecations) along with the introduction and changes of policies, I can understand that Facebook will only share info about their users by letting them explicitly do so (a.k.interact/authorize your Apps).
+
+And hence the best thing to do in the absence of such feature is:
+
+Understand your audience through Page Insights
+Collect fans interests & info by creating custom apps through Page Tabs and using other Facebook features like Questions
+share|improve this answer
+Alright, nobody wants to break Facebook's TOS but they have tied our hands on our own basic data. So, scraping is illegal, but not saving page. What I have done (and note that I needed this for offline purpose anyway): Go to https://www.facebook.com/browse/?type=page_fans&page_id={FAN PAGE ID} Scroll down until you have all of your fans. Save this page on your local machinAOpe, let's say, Facebook.html. Now, using ruby and nokogiri:
+
+require 'nokogiri'
+>true
+f = File.open('/your_path/Facebook.html')
+doc = Nokogiri::HTML.parse(f.read)
+doc.xpath('//div[@class="fsl fwb fcb"]/a').each {|link| puts link.content}
+It's possible, just not with FQL anymore.
+
+Do GET of https://www.facebook.com/browse/?type=page_fans&page_id={FAN PAGE ID} and scrape out the users.
+
+Viola.
+
+You can get it using facebook open graph.
+
+https://graph.facebook.com/<your-page-name-or-page-id>/likes
+
+For example :
+
+https://graph.facebook.com/chickfila/likes
+
+You need to send graph api call using "id" for more detail about user who like you page.
+
+However, this call will retrieve the other Facebook objects that the page (Chickfila) has liked, NOT the users who have liked the Chickfilpage.

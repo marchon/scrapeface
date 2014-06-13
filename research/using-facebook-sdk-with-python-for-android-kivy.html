@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Using Facebook SDK with Python-for-Android / Kivy | Kivy Planet</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://kivy.org/planet/wp-content/themes/twentyten/style.css" />
+<link rel="pingback" href="http://kivy.org/planet/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="Kivy Planet &raquo; Feed" href="http://kivy.org/planet/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Kivy Planet &raquo; Comments Feed" href="http://kivy.org/planet/comments/feed/" />
+<script type='text/javascript' src='http://kivy.org/planet/wp-includes/js/l10n.js?ver=20101110'></script>
+<script type='text/javascript' src='http://kivy.org/planet/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://kivy.org/planet/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://kivy.org/planet/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Kivy Planet' href='http://kivy.org/planet/' />
+<link rel='start' title='Kivy (next PyMT) on Android, step 1 done !' href='http://kivy.org/planet/2011/01/kivy-next-pymt-on-android-step-1-done/' />
+<link rel='prev' title='Kivy hackathon in paris' href='http://kivy.org/planet/2013/04/kivy-hackathon-in-paris/' />
+<link rel='next' title='Building a background application on android with Kivy.' href='http://kivy.org/planet/2014/01/building-a-background-application-on-android-with-kivy/' />
+<meta name="generator" content="WordPress 3.1.3" />
+<link rel='canonical' href='http://kivy.org/planet/2013/08/using-facebook-sdk-with-python-for-android-kivy/' />
+<link rel='shortlink' href='http://kivy.org/planet/?p=129' />
+<meta property="og:title" content="Using Facebook SDK with Python-for-Android / Kivy"/><meta property="og:description" content="tito"/><meta property="og:image" content="http://1.gravatar.com/avatar/de1c19352f893449de74d499effec88c?s=96&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D96&amp;r=G"/></head>
+
+<body class="single single-post postid-129 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://kivy.org/planet/" title="Kivy Planet" rel="home">Kivy Planet</a>
+					</span>
+				</div>
+				<div id="site-description"></div>
+
+							</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu"><ul><li ><a href="http://kivy.org/planet/" title="Home">Home</a></li></ul></div>
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://kivy.org/planet/2013/04/kivy-hackathon-in-paris/" rel="prev"><span class="meta-nav">&larr;</span> Kivy hackathon in paris</a></div>
+					<div class="nav-next"><a href="http://kivy.org/planet/2014/01/building-a-background-application-on-android-with-kivy/" rel="next">Building a background application on android with Kivy. <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-129" class="post-129 post type-post status-publish format-standard hentry category-android category-coding category-facebook category-kivy category-planet-python category-planet-ubuntu category-python">
+					<h1 class="entry-title">Using Facebook SDK with Python-for-Android / Kivy</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="http://kivy.org/planet/2013/08/using-facebook-sdk-with-python-for-android-kivy/" title="9:50 am" rel="bookmark"><span class="entry-date">August 8, 2013</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://kivy.org/planet/author/tito/" title="View all posts by tito">tito</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=20320310172&amp;xfbml=1"></script><script language="JavaScript">
+					FB.Event.subscribe('edge.create', function(response) {
+						_gaq.push(['_trackEvent','SocialSharing','Facebook - like button',unescape(String(response).replace(/\+/g, " "))]);
+					});
+				</script><p>For another museum project, <a href="http://devocite.com/">Arnaud</a> asked me to see if we could integrate Facebook in an app on Android. The <a href="http://www.pythonforfacebook.com/">usual</a> <a href="https://github.com/sciyoshi/pyfacebook/">libraries</a> are made for desktop, and manually open a webbrowser to handle the user authorization. But that&#8217;s not really nice for us, it would be nicer to have a native integration instead. Let&#8217;s see how we can use the official Facebook Android SDK.</p>
+<h2>Prerequisites</h2>
+<p>You&#8217;ll need to have:<br />
+- Kivy&#8217;s <a href="http://python-for-android.readthedocs.org/en/latest/">python-for-android</a><br />
+- A Facebook account (obviously)<br />
+- <a href="https://developers.facebook.com/android/">Facebook SDK 3.0</a></p>
+<h2>Get the example</h2>
+<p>Clone the <a href="https://github.com/tito/p4a-facebook-example">Kivy/Facebook</a> example:</p><pre class="crayon-plain-tag">$ git clone https://github.com/tito/p4a-facebook-example</pre><p></p>
+<h2>Register a Facebook application</h2>
+<ol>
+<li>Go to the <a href="https://developers.facebook.com/apps">Facebook developers interface</a></li>
+<li>Click on <img alt="Sélection_107" src="http://txzone.net/wp-content/uploads/2013/08/S%C3%A9lection_107.png" width="130" height="27" /></li>
+<li>Fill the information &#8220;App Name&#8221;. Don&#8217;t put &#8220;FB&#8221; or &#8220;Facebook&#8221; in the title, or your application name will be considered as Invalid <img src="http://txzone.net/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /><br />
+<img class="aligncenter size-full wp-image-566" alt="Sélection_108" src="http://txzone.net/wp-content/uploads/2013/08/S%C3%A9lection_108.png" width="634" height="235" /></li>
+<li>Pass the captcha</li>
+<li>Write down your application id somewhere<img class="aligncenter size-full wp-image-576" alt="Sélection_111" src="http://txzone.net/wp-content/uploads/2013/08/S%C3%A9lection_111.png" width="584" height="83" /></li>
+<li>Now, you need to activate Native Android App. The package name is the same name as the one we will pass in <code>--package</code> when building the APK. The Class Name is the <code>packagename/activity</code>. Activity class is always the same for all the applications compiled with python-for-android.<br />
+<img class="aligncenter size-full wp-image-570" alt="Sélection_109" src="http://txzone.net/wp-content/uploads/2013/08/S%C3%A9lection_109.png" width="693" height="193" /></li>
+<li>Right now, the Facebook Android SDK will not authorize our android application to be used, because Facebook want to know the signature hash that will be used by our generated APK. To generate the key hashes, you need to use the keytool. Here is an example for the android &#8220;debug&#8221; key:<br />
+<pre class="crayon-plain-tag">$ keytool -exportcert -alias androiddebugkey \
+   -keystore ~/.android/debug.keystore | \
+   openssl sha1 -binary | openssl base64
+Enter keystore password:  android
+u+bzQmG87L298C4KGM8yODi3W/4=</pre><br />
+Copy the generated key hash, and paste it to the field:</p>
+<p><img class="aligncenter size-full wp-image-571" alt="Sélection_110" src="http://txzone.net/wp-content/uploads/2013/08/S%C3%A9lection_110.png" width="689" height="76" /></li>
+</ol>
+<h2>Setup the our application</h2>
+<ol>
+<li>Go into <code>p4a-facebook-example</code>, and edit the <code>main.py</code></li>
+<li>Search for <code>FACEBOOK_APP_ID</code>, and replace with your own Application Id</li>
+<li>Go into python-for-android, and create a distribution:</p><pre class="crayon-plain-tag">$ ./distribute.sh -m 'kivy'</pre><p>
+</li>
+<li>Go into the <code>dist/default</code></li>
+<li>Generate the APK one time (for generating all the file we need to customize). Replace <code>/path/to/p4a-facebook-example</code>:</p><pre class="crayon-plain-tag">./build.py --name &quot;Facebook test&quot; --package org.test.facebook \
+  --version 1 --private /path/to/p4a-facebook-example/ \
+  --window --permission INTERNET debug</pre><p>
+</li>
+<li>Add a new reference to <code>project.properties</code> to include the Facebook SDK. The path to the Facebook SDK <b>MUST</b> be a relative path, otherwise you&#8217;ll get issues during the next build.</p><pre class="crayon-plain-tag">android.library.reference.1=../../facebook-android-sdk-3.0.2/facebook</pre><p>
+</li>
+<li>Edit the <code>templates/AndroidManifest.tmpl.xml</code> to include the Facebook login activity, just under the <code>&lt;application&gt;</code>:</p><pre class="crayon-plain-tag">&lt;application android:label=&quot;@string/appName&quot; android:icon=&quot;@drawable/icon&quot;&gt;
+&lt;activity android:name=&quot;com.facebook.LoginActivity&quot;/&gt;</pre><p>
+</li>
+<li>Rebuild your application&#8230; and you&#8217;re ready to test <img src="http://txzone.net/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> </li>
+<li>Install the application on your device:</p><pre class="crayon-plain-tag">adb install -r bin/Facebooktest-1-debug.apk</pre><p>
+</li>
+</ol>
+<h2>Test your application</h2>
+<p>The Facebook SDK 3.0 require to separate read and publish permissions. To the user, it means you&#8217;ll have 2 dialog to accept. Even if you just want to publish to the application stream, you need to have the basic permission (read) accepted by the user before publish permissions. This is already implemented in the example app.</p>
+<p>When you start the application the first time, you&#8217;ll have:</p>
+<p><a href="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-110647.png"><img class="aligncenter size-large wp-image-582" alt="device-2013-08-08-110647" src="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-110647-1024x640.png" width="584" height="365" /></a></p>
+<p>Depending if you have the Native Facebook application or not, you&#8217;ll have 2 kinds of authentification boxes.</p>
+<p>Without Facebook installed on the device:<br />
+<a href="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-110834.png"><img class="aligncenter size-large wp-image-583" alt="device-2013-08-08-110834" src="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-110834-1024x640.png" width="584" height="365" /></a></p>
+<p>And with Facebook installed on the device:</p>
+<p><a href="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-111002.png"><img class="aligncenter size-large wp-image-584" alt="device-2013-08-08-111002" src="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-111002-1024x640.png" width="584" height="365" /></a></p>
+<p>After authentication, the user will need to accept our permissions:</p>
+<p><a href="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-111111.png"><img class="aligncenter size-large wp-image-585" alt="device-2013-08-08-111111" src="http://txzone.net/wp-content/uploads/2013/08/device-2013-08-08-111111-1024x640.png" width="584" height="365" /></a></p>
+<p>It&#8217;s done!</p>
+<p>The application have now the right to post <img src="http://txzone.net/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" />  The example post in the user stream as the application itself, not as the user. It&#8217;s called &#8220;publish_actions&#8221;.</p>
+<h2>Getting further</h2>
+<p>Obviously, when you use the Facebook SDK itself, you feel the pain of an API designed for Java. For every callback that Facebook want to call, you need to implement a Java class and define the callback method. Python is really simpler and fun to use.</p>
+<p>See for yourself: we want to make a call of &#8220;<a href="https://developers.facebook.com/docs/reference/android/current/Request#newStatusUpdateRequest(Session,%20String,%20Callback)">Request.newStatusUpdateRequest</a>&#8220;. Se weed first to implement a <code>GraphUserCallback</code> class, in Java. Thanks to Pyjnius, we can do it directly in Python:</code></code></p><pre class="crayon-plain-tag">class _FacebookGraphUserCallback(PythonJavaClass):
+
+    __javainterfaces__ = ['com.facebook.Request$GraphUserCallback']
+    __javacontext__ = 'app'
+
+    def __init__(self, callback):
+        self.callback = callback
+        super(_FacebookGraphUserCallback, self).__init__()
+
+    @java_method('(Lcom/facebook/model/GraphUser;Lcom/facebook/Response;)V')
+    def onCompleted(self, user, response):
+        self.callback(user, response)</pre><p></p>
+<p>This Python/Java class will call our own python callback when the Java callback <code>onCompleted</code> will be called. Then:</p><pre class="crayon-plain-tag">@run_on_ui_thread
+    def post(self, text, callback):
+        req = Request.newStatusUpdateRequest(
+                self._session, text, _FacebookRequestCallback(callback))
+        req.executeAsync()</pre><p>All you have to do at the end, is to call the post method:</p><pre class="crayon-plain-tag">def fb_post(self, text):
+        def callback(*args):
+            from time import time
+            self.post_status = 'message posted at {}'.format(time())
+        self.facebook.post(text, callback=callback)</pre><p></p>
+<p>I don't provide a wrapper around all the possible Request method you can do with Facebook. I just have an example for "post" and "me". Both wrap "<a href="https://developers.facebook.com/docs/reference/android/current/Request#newStatusUpdateRequest(Session,%20String,%20Callback)">Request.newStatusUpdateRequest</a>" and "<a href="https://developers.facebook.com/docs/reference/android/current/Request#newMeRequest(Session,%20GraphUserCallback)">Request.newMeRequest</a>". Please note that every request call must happen in the UI thread. Use the python-for-android/runnable module for that, with <code>@run_on_ui_thread</code> decorator.</p>
+<h2>The end</h2>
+<p>It was not easy to get it right, and it still complex to make all the pieces together. I've tried to use their own LoginButton (because they said that's how they want it, everywhere), but i've not be able to use it in our app. Mostly because the LoginButton is a pure android widget, and because it doesn't want to bring back the Activity after login. I was stuck too much time on it, and preferred to go in another way.<br />
+Please note that you should not share an application with a fake Facebook button, the design / look-and-feel must be the same as the original one.</p>
+<p>I hope that will help some of you to get started !</p>
+<iframe style="border: 0; margin: 0; padding: 0;"
+        src="https://www.gittip.com/tito/widget.html"
+		        width="48pt" height="22pt"></iframe>
+
+											</div><!-- .entry-content -->
+
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://kivy.org/planet/category/android/" title="View all posts in android" rel="category tag">android</a>, <a href="http://kivy.org/planet/category/coding/" title="View all posts in Coding" rel="category tag">Coding</a>, <a href="http://kivy.org/planet/category/facebook/" title="View all posts in facebook" rel="category tag">facebook</a>, <a href="http://kivy.org/planet/category/kivy/" title="View all posts in Kivy" rel="category tag">Kivy</a>, <a href="http://kivy.org/planet/category/planet-python/" title="View all posts in Planet Python" rel="category tag">Planet Python</a>, <a href="http://kivy.org/planet/category/planet-ubuntu/" title="View all posts in Planet Ubuntu" rel="category tag">Planet Ubuntu</a>, <a href="http://kivy.org/planet/category/python/" title="View all posts in Python" rel="category tag">Python</a>. Bookmark the <a href="http://kivy.org/planet/2013/08/using-facebook-sdk-with-python-for-android-kivy/" title="Permalink to Using Facebook SDK with Python-for-Android / Kivy" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://kivy.org/planet/2013/04/kivy-hackathon-in-paris/" rel="prev"><span class="meta-nav">&larr;</span> Kivy hackathon in paris</a></div>
+					<div class="nav-next"><a href="http://kivy.org/planet/2014/01/building-a-background-application-on-android-with-kivy/" rel="next">Building a background application on android with Kivy. <span class="meta-nav">&rarr;</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+	<p class="nocomments">Comments are closed.</p>
+
+
+								
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-2" class="widget-container widget_search"><form role="search" method="get" id="searchform" action="http://kivy.org/planet/" >
+	<div><label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+				<li><a href="http://kivy.org/planet/2014/03/kivy-programming-contest-2014/" title="Kivy Programming Contest 2014">Kivy Programming Contest 2014</a></li>
+				<li><a href="http://kivy.org/planet/2014/03/2048-in-python-kivy/" title="2048, in Python / Kivy">2048, in Python / Kivy</a></li>
+				<li><a href="http://kivy.org/planet/2014/03/prepare-for-the-kivy-contest-2/" title="Prepare for the Kivy contest #2">Prepare for the Kivy contest #2</a></li>
+				<li><a href="http://kivy.org/planet/2014/03/kpritz/" title="Kpritz">Kpritz</a></li>
+				<li><a href="http://kivy.org/planet/2014/02/using-tex_coords-in-kivy-for-fun-and-profit/" title="Using tex_coords in kivy for fun and profit">Using tex_coords in kivy for fun and profit</a></li>
+				</ul>
+		</li><li id="recent-comments-2" class="widget-container widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"></ul></li><li id="archives-2" class="widget-container widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='http://kivy.org/planet/2014/03/' title='March 2014'>March 2014</a></li>
+	<li><a href='http://kivy.org/planet/2014/02/' title='February 2014'>February 2014</a></li>
+	<li><a href='http://kivy.org/planet/2014/01/' title='January 2014'>January 2014</a></li>
+	<li><a href='http://kivy.org/planet/2013/08/' title='August 2013'>August 2013</a></li>
+	<li><a href='http://kivy.org/planet/2013/04/' title='April 2013'>April 2013</a></li>
+	<li><a href='http://kivy.org/planet/2013/02/' title='February 2013'>February 2013</a></li>
+	<li><a href='http://kivy.org/planet/2012/11/' title='November 2012'>November 2012</a></li>
+	<li><a href='http://kivy.org/planet/2012/10/' title='October 2012'>October 2012</a></li>
+	<li><a href='http://kivy.org/planet/2012/08/' title='August 2012'>August 2012</a></li>
+	<li><a href='http://kivy.org/planet/2012/03/' title='March 2012'>March 2012</a></li>
+	<li><a href='http://kivy.org/planet/2012/02/' title='February 2012'>February 2012</a></li>
+	<li><a href='http://kivy.org/planet/2012/01/' title='January 2012'>January 2012</a></li>
+	<li><a href='http://kivy.org/planet/2011/12/' title='December 2011'>December 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/10/' title='October 2011'>October 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/09/' title='September 2011'>September 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/08/' title='August 2011'>August 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/07/' title='July 2011'>July 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/06/' title='June 2011'>June 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/05/' title='May 2011'>May 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/04/' title='April 2011'>April 2011</a></li>
+	<li><a href='http://kivy.org/planet/2011/01/' title='January 2011'>January 2011</a></li>
+		</ul>
+</li><li id="categories-2" class="widget-container widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-18"><a href="http://kivy.org/planet/category/android/" title="View all posts filed under android">android</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://kivy.org/planet/category/app/" title="View all posts filed under App">App</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://kivy.org/planet/category/basics/" title="View all posts filed under Basics">Basics</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://kivy.org/planet/category/button/" title="View all posts filed under Button">Button</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://kivy.org/planet/category/coding/" title="View all posts filed under Coding">Coding</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://kivy.org/planet/category/event-handling/" title="View all posts filed under Event-handling">Event-handling</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://kivy.org/planet/category/facebook/" title="View all posts filed under facebook">facebook</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://kivy.org/planet/category/gstreamer/" title="View all posts filed under Gstreamer">Gstreamer</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://kivy.org/planet/category/kivy/" title="View all posts filed under Kivy">Kivy</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://kivy.org/planet/category/planet-python/" title="View all posts filed under Planet Python">Planet Python</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://kivy.org/planet/category/planet-ubuntu/" title="View all posts filed under Planet Ubuntu">Planet Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://kivy.org/planet/category/pymt/" title="View all posts filed under PyMT">PyMT</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://kivy.org/planet/category/python/" title="View all posts filed under Python">Python</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://kivy.org/planet/category/resize/" title="View all posts filed under resize">resize</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://kivy.org/planet/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://kivy.org/planet/category/window/" title="View all posts filed under Window">Window</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://kivy.org/planet/category/xlib/" title="View all posts filed under Xlib">Xlib</a>
+</li>
+		</ul>
+</li><li id="meta-2" class="widget-container widget_meta"><h3 class="widget-title">Meta</h3>			<ul>
+						<li><a href="http://kivy.org/planet/wp-login.php">Log in</a></li>
+			<li><a href="http://kivy.org/planet/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://kivy.org/planet/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://kivy.org/planet/" title="Kivy Planet" rel="home">
+					Kivy Planet				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+</body>
+</html>

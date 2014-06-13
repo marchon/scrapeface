@@ -1,0 +1,426 @@
+<!doctype html>
+<head>
+<title>Querying Users who &#39;like&#39; my Facebook Page</title>
+<meta charset=utf-8>
+<link rel=stylesheet type=text/css href="/static/style.css">
+<meta name="description" content="">
+<link rel="author" href="https://plus.google.com/timger"/>
+<meta name="keywords" content="facebook,facebook-graph-api"/>
+<meta property="og:title" content="Querying Users who &#39;like&#39; my Facebook Page" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="http://error.bengtuo.com/page/82739.html" />
+<meta property="og:site_name" content="蹦鸵*错误网" />
+<meta property="og:description" content="I was wondering if it was possible to query the following: List of (all) users who like my facebook page, and Additional information those users have made publicly available (beyond first and last name) Basically looking to generate detailed marketing stats of users who like my facebook page, if pos" />
+<style>
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
+
+body         { font-family: 'Georgia', serif; font-size: 17px; color: #000; }
+a            { color: #aa0000; border-bottom: 1px dotted #bb0000; text-decoration: none; }
+a:hover      { color: #dd0000; border-bottom: 1px solid #dd0000; }
+.box         { width: 540px; margin: 40px auto; }
+h1, h2, h3   { font-family: 'Crimson Text', 'Georgia', serif; font-weight: normal; }
+.header      { height: 90px; }
+.header h1   { margin: 0 0 30px 0; background: url(/static/jinja.png) no-repeat center;
+               font-size: 50px; padding-top: 50px; height: 120px; }
+.header h1 span, .header p { display: none; }
+h1           { font-size: 34px; margin: 25px 0 5px 0; }
+h2           { font-size: 24px; margin: 25px 0 5px 0; }
+h3           { font-size: 19px; margin: 25px 0 5px 0; }
+textarea, code,
+pre          { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
+               'Bitstream Vera Sans Mono', monospace!important; font-size: 15px;
+               background: #eee; }
+pre          { padding: 7px 30px; margin: 15px -30px; line-height: 1.3; }
+.ig          { color: #888; }
+p            { line-height: 1.4; }
+ul           { margin: 15px 0 15px 0; padding: 0; list-style: none; line-height: 1.4; }
+ul li:before { content: "\00BB \0020"; color: #888; position: absolute; margin-left: -19px; }
+ol           { line-height: 1.4; margin: 15px 0 15px 30px; padding: 0; }
+blockquote   { margin: 15px 0; font-style: italic; color: #444; }
+.footer      { font-size: 13px; color: #888; text-align: right; margin-top: 25px; }
+.more        { text-align: right; margin-top: 0; font-size: 0.9em; font-style: italic; }
+.nav         { text-align: center; margin: 0; }
+table        { border: 1px solid black; border-collapse: collapse;
+               margin: 15px 0; }
+td, th       { border: 1px solid black; padding: 4px 10px;
+               text-align: left; }
+th           { background: #eee; font-weight: normal; }
+
+td input     { border: none; padding: 0; }
+
+/* latest version button */
+.latestver          { margin: 20px 0 0 0; float: right; font-style: italic; }
+.latestver strong   { font-weight: normal; }
+</style>
+</head>
+<body>
+
+<div class=box>
+
+  <div class=header>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 站群首页头部 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0980036914647428"
+     data-ad-slot="2326057070"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+  <h1 class="title">Querying Users who 'like' my Facebook Page</h1>
+  <div>
+  <p>I was wondering if it was possible to query the following:</p>
+
+<ul><li>List of (all) users who like my facebook page, and</li>
+<li>Additional information those users have made publicly available (beyond first and last name)</li>
+</ul><p>Basically looking to generate detailed marketing stats of users who like my facebook page, if possible. Any suggestions or alternatives welcome.</p>
+
+<p>Thank you.</p>
+&#13;
+  </div>
+  <hr/>
+  <div>
+  
+    <p><p>I am afraid this is <strong>NOT</strong> possible, follow this <a href="https://developers.facebook.com/bugs/147185208750426">bug</a> for more information.  </p>
+
+<p>Another proof is the <code>page_fan</code> table you will notice that only the <code>uid</code> field is indexable so you <strong>need</strong> to know the user id to search it and not the <code>page_id</code>, as you know if a user "<em>likes</em>" a page this would mean he is a "<em>fan</em>" of that page.  </p>
+
+<hr/><p>After being actively working with the Facebook API for a while now, and following the announcements and API releases (and deprecations) along with the introduction and changes of policies, I <em>can</em> understand that Facebook will only share info about their users by letting them explicitly do so (a.k.a interact/authorize your Apps).  </p>
+
+<p>And hence the best thing to do in the absence of such feature is:  </p>
+
+<ol><li>Understand your audience through <a href="https://www.facebook.com/help/336893449723054/">Page Insights</a></li>
+<li>Collect fans interests &amp; info by creating custom apps through <a href="https://developers.facebook.com/docs/appsonfacebook/pagetabs/">Page Tabs</a> and using other Facebook features like <a href="https://www.facebook.com/help/facebook-questions">Questions</a></li>
+</ol></p>
+    
+        <p><span class="comment-copy">I agree that this is not possible. I've tried every possible permutation of api calls, permissions, access tokens etc that might possibly provide you with a list of a page's fans/likes over the past couple days with no success. Anyone who says they are able to do this either hasn't actually tried it or must have somehow lucked in to a beta test of the ability as described in your link to the bug page.</span>&#13;
+	– &#13;
+		<a href="/users/304742/b" title="976 reputation" class="comment-user">B_.</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2011-03-04 01:45:09Z" class="relativetime-clean">Mar 4 '11 at 1:45</span></span>&#13;</p>
+    
+        <p><span class="comment-copy">The new URL to this bug is <a href="https://developers.facebook.com/bugs/147185208750426" rel="nofollow">developers.facebook.com/bugs/147185208750426</a></span>&#13;
+	– &#13;
+		<a href="/users/643928/philihp-busby" title="1017 reputation" class="comment-user">Philihp Busby</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2012-08-22 04:47:52Z" class="relativetime-clean">Aug 22 '12 at 4:47</span></span>&#13;</p>
+    
+  
+    <p><p>Alright, nobody wants to break Facebook's TOS but they have tied our hands on our own basic data. So, scraping is illegal, but not saving a page. What I have done (and note that I needed this for offline purpose anyway):
+Go to <a href="https://www.facebook.com/browse/?type=page_fans&amp;page_id=">https://www.facebook.com/browse/?type=page_fans&amp;page_id=</a>{FAN PAGE ID}
+Scroll down until you have all of your fans. Save this page on your local machine, let's say, Facebook.html.
+Now, using ruby and nokogiri:</p>
+
+<pre><code>require 'nokogiri'
+&gt;true
+f = File.open('/your_path/Facebook.html')
+doc = Nokogiri::HTML.parse(f.read)
+doc.xpath('//div[@class="fsl fwb fcb"]/a').each {|link| puts link.content}
+</code></pre>
+&#13;</p>
+    
+  
+    <p><p>It's possible, just not with FQL anymore.</p>
+
+<p>Do a GET of <a href="https://www.facebook.com/browse/?type=page_fans&amp;page_id=" rel="nofollow">https://www.facebook.com/browse/?type=page_fans&amp;page_id=</a>{FAN PAGE ID} and scrape out the users.</p>
+
+<p>Viola.</p>
+&#13;</p>
+    
+        <p><span class="comment-copy">You shouldn't really advocate breaking Facebook's TOS by scraping the site</span>&#13;
+	– &#13;
+		<a href="/users/21062/igy" title="30776 reputation" class="comment-user">Igy</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2012-05-04 19:17:13Z" class="relativetime-clean">May 4 '12 at 19:17</span></span>&#13;</p>
+    
+        <p><span class="comment-copy">the section you are referring doesn't show all likes...</span>&#13;
+	– &#13;
+		<a href="/users/767651/radu" title="132 reputation" class="comment-user">Radu</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2013-11-26 09:04:46Z" class="relativetime-clean">Nov 26 '13 at 9:04</span></span>&#13;</p>
+    
+  
+    <p><p>Do a graph search likes this: "People who like [your fanpage's name]". You will all the result.</p>
+
+<p>Then create shortcut on your browser with this javascripts code, it will click on the View more link and scrolling until all result are shown in the page:</p>
+
+<pre><code>javascript: i = 0;minutes = 30;counter = minutes * 60;
+function repeatScroll() {    
+if (i &lt; counter) {        
+window.scrollTo(0, document.body.scrollHeight);i++;}    
+setTimeout(repeatScroll, 1000);}repeatScroll();
+</code></pre>
+
+<p>After that, create other shortcut and run this js code to retrieve all UID from the search result:</p>
+
+<pre><code>javascript: var txt="";e=document.getElementsByClassName("uiButton");
+for(var i=0; i&lt;e.length; i+=2) {v=e[i].getAttribute("data-profileid");
+if(v) txt+=v+"\n"}document.body.innerHTML="&lt;textarea&gt;"+txt+"&lt;/textarea&gt;";
+</code></pre>
+
+<p>A textarea box will appear in the screen with all uid inside. Just copy it to your notepad and import into your Custom Audience in Facebook Ad Manager.</p>
+
+<p>I created and use this code everyday to get all UID with criterial I need.
+You can launch any graph search you want.
+This is homemade code, so using it without your own responsibility :)</p>
+
+<p>Enjoy them.</p>
+&#13;</p>
+    
+  
+    <p><p>You can get it using facebook open graph.</p>
+
+<p><code>https://graph.facebook.com/&lt;your-page-name-or-page-id&gt;/likes</code></p>
+
+<p>For example :</p>
+
+<p><a href="https://graph.facebook.com/chickfila/likes" rel="nofollow">https://graph.facebook.com/chickfila/likes</a></p>
+
+<p>You need to send graph api call using "id" for more detail about user who like you page.</p>
+
+<p>However, this call will retrieve the other Facebook objects that the page (Chickfila) has liked, NOT the users who have liked the Chickfila page.</p>
+&#13;</p>
+    
+        <p><span class="comment-copy">that gets the things that chickfila likes; not who likes chickfila.</span>&#13;
+	– &#13;
+		<a href="/users/643928/philihp-busby" title="1017 reputation" class="comment-user">Philihp Busby</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2012-08-22 04:33:15Z" class="relativetime-clean">Aug 22 '12 at 4:33</span></span>&#13;</p>
+    
+        <p><span class="comment-copy">Yeah, you are right. But we get user_id which is used for get name</span>&#13;
+	– &#13;
+		<a href="/users/998686/rajesh-meniya" title="139 reputation" class="comment-user">Rajesh Meniya</a>&#13;
+	<span class="comment-date" dir="ltr"><span title="2012-10-13 06:46:46Z" class="relativetime-clean">Oct 13 '12 at 6:46</span></span>&#13;
+		<span class="edited-yes" title="this comment was edited 2 times"/>&#13;</p>
+    
+  
+  </div>
+  <hr/>
+  <div>
+  <ul>
+    <li><a href="/page/82738.html" target="_blank">prev page</a></li>
+    <li><a href="/page/82740.html" target="_blank">next page</a></li>
+  </ul>
+  <ul>
+    
+    <li><a href="/page/1232038.html" target="_blank">1232038</a></li>
+    
+    <li><a href="/page/1015957.html" target="_blank">1015957</a></li>
+    
+    <li><a href="/page/326660.html" target="_blank">326660</a></li>
+    
+    <li><a href="/page/213833.html" target="_blank">213833</a></li>
+    
+    <li><a href="/page/895520.html" target="_blank">895520</a></li>
+    
+    <li><a href="/page/927903.html" target="_blank">927903</a></li>
+    
+    <li><a href="/page/95786.html" target="_blank">95786</a></li>
+    
+    <li><a href="/page/154145.html" target="_blank">154145</a></li>
+    
+    <li><a href="/page/907364.html" target="_blank">907364</a></li>
+    
+    <li><a href="/page/271019.html" target="_blank">271019</a></li>
+    
+    <li><a href="/page/471775.html" target="_blank">471775</a></li>
+    
+    <li><a href="/page/502460.html" target="_blank">502460</a></li>
+    
+    <li><a href="/page/306844.html" target="_blank">306844</a></li>
+    
+    <li><a href="/page/663245.html" target="_blank">663245</a></li>
+    
+    <li><a href="/page/107846.html" target="_blank">107846</a></li>
+    
+    <li><a href="/page/958542.html" target="_blank">958542</a></li>
+    
+    <li><a href="/page/168113.html" target="_blank">168113</a></li>
+    
+    <li><a href="/page/1132618.html" target="_blank">1132618</a></li>
+    
+    <li><a href="/page/858919.html" target="_blank">858919</a></li>
+    
+    <li><a href="/page/542744.html" target="_blank">542744</a></li>
+    
+    <li><a href="/page/797546.html" target="_blank">797546</a></li>
+    
+    <li><a href="/page/22460.html" target="_blank">22460</a></li>
+    
+    <li><a href="/page/377583.html" target="_blank">377583</a></li>
+    
+    <li><a href="/page/535373.html" target="_blank">535373</a></li>
+    
+    <li><a href="/page/628488.html" target="_blank">628488</a></li>
+    
+    <li><a href="/page/689091.html" target="_blank">689091</a></li>
+    
+    <li><a href="/page/1044380.html" target="_blank">1044380</a></li>
+    
+    <li><a href="/page/917401.html" target="_blank">917401</a></li>
+    
+    <li><a href="/page/178178.html" target="_blank">178178</a></li>
+    
+    <li><a href="/page/1112077.html" target="_blank">1112077</a></li>
+    
+    <li><a href="/page/399310.html" target="_blank">399310</a></li>
+    
+    <li><a href="/page/415560.html" target="_blank">415560</a></li>
+    
+    <li><a href="/page/599440.html" target="_blank">599440</a></li>
+    
+    <li><a href="/page/898333.html" target="_blank">898333</a></li>
+    
+    <li><a href="/page/1197939.html" target="_blank">1197939</a></li>
+    
+    <li><a href="/page/637420.html" target="_blank">637420</a></li>
+    
+    <li><a href="/page/11265.html" target="_blank">11265</a></li>
+    
+    <li><a href="/page/1142166.html" target="_blank">1142166</a></li>
+    
+    <li><a href="/page/94566.html" target="_blank">94566</a></li>
+    
+    <li><a href="/page/99253.html" target="_blank">99253</a></li>
+    
+    <li><a href="/page/165863.html" target="_blank">165863</a></li>
+    
+    <li><a href="/page/807114.html" target="_blank">807114</a></li>
+    
+    <li><a href="/page/964940.html" target="_blank">964940</a></li>
+    
+    <li><a href="/page/1032756.html" target="_blank">1032756</a></li>
+    
+    <li><a href="/page/803001.html" target="_blank">803001</a></li>
+    
+    <li><a href="/page/168338.html" target="_blank">168338</a></li>
+    
+    <li><a href="/page/1110706.html" target="_blank">1110706</a></li>
+    
+    <li><a href="/page/613719.html" target="_blank">613719</a></li>
+    
+    <li><a href="/page/233858.html" target="_blank">233858</a></li>
+    
+    <li><a href="/page/1063440.html" target="_blank">1063440</a></li>
+    
+    <li><a href="/page/1078674.html" target="_blank">1078674</a></li>
+    
+    <li><a href="/page/987611.html" target="_blank">987611</a></li>
+    
+    <li><a href="/page/947946.html" target="_blank">947946</a></li>
+    
+    <li><a href="/page/820569.html" target="_blank">820569</a></li>
+    
+    <li><a href="/page/387784.html" target="_blank">387784</a></li>
+    
+    <li><a href="/page/242404.html" target="_blank">242404</a></li>
+    
+    <li><a href="/page/181316.html" target="_blank">181316</a></li>
+    
+    <li><a href="/page/285151.html" target="_blank">285151</a></li>
+    
+    <li><a href="/page/941160.html" target="_blank">941160</a></li>
+    
+    <li><a href="/page/163882.html" target="_blank">163882</a></li>
+    
+    <li><a href="/page/1039632.html" target="_blank">1039632</a></li>
+    
+    <li><a href="/page/547586.html" target="_blank">547586</a></li>
+    
+    <li><a href="/page/350251.html" target="_blank">350251</a></li>
+    
+    <li><a href="/page/1079019.html" target="_blank">1079019</a></li>
+    
+    <li><a href="/page/660644.html" target="_blank">660644</a></li>
+    
+    <li><a href="/page/531302.html" target="_blank">531302</a></li>
+    
+    <li><a href="/page/224261.html" target="_blank">224261</a></li>
+    
+    <li><a href="/page/467249.html" target="_blank">467249</a></li>
+    
+    <li><a href="/page/25319.html" target="_blank">25319</a></li>
+    
+    <li><a href="/page/312809.html" target="_blank">312809</a></li>
+    
+    <li><a href="/page/240404.html" target="_blank">240404</a></li>
+    
+    <li><a href="/page/757612.html" target="_blank">757612</a></li>
+    
+    <li><a href="/page/289419.html" target="_blank">289419</a></li>
+    
+    <li><a href="/page/1082415.html" target="_blank">1082415</a></li>
+    
+    <li><a href="/page/1012782.html" target="_blank">1012782</a></li>
+    
+    <li><a href="/page/214915.html" target="_blank">214915</a></li>
+    
+    <li><a href="/page/1262043.html" target="_blank">1262043</a></li>
+    
+    <li><a href="/page/1244112.html" target="_blank">1244112</a></li>
+    
+    <li><a href="/page/582744.html" target="_blank">582744</a></li>
+    
+    <li><a href="/page/960594.html" target="_blank">960594</a></li>
+    
+    <li><a href="/page/909208.html" target="_blank">909208</a></li>
+    
+    <li><a href="/page/290266.html" target="_blank">290266</a></li>
+    
+    <li><a href="/page/1291035.html" target="_blank">1291035</a></li>
+    
+    <li><a href="/page/178537.html" target="_blank">178537</a></li>
+    
+    <li><a href="/page/124578.html" target="_blank">124578</a></li>
+    
+    <li><a href="/page/1096426.html" target="_blank">1096426</a></li>
+    
+    <li><a href="/page/600042.html" target="_blank">600042</a></li>
+    
+    <li><a href="/page/519086.html" target="_blank">519086</a></li>
+    
+    <li><a href="/page/530258.html" target="_blank">530258</a></li>
+    
+    <li><a href="/page/830056.html" target="_blank">830056</a></li>
+    
+    <li><a href="/page/976368.html" target="_blank">976368</a></li>
+    
+    <li><a href="/page/287032.html" target="_blank">287032</a></li>
+    
+    <li><a href="/page/900813.html" target="_blank">900813</a></li>
+    
+    <li><a href="/page/787317.html" target="_blank">787317</a></li>
+    
+    <li><a href="/page/386075.html" target="_blank">386075</a></li>
+    
+    <li><a href="/page/1173319.html" target="_blank">1173319</a></li>
+    
+    <li><a href="/page/293966.html" target="_blank">293966</a></li>
+    
+    <li><a href="/page/921718.html" target="_blank">921718</a></li>
+    
+    <li><a href="/page/1284169.html" target="_blank">1284169</a></li>
+    
+    <li><a href="/page/681856.html" target="_blank">681856</a></li>
+    
+  </ul>
+  </div>
+
+<div>
+<script>document.write(unescape('%3Cdiv id="hm_t_23784"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://crs.baidu.com/t.js?siteId=b5a73f75a2d3c24d05426db2f2ad5b2b&planId=23784&async=0&referer=') + encodeURIComponent(document.referrer) + '&title=' + encodeURIComponent(document.title) + '&rnd=' + (+new Date) + unescape('"%3E%3C/script%3E'));</script>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=27313047" charset="UTF-8"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43094967-1', 'tobejob.com');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9a58f0d279fbd64fcac70365c2a23fc9' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</html> 

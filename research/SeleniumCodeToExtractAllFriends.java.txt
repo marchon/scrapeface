@@ -1,0 +1,53 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+
+
+public class FacebookFriends {
+
+	
+	public static void main(String[] args) throws InterruptedException {
+
+		FirefoxProfile profile = new FirefoxProfile();
+		profile.setEnableNativeEvents(true);
+		WebDriver driver = new FirefoxDriver(profile);
+		driver.manage().window().maximize();
+		driver.get("http://facebook.com");
+		driver.findElement(By.xpath("//input[@id='email']")).sendKeys("Email-address");
+		driver.findElement(By.xpath("//input[@id='pass']")).sendKeys("password");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		
+		
+		driver.get("https://www.facebook.com/radhika.rasne/friends?ft_ref=mni");
+		while(true){
+			//System.out.println("***************");
+			Long y=(Long)((JavascriptExecutor) driver).executeScript("return window.pageYOffset");
+		     long y1 = y.longValue();
+			Thread.sleep(500);
+			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,90)");
+			 y=(Long)((JavascriptExecutor) driver).executeScript("return window.pageYOffset");
+		     long y2 = y.longValue();
+		     if(y1-y2 ==0){
+		    	 System.out.println(y1);
+		    	 System.out.println(y2);
+		    	 break;
+		     }
+			
+		}
+		
+		
+		List<WebElement> allNames = driver.findElements(By.xpath("//div[@class='fsl fwb fcb']/a"));
+		System.out.println(allNames.size());
+		for(int i=0;i<allNames.size();i++)
+			System.out.println(allNames.get(i).getText());
+				
+		
+		
+	}
+
+}

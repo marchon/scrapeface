@@ -1,0 +1,2792 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" xmlns:og="http://opengraphprotocol.org/schema/">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>Hack Like a Pro: An Introduction to Regular Expressions (Regex) &#171; Null Byte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript">
+//<![CDATA[
+        window._sf_startpt = (new Date()).getTime();
+        //]]></script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600" type="text/css" />
+    <!--[if lt IE 9 ]>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="http://img.wonderhowto.com/css/fonts/fonts.css?v=000001" type="text/css" />
+        <link rel="stylesheet" href="http://img.wonderhowto.com/js/style.min.css?v=0515201401" type="text/css" />
+
+    <link rel="stylesheet" href="http://img.wonderhowto.com/js/libs/codemirror/theme/ambiance.css?v=0515201401" type="text/css" />
+
+    <!--[if lt IE 7 ]>
+        <link rel="stylesheet" href="http://img.wonderhowto.com/css/jquery.jgrowl.ie6.css?v=0515201401" type="text/css"/>
+     <![endif]-->
+    <script type="text/javascript" src="http://img.wonderhowto.com/js/libs/modernizr-custom.min.js?v=0515201401"></script>
+
+    
+    <link rel="alternate" type="application/rss+xml" href="http://null-byte.wonderhowto.com/rss.xml" title="Null Byte RSS Feed" />
+
+    
+    <meta property="fb:app_id" content="133643190002681" />
+    <meta property="og:site_name" content="WonderHowTo" />
+    <meta content="Hack Like a Pro: An Introduction to Regular Expressions (Regex)" property="og:title" />
+<meta content="http://null-byte.wonderhowto.com/how-to/hack-like-pro-introduction-regular-expressions-regex-0150386/" property="og:url" />
+<meta content="Welcome back, my novice hackers! This next subject might seem a bit obscure, but I promise you, this lesson will benefit you significantly either as a hacker or system admin. This tutorial will cover what is usually referred to as a regular expression, or regex for short. Manipulating Text in Linux Remember, nearly everything in Linux is a file, and for that matter, most are simple text files. Unlike Windows, with elaborate snap-ins and MMCs to configure an application or server, Linux simply has a text file for configuration. Change the text file, change the configuration. As a result" property="og:description" />
+<meta content="article" property="og:type" />
+<meta content="http://img.wonderhowto.com/img/18/65/63527391375862/0/hack-like-pro-introduction-regular-expressions-regex.1280x600.jpg" property="og:image" />
+<meta content="Welcome back, my novice hackers! This next subject might seem a bit obscure, but I promise you, this lesson will benefit you significantly either as a hacker or system admin. This tutorial will cover what is usually referred to as a regular expression, or regex for short. Manipulating Text in Linux Remember, nearly everything in Linux is a file, and for that matter, most are simple text files. Unlike Windows, with elaborate snap-ins and MMCs to configure an application or server, Linux simply has a text file for configuration. Change the text file, change the configuration. As a result" name="description" />
+<meta content="summary_large_image" name="twitter:card" />
+<meta content="http://img.wonderhowto.com/img/18/65/63527391375862/0/hack-like-pro-introduction-regular-expressions-regex.1280x600.jpg" name="twitter:image:src" />
+<meta content="@WonderHowTo" name="twitter:site" />
+<meta content="Hack Like a Pro: An Introduction to Regular Expressions (Regex)" name="twitter:title" />
+<meta content="Welcome back, my novice hackers! This next subject might seem a bit obscure, but I promise you, this lesson will benefit you significantly either as a hacker or system admin. This tutorial will cov..." name="twitter:description" />
+<meta content="@NullByteWht" name="twitter:creator" />
+<meta content="null-byte.WonderHowTo.com" name="twitter:domain" />
+
+
+    <!--[if lt IE 9 ]>
+       <link rel="stylesheet" href="http://img.wonderhowto.com/css/ie.css?v=0515201401" type="text/css"/>
+    <![endif]-->
+
+    <script type="text/javascript">
+        // will call jquery.ready function for scripts loaded before jquery
+        (function (a) { _q = function () { return a; }; $ = function (f) { typeof f === "function" && a.push(arguments); return $; }; jQuery = $.ready = $; } ([]));
+    </script>
+
+        <script type="text/javascript">
+        //<![CDATA[
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        
+        (function() {
+            var src = '//www.googletagservices.com/tag/js/gpt.js';
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        })();
+        (function() {
+            var src = '//ox-d.tmn.servedbyopenx.com/w/1.0/jstag?ef=db&nc=10518929-TMNP.WONDERHOWTO';
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        })();
+        //]]>
+        </script>
+        <script type="text/javascript" src="http://ad.crwdcntrl.net/5/c=241/pe=y/var=ccauds"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            var dartCCKey = "ccaud";
+            var dartCC = "";
+            if (typeof(ccauds) != 'undefined'){
+                for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++){
+                    if (cci > 0) dartCC += ",";
+                    dartCC += ccauds.Profile.Audiences.Audience[cci].abbr;
+                }
+            }
+
+            googletag.cmd.push(function () {
+                googletag.pubads().setTargeting(dartCCKey, [dartCC]);
+                googletag.pubads().setTargeting("URL", encodeURIComponent(window.location.href));
+
+                var asb = '_10518929_tmnp_wonderhowto_sciencetech_computers', asi = 0;
+                googletag._onAjaxUpdateSlots = []; // [, ];
+                googletag.defineSlot('/10518929/tmnp.wonderhowto/sciencetech/computers', [[728, 90], [970, 66], [970, 90], [970, 250], [980, 250]], 'aph' + asb + '_top_728x90').addService(googletag.pubads());
+                
+                googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto/sciencetech/computers', [[300, 250], [300, 600], [300, 1050]], 'aph' + asb + '_top_300x250').addService(googletag.pubads());
+                googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto-btf/sciencetech/computers', [[300, 250]], 'aph' + asb + '_mid_300x250').addService(googletag.pubads());
+                                    googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto', [[532, 80], [532, 120]], 'aph_text_532x80_1').addService(googletag.pubads()).setTargeting('whttext', '1');
+                                    googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto', [[532, 80], [532, 120]], 'aph_text_532x80_2').addService(googletag.pubads()).setTargeting('whttext', '2');
+                                googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto', [[600, 120]], 'aph_text_600x120').addService(googletag.pubads());
+
+                googletag._onAjaxUpdateSlots[asi++] = googletag.defineSlot('/10518929/tmnp.wonderhowto', [[300, 350]], 'aph_text_300x350').addService(googletag.pubads());
+                googletag._onAjaxUpdateSlots[asi++] = googletag.defineOutOfPageSlot('/10518929/tmnp.wonderhowto', 'ad_skin').addService(googletag.pubads());
+                googletag.pubads().collapseEmptyDivs();
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+            //]]>
+        </script>
+
+    
+</head>
+<body class="isworld world-name-null-byte controller-article action-index isnotuser hascalltoaction">
+
+    <div id="ad_skin" style="position: absolute;"></div>
+
+
+
+            <div class="ad-top" style="min-height:90px;" id="aph_10518929_tmnp_wonderhowto_sciencetech_computers_top_728x90"><script type="text/javascript">//<![CDATA[
+                googletag.cmd.push(function(){googletag.display('aph_10518929_tmnp_wonderhowto_sciencetech_computers_top_728x90');});
+            //]]></script></div>
+    <div id="page-header-container">
+<header id="page-header">
+    <div id="header-wrapper" class="wrapper">
+        <div id="header-bottom-container" class="clearfix">
+            <a id="logo" class="replace-text fl" rel="index" href="http://www.wonderhowto.com/">
+                WonderHowTo
+            </a>
+
+            
+            
+<form action="http://null-byte.wonderhowto.com/search/" method="GET" class="fl mgl">
+    <input id="searchbox" placeholder="Search" class="rnd" name="searchText" value="">
+    <input type="submit" class="fr hiddenSubmit" value=""/>
+</form>
+
+
+                <div id="login-tab" class="fr">
+                    <a class="login-link txt-title" href="javascript://" onclick="WHT.createAjaxDialog({&#39;URL&#39;:&#39;http://null-byte.wonderhowto.com/ajax/getloginsignupform/&#39;,&#39;ContainerID&#39;:&#39;loginDialogContainer&#39;,&#39;Buttons&#39;:null,&#39;Draggable&#39;:false,&#39;Modal&#39;:true,&#39;Height&#39;:0,&#39;Width&#39;:600,&#39;MaxHeight&#39;:0,&#39;MaxWidth&#39;:0,&#39;Resizable&#39;:false,&#39;Title&#39;:&#39;Login&#39;}); return false;">Login | Signup</a>
+                </div>
+
+            <div class="worlds-list-container fr pos-rel">
+                <a href="http://www.wonderhowto.com/worlds/" class="world-icon-link fl">&nbsp;</a>
+                <a class="txt-clr-lightest txt-size-normal fl worlds-text" href="http://www.wonderhowto.com/worlds/">
+                    Worlds
+                </a>
+                 
+                 <div class="flyout rnd-bottom">
+
+    <div class="container">
+        <ul class="items worlds-list clearfix">
+            <span class="txt-clr-lightest txt-size-normal txt-title mgb-smaller txt-lbl">
+                Popular Worlds 
+            </span>
+                    <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://ios.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/68/32/63507084753282/0/ios.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">iOS</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://null-byte.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/73/60/63452893055937/0/null-byte.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Null Byte</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://thesecretyumiverse.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/86/53/63475873804219/0/thesecretyumiverse.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">The Secret Yumiverse</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://mods-n-hacks.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/57/52/63475635233400/0/mods-n-hacks.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Hacks, Mods &amp; Circuitry</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://smartphones.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/34/00/63494369874776/0/smartphones.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Smartphones</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://food-hacks.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/35/93/63502311427336/0/food-hacks.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Food Hacks</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://minecraft.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/49/34/63516176563434/0/minecraft.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Minecraft </span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://gs3.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/94/51/63501634969202/0/gs3.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Samsung Galaxy S3</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://htc-one.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/93/35/63496870477857/0/htc-one.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">HTC One</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://internet.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/20/42/63475655236149/0/internet.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Internet</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://gs4.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/13/58/63506054879906/0/gs4.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Samsung GS4</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://nexus5.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/55/62/63520983363718/0/nexus5.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Nexus 5</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://nexus7.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/11/20/63494929097655/0/nexus7.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Nexus 7</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://science.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/88/72/63475970523128/0/science.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Science Experiments</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://origami.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/37/61/63477436438348/0/origami.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Origami</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://galaxy-note2.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/00/73/63501373415768/0/galaxy-note2.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Samsung Galaxy Note 2</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://galaxy-note-3.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/85/12/63517544551177/0/galaxy-note-3.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Samsung Galaxy Note 3</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://digiwonk.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/65/94/63535080626712/0/digiwonk.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Digiwonk</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://operating-systems.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/22/15/63475894793218/0/operating-systems.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Operating Systems</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://photoshop-tutorials.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/29/19/63475634730549/0/photoshop-tutorials.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Photoshop</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://xbox-360.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/31/04/63475718391071/0/xbox-360.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Xbox 360</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://makeup.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/86/18/63475717974572/0/makeup.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Makeup</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://hair-styling.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/31/26/63475494083334/0/hair-styling.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Hairstyling</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small ">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://drawing.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/46/28/63475895727675/0/drawing.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Drawing &amp; Illustration</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://software-tips.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/70/99/63475726337145/0/software-tips.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Software Tips</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://ms-office.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/36/83/63476324924918/0/ms-office.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Microsoft Office</span>
+            </a>
+        </li>
+        <li class="fl item hasImage mgb-small mgr-small">
+            <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://math.wonderhowto.com/">
+                <img  class="fl" src="http://img.wonderhowto.com/img/63/09/63475974734466/0/math.300x140.jpg" width="64" height="30" />
+                <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Math</span>
+            </a>
+        </li>
+     <li class="fl item mgb-small ">
+        <a class="fl txt-lbl txt-clr-light rnd longtxt" href="http://www.wonderhowto.com/worlds/">
+            <span class="txt-clr-lightest txt-size-normal txt-title mgl world-title">Find Worlds to Follow</span>
+        </a>
+    </li>
+
+        </ul>
+    </div>
+
+</div>
+
+
+            </div>
+
+
+            
+        </div>
+    </div>
+</header>
+</div>
+
+
+    <div class="page-wrapper">
+
+        <div id="main-wrapper" class="clearfix">
+
+
+<div class="top-nav rnd-big-top clearfix hasHeaderImage" 
+style="background:url('http://img.wonderhowto.com/img/48/58/63452892799660/0/null-byte.1014x174.jpg') no-repeat top center #17302c;">
+            <div class="world-header">
+            <em class="rnd-rightside">
+                    <a href="javascript://" class="join-world-btn btn std silver txt-bld rnd fr mgt-smaller mgl"  data-world-urlname="null-byte" data-world-name="Null Byte">
+                        Follow
+                    </a>
+                <a href="http://null-byte.wonderhowto.com/" class="txt-clr-lightest site-headline">
+                    Null Byte
+                    <span class="txt-size-normal slogan ">
+                        The aspiring grey hat hacker / security awareness playground
+                    </span></a></em>
+        </div>
+
+    <div class="bottom-container clearfix">
+        <ul class="navbutton-list list-inline fl">
+            <li class="rnd fl">
+                <a href="http://null-byte.wonderhowto.com/" class="rnd ">
+                    World Home 
+                </a>
+            </li>
+            <li class="rnd mgl fl">
+                <a href="http://null-byte.wonderhowto.com/how-to/" class="rnd tooltip " title="Step-by-step tutorials">
+                    How-To 
+                </a>
+            </li>
+            <li class="rnd mgl fl">
+                <a href="http://null-byte.wonderhowto.com/inspiration/" class="rnd tooltip " title="Images, videos, links &amp; news that are <em>not</em> how-to's, but they sure do inspire!">
+                    Inspiration 
+                </a>
+            </li>
+            <li class="rnd mgl fl">
+                <a href="http://null-byte.wonderhowto.com/forum/" class="rnd tooltip " title="Q&amp;A &amp; community discussions">
+                    Forum 
+                </a>
+            </li>
+            <li class="rnd mgl fl">
+                <a href="http://null-byte.wonderhowto.com/creators/" class="rnd ">
+                    Creators 
+                </a>
+            </li>
+        </ul>
+
+        <div class="explore-world-search-container fr">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+            <div class="content-wrapper">
+
+                <div id="content" class="rnd-big-top clearfix">
+                    
+
+<div id="content-container" class="fl">
+
+
+<div class="header mgb">
+    <h2 class="txt-size-normal">
+        <a href="http://null-byte.wonderhowto.com/how-to/">
+        
+        How-Tos
+        Topics
+        </a>
+        <span class="txt-size-small txt-clr-lighter">&raquo; </span>
+        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-a-pro/">
+            Hack Like a Pro
+        </a>
+    </h2>
+</div>
+
+    
+    <div class="featured-content-slider-container clearfix pos-rel mgb-big noSelect">
+        
+        <div class="featured-content-slider slider clearfix">
+
+            <div class="overlay">
+            </div>
+
+            <ul class="items bb-dark clearfix">
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/74/07/63491554359510/0/4-ways-crack-facebook-password-and-protect-yourself-from-them.146x68.jpg" alt="4 Ways to Crack a Facebook Password and How to Protect Yourself from Them" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/">4 Ways to Crack a Facebook Password and How to Protect Yourself from Them</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/77/11/63537990425053/0/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra.146x68.jpg" alt="Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/">Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/36/84/63537679719116/0/hack-like-pro-digital-forensics-using-kali-part-1-tools-forensic-investigator.146x68.jpg" alt="Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/">Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/38/42/63538099002498/0/why-chopsticks-are-best-cooking-tool-you-arent-using.146x68.jpg" alt="Why Chopsticks Are the Best Cooking Tool You Aren&#39;t Using" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/">Why Chopsticks Are the Best Cooking Tool You Aren&#39;t Using</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/01/13/63538180641897/0/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files.146x68.jpg" alt="Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/">Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/get-unlimited-free-trials-using-real-fake-credit-card-number-0149638/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/96/76/63521171811895/0/get-unlimited-free-trials-using-real-fake-credit-card-number.146x68.jpg" alt="How to Get Unlimited Free Trials Using a &quot;Real&quot; Fake Credit Card Number" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/get-unlimited-free-trials-using-real-fake-credit-card-number-0149638/">How to Get Unlimited Free Trials Using a &quot;Real&quot; Fake Credit Card Number</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage hasVideo">
+                        <a href="http://nexus5.wonderhowto.com/how-to/update-your-rooted-nexus-android-4-4-3-without-losing-any-data-0155334/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/26/47/63537395795405/0/update-your-rooted-nexus-android-4-4-3-without-losing-any-data.146x68.jpg" alt="How to Update Your Rooted Nexus to Android 4.4.3 Without Losing Any Data" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://nexus5.wonderhowto.com/how-to/update-your-rooted-nexus-android-4-4-3-without-losing-any-data-0155334/">How to Update Your Rooted Nexus to Android 4.4.3 Without Losing Any Data</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage hasVideo">
+                        <a href="http://galaxy-note-3.wonderhowto.com/how-to/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3-0155052/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/62/86/63538102066575/0/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3.146x68.jpg" alt="How to Keep Your Screen Awake for Specific Apps on Your Galaxy Note 3" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://galaxy-note-3.wonderhowto.com/how-to/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3-0155052/">How to Keep Your Screen Awake for Specific Apps on Your Galaxy Note 3</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage hasVideo">
+                        <a href="http://mind-hacks.wonderhowto.com/how-to/10-ways-manipulate-irrational-people-get-your-way-0155286/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/37/62/63538090580044/0/10-ways-manipulate-irrational-people-get-your-way.146x68.jpg" alt="10 Ways to Manipulate Irrational People &amp; Get Your Way" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://mind-hacks.wonderhowto.com/how-to/10-ways-manipulate-irrational-people-get-your-way-0155286/">10 Ways to Manipulate Irrational People &amp; Get Your Way</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/crack-wi-fi-passwords-with-your-android-phone-and-get-free-internet-0139261/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/35/11/63483669455533/0/crack-wi-fi-passwords-with-your-android-phone-and-get-free-internet.146x68.jpg" alt="How to Crack Wi-Fi Passwords with Your Android Phone and Get Free Internet!" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/crack-wi-fi-passwords-with-your-android-phone-and-get-free-internet-0139261/">How to Crack Wi-Fi Passwords with Your Android Phone and Get Free Internet!</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-psk-passwords-using-aircrack-ng-0148366/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/36/65/63513198971448/0/hack-wi-fi-cracking-wpa2-psk-passwords-using-aircrack-ng.146x68.jpg" alt="How to Hack Wi-Fi: Cracking WPA2-PSK Passwords Using Aircrack-Ng" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-psk-passwords-using-aircrack-ng-0148366/">How to Hack Wi-Fi: Cracking WPA2-PSK Passwords Using Aircrack-Ng</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item noImage five noVideo">
+                        <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/" rel="nofollow">
+                            <img src="/images/trans.gif" alt="Handshake Bruteforce on Different PC" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/">Handshake Bruteforce on Different PC</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-secretly-hack-into-switch-on-watch-anyones-webcam-remotely-0142514/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/76/71/63497044701306/0/hack-like-pro-secretly-hack-into-switch-watch-anyones-webcam-remotely.146x68.jpg" alt="Hack Like a Pro: How to Secretly Hack Into, Switch On, &amp; Watch Anyone&#39;s Webcam Remotely" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-secretly-hack-into-switch-on-watch-anyones-webcam-remotely-0142514/">Hack Like a Pro: How to Secretly Hack Into, Switch On, &amp; Watch Anyone&#39;s Webcam Remotely</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-wpa-wifi-passwords-by-cracking-wps-pin-0132542/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/79/18/63461292854393/0/hack-wpa-wifi-passwords-by-cracking-wps-pin.146x68.jpg" alt="How to Hack WPA WiFi Passwords by Cracking the WPS PIN" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-wpa-wifi-passwords-by-cracking-wps-pin-0132542/">How to Hack WPA WiFi Passwords by Cracking the WPS PIN</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-psk-passwords-with-cowpatty-0148423/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/66/85/63513459332233/0/hack-wi-fi-cracking-wpa2-psk-passwords-with-cowpatty.146x68.jpg" alt="How to Hack Wi-Fi: Cracking WPA2-PSK Passwords with Cowpatty" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-psk-passwords-with-cowpatty-0148423/">How to Hack Wi-Fi: Cracking WPA2-PSK Passwords with Cowpatty</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-remotely-install-keylogger-onto-your-girlfriends-computer-0141971/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/22/52/63496205732602/0/hack-like-pro-remotely-install-keylogger-onto-your-girlfriends-computer.146x68.jpg" alt="Hack Like a Pro: How to Remotely Install a Keylogger onto Your Girlfriend&#39;s Computer" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-remotely-install-keylogger-onto-your-girlfriends-computer-0141971/">Hack Like a Pro: How to Remotely Install a Keylogger onto Your Girlfriend&#39;s Computer</a>
+                            </h4>
+                    </li> 
+                    <li class="fl item hasImage noVideo">
+                        <a href="http://food-hacks.wonderhowto.com/how-to/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels-0154570/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/50/64/63538000631397/0/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels.146x68.jpg" alt="Decoding Produce Stickers: The Hidden Meaning Behind Fruit &amp; Vegetable Labels" 
+                             width="146" height="68"/>
+                            <span class="video-thumb"></span></a>
+                            <h4>
+                                <a href="http://food-hacks.wonderhowto.com/how-to/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels-0154570/">Decoding Produce Stickers: The Hidden Meaning Behind Fruit &amp; Vegetable Labels</a>
+                            </h4>
+                    </li> 
+            </ul>
+        </div>
+
+        <div class="clearfix">
+            <div class="gallery-navigate previous fl btn small" style="display:none;">
+            </div>
+
+            <div class="featured-content-slider-nav clearfix mgt-smaller">
+            </div>
+
+            <div class="gallery-navigate next fr btn small" style="display:none;">
+            </div>
+        </div>
+        
+
+    </div>
+
+    <div class="article-container">
+        <article class="clearfix" itemscope="itemscope" itemtype="http://schema.org/Article">
+            
+            
+            <header>
+
+                <h1 class="bb-dark" itemprop="name"><a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-introduction-regular-expressions-regex-0150386/">Hack Like a Pro: An Introduction to Regular Expressions (Regex)</a></h1>
+                
+                <div class="clearfix article-author bb-dark mgb-smaller">
+                
+                    <div class="fl author-sidebar">
+                        <span class="txt-size-normal txt-clr-meddark">Posted By</span>
+                    </div>
+                    <div class="fl">
+                        <a href="http://creator.wonderhowto.com/occupythewebotw/" rel="author" class="fl author">
+                            <img src="http://img.wonderhowto.com/img/76/41/63533419866284/0/occupythewebotw.18x24.jpg" height="24" width="18" class="mgr-small fl" alt="occupytheweb" />
+                            <span class="txt-size-normal txt-clr-med txt-title" itemprop="author">occupytheweb</span>
+                        </a>
+
+                        <a href="http://creator.wonderhowto.com/occupythewebotw/kudos/" rel="nofollow">
+                            <span class="user-rep-small txt-size-small mgl-small txt-clr-meddark txt-bld txt-shadow-btm-med fl tooltip"
+                                    title="occupytheweb's posts have been given 5760 Kudos">
+                                    5760
+                            </span>
+                        </a>
+                        <span class="txt-size-normal txt-clr-meddark mgl-big fl tooltip" title="Originally published 4 months ago &lt;br/&gt;2,692 Views">
+                            <time datetime="2014-02-07T23:40:44" pubdate="pubdate">4 months ago</time>
+                            <data itemprop="dateCreated" value="2014-01-09T00:17:52"></data>
+                            <data itemprop="datePublished" value="2014-02-07T23:40:44"></data>
+                            <data itemprop="dateModified" value="2014-02-07T23:46:43"></data>
+                        </span>
+                    </div>
+
+                        <div class="btn silver wide fr rnd follow-button" data-is-following="false" data-userid="798974" style="font-weight:normal;">
+                            Follow
+                        </div>
+                    
+                </div>
+
+                
+                <aside id="article-sidebar" class="fl">
+
+                    <div class="kudos-cover-image-container hasImage">
+                            <img itemprop="image" src="http://img.wonderhowto.com/img/18/65/63527391375862/0/hack-like-pro-introduction-regular-expressions-regex.1280x600.jpg" alt="" class="mgt-med" width="62" height="29" id="articleCoverImage"/>                
+                        <div class="item-kudos-container " data-article-id="150386" data-kudos-given="0" data-current-total-kudos="47">
+
+    <div class="animate-container vertical slider">
+        <div class="items">
+            <span class="kudos-balance txt-bld txt-size-normal txt-lbl tooltip"  title="Kudos are a way to say thanks to Creators of awesome content">
+                47
+            </span>
+        </div>
+    </div>
+
+    <div class="vote-label-container">
+        <div class="items">
+            <span class="kudos-label upcase txt-size-small txt-bld">
+                Kudos
+            </span>
+            
+            <span class="down vote btn pos-abs" ></span>
+            <span class="up vote btn pos-abs"></span>
+        </div>
+    </div>
+    
+</div>
+
+
+                    </div>
+                    
+                </aside>
+
+            </header>
+
+                <aside id="abatf" class="clearfix">
+<div class="ad" id="aph_text_532x80_1"><script type="text/javascript">//<![CDATA[
+	googletag.cmd.push(function () { googletag.display('aph_text_532x80_1'); });
+//]]></script></div>                </aside>
+
+            <section>
+
+                
+                <h2 class="hide">Hack Like a Pro: An Introduction to Regular Expressions (Regex)</h2> 
+<p>Welcome back, my novice hackers!</p><p>This next subject might seem a bit obscure, but I promise you, this lesson will benefit you significantly either as a hacker or system admin. This tutorial will cover what is usually referred to as a regular expression, or regex for short.</p></section>
+<section>
+<h2 class="sectionHeadline">Manipulating Text in Linux</h2><p>Remember, nearly everything in Linux is a file, and for that matter, most are simple text files. Unlike Windows, with elaborate snap-ins and MMCs to configure an application or server, Linux simply has a text file for configuration. Change the text file, change the configuration. As a result, early pioneers in Linux developed some rather elaborate and elegant ways to manipulate text.</p><p>We've looked at a few simple ways to manipulate text already, such as <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-10-manipulating-text-0148539/">grep and sed</a>, but with regex we'll have the capability to find much more complex text patterns.</p><p>For instance, what if we we're looking for a line of code among millions of lines of code that began with an "s" containing only the letters "sugr" and the numbers 1-5 with a "bb" ending? Could we find it without having to go through millions of lines of code? Yes—with regex!</p></section>
+<section>
+<h2 class="sectionHeadline">The Importance of Learning Regex</h2><p>Regex is implemented throughout the information technology world. First developed in 1956 and adopted by Ken Thompson in the original Unix, it has now found its way into Java, Ruby, PHP, Perl, Python, MySQL, Apache, .NET, and of course, Linux.</p><p>Without understanding regex, you're not only hamstrung in scripting any of these languages, but your ability to do more than simple search and replaces becomes very tedious. In addition, many of the rules written into <a href="http://null-byte.wonderhowto.com/how-to/snort/">Snort</a> and other intrusion detection systems are written in regex.</p><p>As you can imagine, if searching for some malicious code, the ability to search and find sophisticated and complex text patterns is crucial.</p></section>
+<section>
+<h2 class="sectionHeadline">How Regex Works in a Security Environment</h2><p>In this Null Byte tutorial, we'll be using examples from <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-read-write-snort-rules-evade-nids-network-intrusion-detection-system-0148215/">the Snort ruleset</a> to illuminate how regex works in a hacking/security environment.</p></section>
+<section>
+<h2 class="step">Step 1: A Snort Rule</h2><p>Of the many applications and scripting languages that use regular expressions, Snort is one. With its ability to detect just about any type of attack, Snort would be crippled without its regex capabilities. Let's look at new rule that came out just few weeks ago to detect the Ransomware attacks that were seen across the world.</p></section>
+<section>
+<h2 class="sectionHeadline">The Snort Rule for Detecting Ransomware Attacks</h2><p>alert tcp $HOME_NET any -&gt; $EXTERNAL_NET $HTTP_PORTS (msg:"MALWARE-CNC Win.Ransomware.PRISM outbound connection attempt - Get lock screen"; flow:to_server,established; content:"GET"; http_method; content:"/page/index_htm_files2/"; nocase; fast_pattern:only;</p><p><strong>pcre:"/\x2f((xr)_a-z)|[0-9]{3,}\x2e(css|js|jpg|png|txt)$/U";</strong></p><p>http_uri; metadata:impact_flag red, policy balanced-ips drop, policy security-ips drop, ruleset community, service http; reference:url,<a  href="http://www.virustotal.com/en/file/417cb84f48d20120b92530c489e9c3ee9a9deab53fddc0dc153f1034d3c52c58/analysis/1377785686/" rel="nofollow" target="_blank" >http://www.virustotal.com/en/file/417cb84f48d20120b92530c489e9c3ee9a9deab53fddc0dc153f1034d3c52c58/analysis/1377785686/</a>; classtype:trojan-activity; sid:1000033; rev:3;)</p></section>
+<section>
+<h2 class="sectionHeadline">End Rule</h2><p>Note the section that is set off and in bold. This is the part of the rule that is utilizing <strong>pcre</strong> to detect the ransomware.</p><p>We'll come back to this rule in a later tutorial, but for now, let's look at a simple Snort rule using regular expressions. If you are unfamiliar with Snort rules, make sure to check out my previous guide on <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-read-write-snort-rules-evade-nids-network-intrusion-detection-system-0148215">reading and writing Snort rules</a>.</p><p>For our example, let's use this following pseudo-rule:</p><p><strong>alert tcp any any -&gt; any 80 ( pcre:"/\/foo.php?id=[0-9]{1,10}/";)</strong></p><p>The first part of this rule should be familiar to us. It says "send an <strong>alert</strong> when a packet comes across the wire using the <strong>tcp</strong> protocol from <strong>any</strong> IP address from <strong>any</strong> port to <strong>any</strong> IP address to port <strong>80</strong>". It's what comes after the header of this rule that is new and strange.</p><p>Our task now, is to figure out what this rule is looking for.</p></section>
+<section>
+<h2 class="step">Step 2: Some Basic Syntax</h2><p>Before we begin to attempt to decipher what that rule is looking for, let's lay out basic and simple regular expression syntax and rules.</p><ul><li><strong>/</strong> - Begins and ends a regular expression.</li> <li><strong>.</strong> - Matches any single character.</li> <li><strong>[ ]</strong> - Matches a single character within the brackets.</li> <li><strong>[^]</strong> - Matches everything except what is in-between the brackets (and after the <strong>^</strong>).</li> <li><strong>[x-y]</strong> Matches every character or number in-between m &amp; n (ex: <strong>[a-d]</strong> will match the letters a,b,c, or d and <strong>[2-7]</strong> will match the numbers 2,3,4,5,6, and 7. They are case sensitive by default, and can be combined however you like. For example, to match any alphanumeric character, you can use <strong>[A-Za-z0-9]</strong>).</li> <li><strong>^</strong> - Matches the starting position of the string.</li> <li>* - Matches the preceding element or group zero or more times.</li> <li><strong>$</strong> - Matches the ending position of the string.</li> <li><strong>( )</strong> - Defines an expression or group.</li> <li><strong>{n}</strong> - Matches the preceding character n times (ex: <strong>{5}</strong> would require the preceding character or group to match 5 times).</li> <li><strong>{m,n}</strong> - Matches the preceding element at least m times and not more than n times (ex: <strong>{2,4}</strong> would require the preceding character or group to appear 2-4 times in a row).</li> <li><strong>|</strong> - Matches the character or group either before OR after the <strong>|</strong>.</li></ul></section>
+<section>
+<h2 class="step">Step 3: Interpreting the Rule</h2><p>That summarizes some of the very basic rules of regular expressions. Let's try breaking down the regular expression built into the Snort rule above and try to determine what it is looking for.</p><p><strong>pcre:"/\/foo.php?id=[0-9]{1,10}/";</strong></p><ul><li><strong>pcre:</strong> - This simply tells the Snort engine to start using Perl Compatible Regular expressions on everything that follows.</li> <li><strong>"</strong> - Indicates the beginning of the content.</li> <li><strong>/</strong> - Indicates the beginning of the subexpressions that the PCRE is looking for.</li> <li><strong>\</strong> - This is an escape character—it says "don't use the special meaning that the following character has in pcre," but instead see it as literal character.</li> <li><strong>/foo.php?id=</strong> - This is simple text—the rule is looking for this set of characters.</li> <li><strong>[0-9]</strong> - The brackets here indicate look for any of the digits between 0-9.</li> <li><strong>{1,10}</strong> - The curly braces here say look for the previous digits between 1 and 10 times.</li> <li><strong>/ </strong> - End the expression we are searching for.</li> </ul><p>We could then interpret this rule in English to say, "look for (presumably a URL) that end with "foo.php?id=" and then has a single digit between 0 and 9 and that digit can be repeated between 1 and 10 times."</p><p>This rule would then catch packets with:</p><ul><li>foo.php?id=1</li> <li>foo.php?id=3</li> <li>foo.php?id=33</li> <li>foo.php?id=333333</li> </ul><p>But would pass packets with:</p><ul><li>bar.php?id=1 <strong>bar instead of foo</strong></li> <li>foo.php?id= <strong>must have at least one digit</strong></li> <li>foo.php?id=A <strong>must have a digit not an alphabetic</strong></li> <li>foo.php?id=11111111111 <strong>can only have between 1 and 10 digits after the =</strong></li> </ul><p>That completes our introduction to regular expressions, but we will return to this subject soon to delve a bit deeper into this powerful but cryptic language, so that you will able to read regex as fluently as you read this page.</p> 
+            </section>
+            
+                
+                    <section class="see-also-container">
+                        <h2 class="see-also">See Also</h2>
+                        <ul>
+                            <li class="">
+                                <a href="http://howtodrawfantasy.wonderhowto.com/how-to/draw-vampire-smirk-0138451/">
+                                        <img src="http://img.wonderhowto.com/img/73/69/63479373650106/0/draw-vampire-smirk.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Draw a Vampire-Smirk
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://howtodrawfantasy.wonderhowto.com/how-to/abe-lincoln-vampire-hunter-0138434/">
+                                        <img src="http://img.wonderhowto.com/img/75/87/63479363983627/0/abe-lincoln-vampire-hunter.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Abe Lincoln Vampire Hunter
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://mods-n-hacks.wonderhowto.com/forum/555-timer-hacks-cable-testers-magnetic-stirrers-and-lego-grabbers-oh-my-0140045/">
+                                        <img src="http://img.wonderhowto.com/img/85/77/63487206138900/0/555-timer-hacks-cable-testers-magnetic-stirrers-and-lego-grabbers-oh-my.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    555 Timer Hacks: Cable Testers, Magnetic Stirrers, and Lego Grabbers Oh My!
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://filemaker-pro.wonderhowto.com/how-to/get-started-using-filemaker-pro-11-357043/">
+                                        <img src="http://img.wonderhowto.com/img/30/32/63475314582772/0/get-started-using-filemaker-pro-11.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Get started using FileMaker Pro 11
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://math.wonderhowto.com/how-to/compare-exponential-expressions-301919/">
+                                        <img src="http://img.wonderhowto.com/img/89/64/63475476857738/0/compare-exponential-expressions.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Compare exponential expressions
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://xbox-360.wonderhowto.com/how-to/earn-sally-likes-blood-achievement-call-duty-black-ops-410395/">
+                                        <img src="http://img.wonderhowto.com/img/31/06/63475297233044/0/earn-sally-likes-blood-achievement-call-duty-black-ops.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Earn the &quot;Sally Likes Blood&quot; achievement in Call of Duty: Black Ops
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://final-cut-studio.wonderhowto.com/how-to/use-colorista-plugin-final-cut-pro-introduction-262706/">
+                                        <img src="http://img.wonderhowto.com/img/67/97/63360041556849/0/use-colorista-plugin-final-cut-pro-introduction.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Use Colorista plugin in Final Cut Pro (Introduction)
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-perl-scripting-for-aspiring-hacker-part-1-0151750/">
+                                        <img src="http://img.wonderhowto.com/img/85/76/63532544760394/0/hack-like-pro-perl-scripting-for-aspiring-hacker-part-1.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    Hack Like a Pro: Perl Scripting for the Aspiring Hacker, Part 1
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://pro-tools.wonderhowto.com/how-to/use-keyboard-focus-pro-tools-le-260520/">
+                                        <img src="http://img.wonderhowto.com/img/55/90/63475276966364/0/use-keyboard-focus-pro-tools-le.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Use Keyboard Focus in Pro Tools LE
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://android.wonderhowto.com/how-to/you-can-easily-hack-instagram-for-crazy-amount-likes-but-you-totally-shouldnt-0155070/">
+                                        <img src="http://img.wonderhowto.com/img/75/62/63536369704643/0/you-can-easily-hack-instagram-for-crazy-amount-likes-but-you-totally-shouldnt.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    You Can Easily Hack Instagram for a Crazy Amount of Likes (But You Totally Shouldn&#39;t)
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://learn-french.wonderhowto.com/how-to/understand-use-expressions-d-s-que-ne-plus-293778/">
+                                        <img src="http://img.wonderhowto.com/img/71/62/63475316665817/0/understand-use-expressions-d-s-que-ne-plus.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Understand &amp; use expressions &quot;d&#232;s que..&quot; &amp; &quot;ne...plus&quot;
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://asp-net.wonderhowto.com/how-to/program-silverlight-with-blend-358919/">
+                                        <img src="http://img.wonderhowto.com/img/30/70/63406774005266/0/program-silverlight-with-blend.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Program Silverlight with blend
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://pro-tools.wonderhowto.com/how-to/use-guitar-amp-effect-pro-tools-404111/">
+                                        <img src="http://img.wonderhowto.com/img/78/09/63475287690770/0/use-guitar-amp-effect-pro-tools.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Use the guitar amp effect in Pro Tools
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://sony-vegas.wonderhowto.com/how-to/fix-brightness-contrast-problems-sony-vegas-pro-8-328084/">
+                                        <img src="http://img.wonderhowto.com/img/10/35/63475324408165/0/fix-brightness-contrast-problems-sony-vegas-pro-8.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Fix brightness &amp; contrast problems in Sony Vegas Pro 8
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://final-cut-studio.wonderhowto.com/how-to/export-video-web-with-final-cut-pro-2521/">
+                                        <img src="http://img.wonderhowto.com/img/22/06/63475269472084/0/export-video-web-with-final-cut-pro.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Export video to the web with Final Cut Pro
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://learn-japanese.wonderhowto.com/how-to/speak-basic-survival-expressions-japanese-169858/">
+                                        <img src="http://img.wonderhowto.com/img/77/27/63475281946175/0/speak-basic-survival-expressions-japanese.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Speak basic survival expressions in Japanese
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://internet.wonderhowto.com/how-to/create-dynamic-views-by-ip-subnet-microsoft-340093/">
+                                        <img src="http://img.wonderhowto.com/img/88/09/63475443441271/0/create-dynamic-views-by-ip-subnet-microsoft.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Create a dynamic views by IP subnet in Microsoft
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://photoshop-tutorials.wonderhowto.com/how-to/make-boxed-intro-using-adobe-photoshop-388145/">
+                                        <img src="http://img.wonderhowto.com/img/54/33/63475844356656/0/make-boxed-intro-using-adobe-photoshop.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Make a boxed intro using Adobe Photoshop
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://housekeeping.wonderhowto.com/how-to/wash-your-windows-quickly-with-white-vinegar-and-dishwashing-liquid-411334/">
+                                        <img src="http://img.wonderhowto.com/img/81/17/63425704773904/0/wash-your-windows-quickly-with-white-vinegar-and-dishwashing-liquid.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Wash your windows quickly with white vinegar and dishwashing liquid
+                                </a>
+                            </li>
+                            <li class="hide">
+                                <a href="http://drawing.wonderhowto.com/how-to/draw-cartoon-facial-expressions-225261/">
+                                        <img src="http://img.wonderhowto.com/img/75/00/63353414064319/0/draw-cartoon-facial-expressions.62x29.jpg" alt="" style="margin-bottom:-3px;background-color:#fff;padding:1px;border:1px solid #ECECEC;" width="30" height="14"/>
+                                    How to Draw cartoon facial expressions
+                                </a>
+                            </li>
+                        <li style="list-style:none;" class="show-more-link"><span class="btn" style="color:#686868">Show More...</span></li>
+                        </ul>
+                    </section>
+                <footer class="social-info bt-dark clearfix mgb bb-dark">
+                    <div class="txt-size-big txt-clr-light mgt-small fr txt-itl">Remember to Give Kudos, Tweet, Like, & Share</div>
+                    <div class="social-icon twitter btn fl">
+                        <span class="txt-clr-dark txt-size-normal tweet-count"></span>
+                    </div>
+                    <div class="social-icon facebook btn fl">
+                        <span class="txt-clr-dark txt-size-normal facebook-likes-count"></span>
+                    </div>
+                          
+
+                </footer>
+                    <aside id="abatf" class="clearfix">
+<div class="ad" id="aph_text_532x80_2"><script type="text/javascript">//<![CDATA[
+	googletag.cmd.push(function () { googletag.display('aph_text_532x80_2'); });
+//]]></script></div>                    </aside>
+
+        </article>
+    </div>
+
+        <div class="responses-wrapper clearfix">
+            
+                <div class="artSubToggle fr tooltip" title="Notify me when others comment on this post">
+                    <span class="fl mgt-small mgr txt-size-small txt-clr-meddark">
+                        Subscribe
+                    </span>
+                    <input class="checkboxSlider isSubscribedToArticle" data-val="true" data-val-required="The IsSubscribed field is required." id="IsSubscribed" name="IsSubscribed" type="checkbox" value="true" /><input name="IsSubscribed" type="hidden" value="false" />
+                </div>
+
+            <div class="curved-drop-shadow-long bb-dark comments-list-header">
+                    <h2 class="mgb-small">
+                        Join the Discussion
+                    </h2>
+            </div>
+
+            <div id="responses">
+
+<article class="response cascadelevel-1  clearfix" id="comment-94714" style="padding-left:0px">
+
+    <div class="user-card fl mgb">
+
+        <div class="user-thumb">
+            <a href="http://creator.wonderhowto.com/jtech95/" rel="nofollow">
+                <img src="http://img.wonderhowto.com/img/60/63/63520292709370/0/jtech95.48x64.jpg" width="40" height="53" alt="Jared Messer" />
+            </a>
+        </div>
+
+        <a href="http://creator.wonderhowto.com/jtech95/" class="txt-lbl upcase txt-size-small user-name">Jared Messer</a>
+    </div>
+
+    <div class="fl vote-container" data-commentID="94714">
+
+        <div class="btn arrow up inactive">
+        </div>
+
+        <span class="txt-lbl txt-size-normal">1</span>
+
+        <div class="btn arrow down inactive">
+        </div>
+
+    </div>
+
+    <div class="response-content fl article-container" style="width:532px;">
+
+        
+                <section>
+<p>Never hear of it, didn't think anything like it existed.<br />But oh the power!</p><p>Thank you OTW</p>                 </section>
+        
+        
+            <div class="fl">
+                <span class="txt-clr-lighter txt-size-small">
+                    last month  
+                </span>
+            </div>
+
+        <div class="fr reply-delete-container">
+            
+                        <a href="javascript://Reply" class="replyBtn txt-clr-meddark txt-size-small" data-commentid="94714">Reply</a>
+        </div>
+
+    </div>
+
+    <div class="separator bb-dark" style="width:532px;">
+    </div>
+
+</article>
+
+
+                <div class="bt-dark fr hidden-responses">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="bb-dark curved-drop-shadow-long divider">
+        </div>
+            <div class="user-comment-editor">
+                <h2 class="mgb-small  comment-editor-header">
+                    Share Your Thoughts 
+                </h2>
+            
+                
+                
+
+    <div class="share-widget clearfix notOnInit" data-world-topic-id="0" >
+        <div class="share-widget-input fl clearfix">
+
+
+<div class="frontpage-author-card fl">
+
+    <div class="user-image">
+        <a href="&quot; rel=&quot;nofollow">
+            <img src="http://img.wonderhowto.com/img/00/00/00/0/user-default.42x56.jpg" width="42" height="56"/>
+        </a>
+    </div>
+
+    <a href="&quot; rel=&quot;nofollow" class="mgt upcase txt-clr-med txt-size-small">
+        You
+    </a>
+</div>
+
+
+
+            <div class="share-content-wrapper mgl-med fl pos-rel">
+                <div class="share-content-container clearfix rnd">
+                    <div class="share-type-select clearfix">
+                            <div class="wteParagraph textholder pos-rel">
+                                <span class="txt-clr-lighter">
+                                    Click to share your thoughts
+                                </span>
+                            </div>
+                            <textarea placeholder="Click to leave a response" id="response" class="hide"></textarea>
+                    </div>
+                    <div class="sharePrompt">
+                        <form name="frmShare" id="frmShare">
+                            <div class="editorBlocks"></div>
+                            <div class="attachMenu clearfix">
+                                <span class="attachBtn attachLink tooltip" title="Adds a link attachment"></span>
+                                <span class="attachBtn attachVideo tooltip" title="Add a video"></span>
+                                <span class="attachBtn attachImage tooltip" title="Add an image"></span>
+                                
+                                <span class="attachBtn attachTxt attachHeadline">+ Headline</span>
+                                <span class="attachBtn attachTxt attachStep">+ Step 1</span>
+                                <span class="txt-lbl upcase fr">Attach</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="cover-image-selector hide clearfix">
+                    <span class="txt-title txt-size-small">Cover Image</span>
+
+                    <div class="images-container fl slider featured-content-slider-container">
+
+                        <div class="gallery-navigate previous fl btn small">
+                        </div>
+
+                        <div class="items"> 
+                            <div class="item fl noImage one" data-image-id="0">
+                                <img width="80" height="35" src="http://img.wonderhowto.com/images/trans.gif?v=0515201401" />
+                            </div>
+                        </div>
+
+                        <div class="gallery-navigate next fr btn small">
+                        </div>
+
+                        <span class="txt-clr-light txt-shadow-btm-med txt-size-bigger fr btn txt-bld uploadbtn tooltip pos-abs"
+                            title="Upload Your Own Cover Image" style="bottom:0;right:15px;">+</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="actionButtons">
+                <a href="javascript:// Post" class="btn wide blue mgr mgt-smaller fr share-submit " >
+                    Submit
+                </a>
+
+                
+                    <a href="javascript:// Cancel" class="btn std silver mgt-smaller fr mgr share-cancel">
+                        Cancel
+                    </a>
+                
+                <div id="editorOffsetDebug">                
+                </div>
+            </div>
+        </div>
+        
+        <div class="share-widget-tips fr">
+            
+        </div>
+    </div>
+
+
+            </div>
+            <div class="bb-dark comment-editor-divider mgb">
+            </div>
+<div class="ad" id="aph_text_600x120"><script type="text/javascript">//<![CDATA[
+	googletag.cmd.push(function () { googletag.display('aph_text_600x120'); });
+//]]></script></div>
+        <div class="topic-searches-widget">
+            <h2>Popular How-To Topics in Computers &amp; Programming</h2>  
+                        <div class="clearfix mgb-small">
+                    <ul class="fl mgr-small">
+                <li>
+                    <a href="http://tag.wonderhowto.com/crack-facebook-password/" class="longtxt txt-clr-meddark">
+                         Crack facebook password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-in-to-another-computer-through-internet/" class="longtxt txt-clr-meddark">
+                         Hack in to another computer through internet
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-facebook-account/" class="longtxt txt-clr-meddark">
+                         Hack facebook account
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-skype-password/" class="longtxt txt-clr-meddark">
+                        How to Hack skype password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/get-someones-facebook-password/" class="longtxt txt-clr-meddark">
+                         Get someones facebook password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-router-password/" class="longtxt txt-clr-meddark">
+                         Hack router password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-wifi-passwords/" class="longtxt txt-clr-meddark">
+                        How to Hack wifi passwords
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-another-computer-on-your-network/" class="longtxt txt-clr-meddark">
+                         Hack another computer on your network
+                    </a>
+                </li>
+                    </ul>
+                    <ul class="fl mgr-small">
+                <li>
+                    <a href="http://tag.wonderhowto.com/track-who-views-your-facebook-profile/" class="longtxt txt-clr-meddark">
+                         Track who views your facebook profile
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-wifi-with-ps3/" class="longtxt txt-clr-meddark">
+                        How to Hack wifi with ps3
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/create-new-skype-account/" class="longtxt txt-clr-meddark">
+                         Create new skype account
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-a-website-password/" class="longtxt txt-clr-meddark">
+                         Hack a website password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-another-computer-from-your-computer/" class="longtxt txt-clr-meddark">
+                         Hack another computer from your computer
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/get-your-friends-facebook-password/" class="longtxt txt-clr-meddark">
+                         Get your friends facebook password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-a-website-password/" class="longtxt txt-clr-meddark">
+                         Hack a website password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/clone-ip-address/" class="longtxt txt-clr-meddark">
+                        How to Clone ip address
+                    </a>
+                </li>
+                    </ul>
+                    <ul class="fl">
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-mobile-password/" class="longtxt txt-clr-meddark">
+                         Hack mobile password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/get-other-peoples-wi-fi-passwords/" class="longtxt txt-clr-meddark">
+                         Get other peoples wi fi passwords
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/get-in-facebook-without-password/" class="longtxt txt-clr-meddark">
+                         Get in facebook without password
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/make-cool-cool-machines/" class="longtxt txt-clr-meddark">
+                         Make cool cool machines
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/hack-in-to-another-computer-through-internet/" class="longtxt txt-clr-meddark">
+                         Hack in to another computer through internet
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/facebook-color-text/" class="longtxt txt-clr-meddark">
+                        How to Facebook color text
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/log-in-to-facebook-even-if-it-is-blocked-on-n-your-computer/" class="longtxt txt-clr-meddark">
+                         Log in to facebook even if it is blocked on n your computer
+                    </a>
+                </li>
+                <li>
+                    <a href="http://tag.wonderhowto.com/make-a-wireless-usb-adapter/" class="longtxt txt-clr-meddark">
+                         Make a wireless usb adapter
+                    </a>
+                </li>
+                    </ul>
+                    </div>
+        </div>
+
+    <div class="related-articles clearfix">
+
+        <div class="clearfix">
+
+              
+              
+                <div class="nav-leftright fr">
+
+                    <div class="arrow left btn fl">
+                    </div>
+
+                    <div class="arrow right btn fr">
+                    </div>
+
+                </div>
+                <h3 class="mgt bb-dark">Trending Across WonderHowTo</h3>
+                
+        </div>
+
+        <div class="slider">
+
+            <div class="items clearfix">
+                
+            <div class="item-column fl br-light">
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/">
+                    <img src="http://img.wonderhowto.com/img/38/42/63538099002498/0/why-chopsticks-are-best-cooking-tool-you-arent-using.64x50.jpg"
+                        alt="Why Chopsticks Are the Best Cooking Tool You Aren&#39;t Using" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/">Why Chopsticks Are the Best Cooking Tool You Aren&#39;t Using</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://nexus5.wonderhowto.com/how-to/update-your-rooted-nexus-android-4-4-3-without-losing-any-data-0155334/">
+                    <img src="http://img.wonderhowto.com/img/26/47/63537395795405/0/update-your-rooted-nexus-android-4-4-3-without-losing-any-data.64x50.jpg"
+                        alt="How to Update Your Rooted Nexus to Android 4.4.3 Without Losing Any Data" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://nexus5.wonderhowto.com/how-to/update-your-rooted-nexus-android-4-4-3-without-losing-any-data-0155334/">How to Update Your Rooted Nexus to Android 4.4.3 Without Losing Any Data</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://galaxy-note-3.wonderhowto.com/how-to/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3-0155052/">
+                    <img src="http://img.wonderhowto.com/img/62/86/63538102066575/0/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3.64x50.jpg"
+                        alt="How to Keep Your Screen Awake for Specific Apps on Your Galaxy Note 3" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://galaxy-note-3.wonderhowto.com/how-to/keep-your-screen-awake-for-specific-apps-your-galaxy-note-3-0155052/">How to Keep Your Screen Awake for Specific Apps on Your Galaxy Note 3</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://mind-hacks.wonderhowto.com/how-to/10-ways-manipulate-irrational-people-get-your-way-0155286/">
+                    <img src="http://img.wonderhowto.com/img/37/62/63538090580044/0/10-ways-manipulate-irrational-people-get-your-way.64x50.jpg"
+                        alt="10 Ways to Manipulate Irrational People &amp; Get Your Way" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://mind-hacks.wonderhowto.com/how-to/10-ways-manipulate-irrational-people-get-your-way-0155286/">10 Ways to Manipulate Irrational People &amp; Get Your Way</a>
+            </h4>
+            </div>
+        </div>
+            </div>
+            <div class="item-column fl br-light">
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://food-hacks.wonderhowto.com/how-to/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels-0154570/">
+                    <img src="http://img.wonderhowto.com/img/50/64/63538000631397/0/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels.64x50.jpg"
+                        alt="Decoding Produce Stickers: The Hidden Meaning Behind Fruit &amp; Vegetable Labels" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://food-hacks.wonderhowto.com/how-to/decoding-produce-stickers-hidden-meaning-behind-fruit-vegetable-labels-0154570/">Decoding Produce Stickers: The Hidden Meaning Behind Fruit &amp; Vegetable Labels</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/">
+                    <img src="http://img.wonderhowto.com/img/74/07/63491554359510/0/4-ways-crack-facebook-password-and-protect-yourself-from-them.64x50.jpg"
+                        alt="4 Ways to Crack a Facebook Password and How to Protect Yourself from Them" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/">4 Ways to Crack a Facebook Password and How to Protect Yourself from Them</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://nexus5.wonderhowto.com/how-to/stream-movies-music-pictures-from-your-nexus-5-your-computer-0155224/">
+                    <img src="http://img.wonderhowto.com/img/97/06/63536954205575/0/stream-movies-music-pictures-from-your-nexus-5-your-computer.64x50.jpg"
+                        alt="How to Stream Movies, Music, &amp; Pictures from Your Nexus 5 to Your Computer" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://nexus5.wonderhowto.com/how-to/stream-movies-music-pictures-from-your-nexus-5-your-computer-0155224/">How to Stream Movies, Music, &amp; Pictures from Your Nexus 5 to Your Computer</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/">
+                    <img src="http://img.wonderhowto.com/img/77/11/63537990425053/0/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra.64x50.jpg"
+                        alt="Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/">Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra</a>
+            </h4>
+            </div>
+        </div>
+            </div>
+            <div class="item-column fl br-light">
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://htc-one.wonderhowto.com/how-to/update-your-rooted-google-play-edition-htc-one-4-4-3-without-losing-any-data-0155404/">
+                    <img src="http://img.wonderhowto.com/img/17/68/63537905294359/0/update-your-rooted-google-play-edition-htc-one-4-4-3-without-losing-any-data.64x50.jpg"
+                        alt="How to Update Your Rooted Google Play Edition HTC One to 4.4.3 Without Losing Any Data" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://htc-one.wonderhowto.com/how-to/update-your-rooted-google-play-edition-htc-one-4-4-3-without-losing-any-data-0155404/">How to Update Your Rooted Google Play Edition HTC One to 4.4.3 Without Losing Any Data</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://mac-how-to.wonderhowto.com/how-to/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite-0155306/">
+                    <img src="http://img.wonderhowto.com/img/13/14/63537482320109/0/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite.64x50.jpg"
+                        alt="How to Create a Bootable Install USB Drive of Mac OS X 10.10 Yosemite" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://mac-how-to.wonderhowto.com/how-to/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite-0155306/">How to Create a Bootable Install USB Drive of Mac OS X 10.10 Yosemite</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/">
+                    <img src="http://img.wonderhowto.com/img/74/83/63538028156076/0/netflix-and-verizon-could-be-headed-towards-legal-battle.64x50.jpg"
+                        alt="Netflix and Verizon Could Be Headed Towards a Legal Battle" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/">Netflix and Verizon Could Be Headed Towards a Legal Battle</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://mods-n-hacks.wonderhowto.com/how-to/crack-wi-fi-passwords-for-beginners-0139793/">
+                    <img src="http://img.wonderhowto.com/img/27/50/63485957954276/0/crack-wi-fi-passwords-for-beginners.64x50.jpg"
+                        alt="How to Crack Wi-Fi Passwords—For Beginners!" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://mods-n-hacks.wonderhowto.com/how-to/crack-wi-fi-passwords-for-beginners-0139793/">How to Crack Wi-Fi Passwords—For Beginners!</a>
+            </h4>
+            </div>
+        </div>
+            </div>
+            <div class="item-column fl br-light">
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://digiwonk.wonderhowto.com/how-to/watch-2014-world-cup-online-your-phone-every-match-streamed-live-0155511/">
+                    <img src="http://img.wonderhowto.com/img/61/25/63538077244169/0/watch-2014-world-cup-online-your-phone-every-match-streamed-live.64x50.jpg"
+                        alt="How to Watch the 2014 World Cup Online &amp; on Your Phone—Every Match Streamed Live" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://digiwonk.wonderhowto.com/how-to/watch-2014-world-cup-online-your-phone-every-match-streamed-live-0155511/">How to Watch the 2014 World Cup Online &amp; on Your Phone—Every Match Streamed Live</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://mac-how-to.wonderhowto.com/how-to/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10-0155422/">
+                    <img src="http://img.wonderhowto.com/img/44/25/63537841542584/0/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10.64x50.jpg"
+                        alt="How to Dual Boot Mac OS X Mavericks 10.9 &amp; Yosemite 10.10" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://mac-how-to.wonderhowto.com/how-to/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10-0155422/">How to Dual Boot Mac OS X Mavericks 10.9 &amp; Yosemite 10.10</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://htc-one.wonderhowto.com/how-to/ultimate-guide-using-duo-camera-your-htc-one-m8-0155248/">
+                    <img src="http://img.wonderhowto.com/img/52/86/63538016482647/0/ultimate-guide-using-duo-camera-your-htc-one-m8.64x50.jpg"
+                        alt="The Ultimate Guide to Using the Duo Camera on Your HTC One M8" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://htc-one.wonderhowto.com/how-to/ultimate-guide-using-duo-camera-your-htc-one-m8-0155248/">The Ultimate Guide to Using the Duo Camera on Your HTC One M8</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/">
+                    <img src="http://img.wonderhowto.com/img/36/84/63537679719116/0/hack-like-pro-digital-forensics-using-kali-part-1-tools-forensic-investigator.64x50.jpg"
+                        alt="Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/">Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)</a>
+            </h4>
+            </div>
+        </div>
+            </div>
+            <div class="item-column fl br-light">
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://nexus5.wonderhowto.com/how-to/quickly-search-web-your-nexus-from-within-any-app-screen-0155225/">
+                    <img src="http://img.wonderhowto.com/img/32/08/63536955026999/0/quickly-search-web-your-nexus-from-within-any-app-screen.64x50.jpg"
+                        alt="How to Quickly Search the Web &amp; Your Nexus from Within Any App or Screen" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://nexus5.wonderhowto.com/how-to/quickly-search-web-your-nexus-from-within-any-app-screen-0155225/">How to Quickly Search the Web &amp; Your Nexus from Within Any App or Screen</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://ios.wonderhowto.com/inspiration/iphone-6-spotted-again-its-bigger-badder-than-5s-0155535/">
+                    <img src="http://img.wonderhowto.com/img/16/13/63538082408013/0/iphone-6-spotted-again-its-bigger-badder-than-5s.64x50.jpg"
+                        alt="iPhone 6 Spotted Again, &amp; It&#39;s Bigger &amp; Badder Than the 5S" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://ios.wonderhowto.com/inspiration/iphone-6-spotted-again-its-bigger-badder-than-5s-0155535/">iPhone 6 Spotted Again, &amp; It&#39;s Bigger &amp; Badder Than the 5S</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://mind-hacks.wonderhowto.com/how-to/have-drink-two-work-boost-your-creativity-be-more-productive-0155521/">
+                    <img src="http://img.wonderhowto.com/img/72/37/63538185661647/0/have-drink-two-work-boost-your-creativity-be-more-productive.64x50.jpg"
+                        alt="Have a Drink or Two at Work to Boost Your Creativity &amp; Be More Productive" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://mind-hacks.wonderhowto.com/how-to/have-drink-two-work-boost-your-creativity-be-more-productive-0155521/">Have a Drink or Two at Work to Boost Your Creativity &amp; Be More Productive</a>
+            </h4>
+            </div>
+        </div>
+        <div class="item-container bb-light  hasImage">
+            <div class="item hasImage">
+
+                <a href="http://galaxy-note-3.wonderhowto.com/how-to/root-your-samsung-galaxy-note-3-one-easy-click-using-windows-0151863/">
+                    <img src="http://img.wonderhowto.com/img/20/89/63531361279586/0/root-your-samsung-galaxy-note-3-one-easy-click-using-windows.64x50.jpg"
+                        alt="How to Root Your Samsung Galaxy Note 3 in One Easy Click Using Windows" width="64" height="50" class="fl" />
+                </a> 
+        
+            <h4 class="fl">
+                <a href="http://galaxy-note-3.wonderhowto.com/how-to/root-your-samsung-galaxy-note-3-one-easy-click-using-windows-0151863/">How to Root Your Samsung Galaxy Note 3 in One Easy Click Using Windows</a>
+            </h4>
+            </div>
+        </div>
+            </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="bb-dark curved-drop-shadow-long divider">
+    </div>
+</div>
+
+<div id="sidebar" class="rnd-big fr">
+
+    
+
+            <div class="ad-wrapper curved-drop-shadow">
+                <div class="ad" style="min-height:250px;" id="aph_10518929_tmnp_wonderhowto_sciencetech_computers_top_300x250"><script type="text/javascript">//<![CDATA[
+                    googletag.cmd.push(function () { googletag.display('aph_10518929_tmnp_wonderhowto_sciencetech_computers_top_300x250'); });
+                //]]></script></div>
+            </div>
+
+
+    <div class="clearfix hotnow-sidebar-container">
+    <h2 class="fl">Popular Now</h2>
+
+    <div class="nav-leftright fr">
+
+        <div class="arrow left btn fl">
+        </div>
+
+        <div class="arrow right btn fr">
+        </div>
+
+    </div>
+
+</div>
+
+<div class="hotnow-sidebar-container sidebar-slider curved-drop-shadow box mgb">
+
+    <div class="slider">
+
+        <div class="items">
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/74/07/63491554359510/0/4-ways-crack-facebook-password-and-protect-yourself-from-them.150x70.jpg" alt="4 Ways to Crack a Facebook Password and How to Protect Yourself from Them"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/4-ways-crack-facebook-password-and-protect-yourself-from-them-0139532/">4 Ways to Crack a Facebook Password and How to Protect Yourself from Them</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/77/11/63537990425053/0/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra.150x70.jpg" alt="Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/">Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://mac-how-to.wonderhowto.com/how-to/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite-0155306/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/13/14/63537482320109/0/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite.150x70.jpg" alt="How to Create a Bootable Install USB Drive of Mac OS X 10.10 Yosemite"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://mac-how-to.wonderhowto.com/how-to/create-bootable-install-usb-drive-mac-os-x-10-10-yosemite-0155306/">How to Create a Bootable Install USB Drive of Mac OS X 10.10 Yosemite</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage hasVideo">
+
+                        <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/74/83/63538028156076/0/netflix-and-verizon-could-be-headed-towards-legal-battle.150x70.jpg" alt="Netflix and Verizon Could Be Headed Towards a Legal Battle"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/">Netflix and Verizon Could Be Headed Towards a Legal Battle</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage hasVideo">
+
+                        <a href="http://digiwonk.wonderhowto.com/how-to/watch-2014-world-cup-online-your-phone-every-match-streamed-live-0155511/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/61/25/63538077244169/0/watch-2014-world-cup-online-your-phone-every-match-streamed-live.150x70.jpg" alt="How to Watch the 2014 World Cup Online &amp; on Your Phone—Every Match Streamed Live"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://digiwonk.wonderhowto.com/how-to/watch-2014-world-cup-online-your-phone-every-match-streamed-live-0155511/">How to Watch the 2014 World Cup Online &amp; on Your Phone—Every Match Streamed Live</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://mac-how-to.wonderhowto.com/how-to/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10-0155422/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/44/25/63537841542584/0/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10.150x70.jpg" alt="How to Dual Boot Mac OS X Mavericks 10.9 &amp; Yosemite 10.10"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://mac-how-to.wonderhowto.com/how-to/dual-boot-mac-os-x-mavericks-10-9-yosemite-10-10-0155422/">How to Dual Boot Mac OS X Mavericks 10.9 &amp; Yosemite 10.10</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/36/84/63537679719116/0/hack-like-pro-digital-forensics-using-kali-part-1-tools-forensic-investigator.150x70.jpg" alt="Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/">Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/01/13/63538180641897/0/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files.150x70.jpg" alt="Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/">Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/get-unlimited-free-trials-using-real-fake-credit-card-number-0149638/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/96/76/63521171811895/0/get-unlimited-free-trials-using-real-fake-credit-card-number.150x70.jpg" alt="How to Get Unlimited Free Trials Using a &quot;Real&quot; Fake Credit Card Number"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/get-unlimited-free-trials-using-real-fake-credit-card-number-0149638/">How to Get Unlimited Free Trials Using a &quot;Real&quot; Fake Credit Card Number</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage hasVideo">
+
+                        <a href="http://internet.wonderhowto.com/inspiration/google-spend-billions-dollars-satellites-internet-for-all-0155526/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/66/14/63538029900997/0/google-spend-billions-dollars-satellites-internet-for-all.150x70.jpg" alt="Google to Spend Billions of Dollars on Satellites—Internet for All!"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://internet.wonderhowto.com/inspiration/google-spend-billions-dollars-satellites-internet-for-all-0155526/">Google to Spend Billions of Dollars on Satellites—Internet for All!</a>
+                    </h4>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <h2>Related</h2>
+
+<div class="related-sidebar-container curved-drop-shadow box mgb">
+
+    <div class="container">
+        <ul>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://howtodrawfantasy.wonderhowto.com/how-to/draw-vampire-smirk-0138451/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/73/69/63479373650106/0/draw-vampire-smirk.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Draw a Vampire-Smirk
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Draw a Vampire-Smirk
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        How to Draw a Vampire smirk. I draw a regular vampire, but add a facial expression i see them make a lot in movies. Its the smirk. easy things to draw . This is great for anyone into fantasy art, how to draw fantasy, drawing sites, etc. To get the exciting detials go HERE: http://howtodrawfantasyart.blogspot.com/
+Video: ....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">howtodrawfantasy</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://howtodrawfantasy.wonderhowto.com/how-to/abe-lincoln-vampire-hunter-0138434/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/75/87/63479363983627/0/abe-lincoln-vampire-hunter.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Abe Lincoln Vampire Hunter
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Abe Lincoln Vampire Hunter
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        How to Draw a Vampire smirk. I draw a regular vampire, but add a facial expression i see them make a lot in movies. Its the smirk. easy things to draw . This is great for anyone into fantasy art, how to draw fantasy, drawing sites, etc. To get the exciting detials go HERE: http://howtodrawfantasyart.blogspot.com/
+Video: ....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">howtodrawfantasy</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://mods-n-hacks.wonderhowto.com/forum/555-timer-hacks-cable-testers-magnetic-stirrers-and-lego-grabbers-oh-my-0140045/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/85/77/63487206138900/0/555-timer-hacks-cable-testers-magnetic-stirrers-and-lego-grabbers-oh-my.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                555 Timer Hacks: Cable Testers, Magnetic Stirrers, and Lego Grabbers Oh My!
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        555 Timer Hacks: Cable Testers, Magnetic Stirrers, and Lego Grabbers Oh My!
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        Please visit my Instructable for an introduction to the 555 timer, pinouts, and several applications for the 555 in astable mode: http://www.instructables.com/id/Hack-Your-Snap-Circuits-a-Minimalist-Very-Few-Co/?ALLSTEPS
+Video: ....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 1 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>1</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Hacks, Mods &amp; Circuitry</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; Forum
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://filemaker-pro.wonderhowto.com/how-to/get-started-using-filemaker-pro-11-357043/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/30/32/63475314582772/0/get-started-using-filemaker-pro-11.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Get started using FileMaker Pro 11
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Get started using FileMaker Pro 11
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        This clip presents a general introduction to FileMaker Pro 11, providing special emphasis upon the application&#39;s new features. Whether you&#39;re new to FileMaker Pro database management program or just want to learn how to take advantage of FileMaker Pro 11&#39;s new features, you&#39;re sure to benefit from this free video tutorial from the folks at Lynda. For more information, including detailed, step-by-step instructions, watch this handy FileMaker Pro user&#39;s guide....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 1 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>1</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">FileMaker Pro</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://math.wonderhowto.com/how-to/compare-exponential-expressions-301919/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/89/64/63475476857738/0/compare-exponential-expressions.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Compare exponential expressions
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Compare exponential expressions
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        In this video the tutor shows how to compare exponential expressions and judge if they are equivalent. He shows how to do this using examples to simply exponential expressions. Now after simplifying the numerator and denominator separately he reduces the fraction to arrive at a simple value. Now using this simple values we can compare them and judge if both their values are equivalent. This video gives a good introduction on how to simplify the exponential expression and how to compare them after simplification to judge if they are equivalent....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Math</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://xbox-360.wonderhowto.com/how-to/earn-sally-likes-blood-achievement-call-duty-black-ops-410395/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/31/06/63475297233044/0/earn-sally-likes-blood-achievement-call-duty-black-ops.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Earn the &quot;Sally Likes Blood&quot; achievement in Call of Duty: Black Ops
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Earn the &quot;Sally Likes Blood&quot; achievement in Call of Duty: Black Ops
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        Want to earn the &quot;Sally Likes Blood&quot; achievement on the Regular difficulty setting in the single-player campaign of Call of Duty: Black Ops? Here&#39;s how you do it.
+
+Call of Duty 7 (COD: BO) is the seventh installment in Activision&#39;s popular Call of Duty series of military-themed first-person shooter video games and the first to be set during the Cold War. COD7 is available for the PC, Xbox 360, PlayStation 3 (PS3) and Nintendo Wii.
+
+Search WonderHowTo for more Black Ops tips, tricks, cheats, hacks, glitches, achievement guides and walkthroughs....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Xbox 360</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://final-cut-studio.wonderhowto.com/how-to/use-colorista-plugin-final-cut-pro-introduction-262706/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/67/97/63360041556849/0/use-colorista-plugin-final-cut-pro-introduction.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Use Colorista plugin in Final Cut Pro (Introduction)
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Use Colorista plugin in Final Cut Pro (Introduction)
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        This software tutorial shows you how to use the plug-in Colorista to color correct in Final Cut Pro. This is an introductory tutorial which will cover the basics for new Colorista users within the Final Cut Pro software. An easy-to-use color correction plug-in that delivers great results quickly from within Final Cut, After Effects, Motion, Premiere Pro, or Avid systems....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Final Cut Studio</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-perl-scripting-for-aspiring-hacker-part-1-0151750/" class="bb-light pos-rel clearfix noVideo">
+                                <img src="http://img.wonderhowto.com/img/85/76/63532544760394/0/hack-like-pro-perl-scripting-for-aspiring-hacker-part-1.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                Hack Like a Pro: Perl Scripting for the Aspiring Hacker, Part 1
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        Hack Like a Pro: Perl Scripting for the Aspiring Hacker, Part 1
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        Welcome back, my hacker apprentices!
+
+To enter the upper echelons of hackerdom, you MUST develop scripting skills. It&#39;s all great and well to use other hacker&#39;s tools, but to get and maintain the upper hand, you must develop your own unique tools, and you can only do that by developing your scripting skills.
+
+The History of Perl
+
+Probably the most widely used scripting language within the Linux environment is Perl, which is not an acronym, though many believe it stands for Practical Extraction and Report Language.
+
+Perl was developed by the linguist Larry Wall in 1987. He designed it...
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 35 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>35</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Null Byte</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://pro-tools.wonderhowto.com/how-to/use-keyboard-focus-pro-tools-le-260520/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/55/90/63475276966364/0/use-keyboard-focus-pro-tools-le.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Use Keyboard Focus in Pro Tools LE
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Use Keyboard Focus in Pro Tools LE
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        This audio production software tutorial is an introduction to keyboard focus in Pro Tools. Connor Smith will be covering zooming, trimming, creating fades, and nudging, all while using the keyboard focus commands in Pro Tools LE....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Pro Tools</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://android.wonderhowto.com/how-to/you-can-easily-hack-instagram-for-crazy-amount-likes-but-you-totally-shouldnt-0155070/" class="bb-light pos-rel clearfix noVideo">
+                                <img src="http://img.wonderhowto.com/img/75/62/63536369704643/0/you-can-easily-hack-instagram-for-crazy-amount-likes-but-you-totally-shouldnt.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                You Can Easily Hack Instagram for a Crazy Amount of Likes (But You Totally Shouldn&#39;t)
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        You Can Easily Hack Instagram for a Crazy Amount of Likes (But You Totally Shouldn&#39;t)
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        Instagram is not only a great platform to easily share some of your favorite moments with friends and family, it&#39;s a useful service for peering outside of your physical location. While you share a picture of your dog in Los Angeles, you can almost instantly view and like a picture someone posted of their breakfast in Tokyo.
+
+On the other hand, many users (and corporations) spend their time on Instagram vying for attention from other users, wanting to become &quot;socially famous,&quot; and get whatever they&#39;re selling—product, talent, or all too often, nothing—across a wide array of humanity.
+
+But...
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 28 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>28</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">Android softModder</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+                <li class="mgb-smaller">
+                    <h4 class="txt-size-normal">
+                        <a href="http://learn-french.wonderhowto.com/how-to/understand-use-expressions-d-s-que-ne-plus-293778/" class="bb-light pos-rel clearfix hasVideo">
+                                <img src="http://img.wonderhowto.com/img/71/62/63475316665817/0/understand-use-expressions-d-s-que-ne-plus.88x68.jpg" 
+                                width="66" height="51" class="fl mgr-small" />
+                                <span class="video-thumb"></span>
+                            
+                            <span class="article-title fl">
+                                How to Understand &amp; use expressions &quot;d&#232;s que..&quot; &amp; &quot;ne...plus&quot;
+                            </span>
+
+<span class="wealthy-tooltip hide ba-light rnd">
+    <span class="title-container container txt-clr-lightest rnd-top txt-lbl">
+        How to Understand &amp; use expressions &quot;d&#232;s que..&quot; &amp; &quot;ne...plus&quot;
+    </span>
+    <span class="description-container container txt-lbl txt-size-smallp txt-clr-light bb-light">
+        This video shows how to use the French expressions &quot;das que...&quot; and &quot;ne...plus&quot;. The expression &quot;das que...&quot; means &quot;as soon as&quot;.”ne..plus&quot; means &quot;no longer&quot;. You can use these expressions in sentences. &quot; Je ne veux plus venir&quot; means “I don’t want to come any longer&quot;. &quot;Des que je me leve je prends un cafe&quot; means &quot; After I get up in the morning I have a coffee&quot; These are regular sentences people use every day in the French language just as used in the English language....
+    </span>
+
+    <span class="article-info container txt-lbl clearfix">
+        <span class="fl mgr-smaller">
+            <span title="This article has been given 0 Kudos"
+                class="user-rep-small tooltip txt-size-small fl  mgr-small">
+                <span>0</span>
+            </span>
+            <img src="http://img.wonderhowto.com/images/icons/world.png" width="18" height="18" class="world-icon" style="margin:0;"/>
+        </span>
+        <span class="mgt-smaller fl world-info">
+            <span class="txt-title txt-size-med">French Language &amp; Culture</span> 
+            <span class="txt-size-med txt-title txt-clr-lighter rnd">
+                &#187; How-To
+            </span>
+        </span>                                    
+    </span>                               
+</span>
+                        </a>
+                    </h4>
+                    
+                </li>
+        </ul>
+    </div>
+
+</div>
+
+
+    
+
+            <aside id="ablr" class="clearfix mgb">
+                <div class="ad" id="aph_text_300x350"><script type="text/javascript">//<![CDATA[
+                    googletag.cmd.push(function () { googletag.display('aph_text_300x350'); });
+                //]]></script></div>
+            </aside>
+            <div class="ad-wrapper curved-drop-shadow">
+                <div class="ad" style="min-height:250px;" id="aph_10518929_tmnp_wonderhowto_sciencetech_computers_mid_300x250"><script type="text/javascript">//<![CDATA[
+                    googletag.cmd.push(function(){googletag.display('aph_10518929_tmnp_wonderhowto_sciencetech_computers_mid_300x250');});
+                //]]></script></div>
+            </div>
+
+
+    <div class="mgb"></div>
+
+    
+
+    
+
+   <div class="clearfix newest-articles-sidebar-container sidebar-slider">
+    <h2 class="fl">Newest</h2>
+
+    <div class="nav-leftright fr">
+
+        <div class="arrow left btn fl">
+        </div>
+
+        <div class="arrow right btn fr">
+        </div>
+
+    </div>
+
+</div>
+<div class="newest-articles-sidebar-container sidebar-slider curved-drop-shadow box mgb">
+
+    <div class="slider">
+
+        <div class="items">
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/01/13/63538180641897/0/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files.150x70.jpg" alt="Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-linux-basics-for-aspiring-hacker-part-19-linking-files-0155454/">Hack Like a Pro: Linux Basics for the Aspiring Hacker, Part 19 (Linking Files)</a>
+                    </h4>
+                </div>
+                <div class="item fl noImage five noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/" rel="nofollow">
+                            <img src="/images/trans.gif" alt="Handshake Bruteforce on Different PC"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/">Handshake Bruteforce on Different PC</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/77/11/63537990425053/0/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra.150x70.jpg" alt="Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/">Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra</a>
+                    </h4>
+                </div>
+                <div class="item fl noImage eight noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/forum/help-sniff-bbm-whatsapp-facebook-messages-0155458/" rel="nofollow">
+                            <img src="/images/trans.gif" alt="[Help] Sniff BBM, WhatsApp, or Facebook Messages"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/forum/help-sniff-bbm-whatsapp-facebook-messages-0155458/">[Help] Sniff BBM, WhatsApp, or Facebook Messages</a>
+                    </h4>
+                </div>
+                <div class="item fl noImage zero noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/forum/exploit-router-0155450/" rel="nofollow">
+                            <img src="/images/trans.gif" alt="Exploit Router"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/forum/exploit-router-0155450/">Exploit Router</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/introduction-steganography-its-uses-0155310/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/05/12/63537824039022/0/introduction-steganography-its-uses.150x70.jpg" alt="An Introduction to Steganography &amp; Its Uses"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/introduction-steganography-its-uses-0155310/">An Introduction to Steganography &amp; Its Uses</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/36/84/63537679719116/0/hack-like-pro-digital-forensics-using-kali-part-1-tools-forensic-investigator.150x70.jpg" alt="Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-digital-forensics-using-kali-part-1-the-tools-forensic-investigator-0155427/">Hack Like a Pro: Digital Forensics Using Kali, Part 1 (The Tools of a Forensic Investigator)</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/forum/backtrack-kali-linux-goodies-0155408/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/72/72/63537586871101/0/backtrack-kali-linux-goodies.150x70.jpg" alt="BackTrack / Kali Linux Goodies"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/forum/backtrack-kali-linux-goodies-0155408/">BackTrack / Kali Linux Goodies</a>
+                    </h4>
+                </div>
+                <div class="item fl hasImage noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/inspiration/social-engineering-basics-0155372/" rel="nofollow">
+                            <img src="http://img.wonderhowto.com/img/08/00/63537546983975/0/social-engineering-basics.150x70.jpg" alt="Social Engineering: The Basics"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/inspiration/social-engineering-basics-0155372/">Social Engineering: The Basics</a>
+                    </h4>
+                </div>
+                <div class="item fl noImage one noVideo">
+
+                        <a href="http://null-byte.wonderhowto.com/forum/no-metasploit-0155371/" rel="nofollow">
+                            <img src="/images/trans.gif" alt="No Metasploit"
+                                width="150" height="70" />
+                            <span class="video-thumb"></span>
+                        </a>  
+                    
+                    <h4>
+                        <a href="http://null-byte.wonderhowto.com/forum/no-metasploit-0155371/">No Metasploit</a>
+                    </h4>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <h2><a href="http://www.wonderhowto.com/community/">Community</a></h2>
+
+<div id="world-activities-wrapper" class="curved-drop-shadow box mgb">
+
+    <div class="container">
+            <div class="world-activity clearfix Comment isResponse noImage three">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/cyberhitchhiker/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/09/96/63534986251528/0/cyberhitchhiker.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/cyberhitchhiker/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">
+                                    CyberHitchHiker
+                                </span>
+                            </a> 
+                            <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/#comment-96962" class="txt-size-normal txt-clr-lighter">
+                                commented on 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://null-byte.wonderhowto.com/forum/handshake-bruteforce-different-pc-0155555/" class="txt-desc">Handshake Bruteforce on Different PC</a>
+                        </div>
+
+                    </div>
+                    <div class="activity-comment-wrapper">
+
+                        <div class="activity-comment rnd">
+                            Just transfer the .cap to the tower.<br/><br/>Have you tried to install the drivers for the GPU yet? You can run cudacat/oclhashcat against it then. CAL++ For AMD and Cuda Toolkit for Nvidia.<br/><br/>As far as W1...
+                        </div>
+
+                    </div>
+            </div>
+            <div class="bt-light mgt-small mgb-small">
+            </div>
+            <div class="world-activity clearfix Comment isResponse noImage four">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/manoahi/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/00/03/00/0/user-default.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/manoahi/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">
+                                    Mark Noda
+                                </span>
+                            </a> 
+                            <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/#comment-96961" class="txt-size-normal txt-clr-lighter">
+                                commented on 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://food-hacks.wonderhowto.com/how-to/why-chopsticks-are-best-cooking-tool-you-arent-using-0155540/" class="txt-desc">Why Chopsticks Are the Best Cooking Tool You Aren&#39;t Using</a>
+                        </div>
+
+                    </div>
+                    <div class="activity-comment-wrapper">
+
+                        <div class="activity-comment rnd">
+                            I have to agree with Karen not necessarily. It depends upon your experience and your chopstick abilities. I can use both hands and I can also pickup ice cubes. 20oz. steak, easy. If you have two ha...
+                        </div>
+
+                    </div>
+            </div>
+            <div class="bt-light mgt-small mgb-small">
+            </div>
+            <div class="world-activity clearfix Write noImage eight">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/alyssawoodard/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/05/47/63537762412194/0/alyssawoodard.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/alyssawoodard/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">Alyssa Woodard</span>
+                            </a>
+                            <a href="http://tech-pr0n.wonderhowto.com/inspiration/forget-amazon-military-these-drones-are-for-your-home-0155551/" class="txt-size-normal txt-clr-lighter">
+                                published 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://tech-pr0n.wonderhowto.com/inspiration/forget-amazon-military-these-drones-are-for-your-home-0155551/" class="txt-desc txt-clr-med">Forget Amazon &amp; the Military, These Drones Are for Your Home</a>
+                        </div>
+
+                    </div>
+            </div>
+            <div class="bt-light mgt-small mgb-small">
+            </div>
+            <div class="world-activity clearfix Write noImage nine">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/alyssawoodard/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/05/47/63537762412194/0/alyssawoodard.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/alyssawoodard/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">Alyssa Woodard</span>
+                            </a>
+                            <a href="http://internet.wonderhowto.com/inspiration/google-spend-billions-dollars-satellites-internet-for-all-0155526/" class="txt-size-normal txt-clr-lighter">
+                                published 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://internet.wonderhowto.com/inspiration/google-spend-billions-dollars-satellites-internet-for-all-0155526/" class="txt-desc txt-clr-med">Google to Spend Billions of Dollars on Satellites—Internet for All!</a>
+                        </div>
+
+                    </div>
+            </div>
+            <div class="bt-light mgt-small mgb-small">
+            </div>
+            <div class="world-activity clearfix Write noImage eight">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/alyssawoodard/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/05/47/63537762412194/0/alyssawoodard.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/alyssawoodard/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">Alyssa Woodard</span>
+                            </a>
+                            <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/" class="txt-size-normal txt-clr-lighter">
+                                published 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://internet.wonderhowto.com/inspiration/netflix-and-verizon-could-be-headed-towards-legal-battle-0155525/" class="txt-desc txt-clr-med">Netflix and Verizon Could Be Headed Towards a Legal Battle</a>
+                        </div>
+
+                    </div>
+            </div>
+            <div class="bt-light mgt-small mgb-small">
+            </div>
+            <div class="world-activity clearfix Comment isResponse noImage seven">
+
+                <div class="fl img-thumb">
+                    <a href="http://creator.wonderhowto.com/feman98/" rel="nofollow">
+                        <img src="http://img.wonderhowto.com/img/00/09/00/0/user-default.32x43.jpg" width="32" height="43"/>
+                    </a>
+                </div>
+
+                    <div class="fr activity-body">
+
+                        <div class="actitvity-user-info">
+                            <a href="http://creator.wonderhowto.com/feman98/" class="txt-size-normal txt-clr-lighter">
+                                <span class="upcase txt-size-small txt-clr-dark">
+                                    TheDeliveryMan
+                                </span>
+                            </a> 
+                            <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/#comment-96960" class="txt-size-normal txt-clr-lighter">
+                                commented on 
+                            </a>
+                        </div>
+
+
+                        <div class="fr activity-desc mgt-small">
+                            <a href="http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-passwords-with-tamper-data-thc-hydra-0155374/" class="txt-desc">Hack Like a Pro: How to Crack Online Passwords with Tamper Data &amp; THC Hydra</a>
+                        </div>
+
+                    </div>
+                    <div class="activity-comment-wrapper">
+
+                        <div class="activity-comment rnd">
+                            Great tutorial, really looking forward to the next one
+                        </div>
+
+                    </div>
+            </div>
+    </div>
+
+</div>
+
+
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+<footer id="page-footer" class="clearfix">
+    <ul class="channels-container mgb clearfix page-wrapper">
+            <li class="channel item fl mgl clearfix">
+                <a href="http://www.wonderhowto.com/arts/" class="txt-clr-light txt-shadow-btm-light title txt-lbl">
+                    Arts
+                </a>
+                                        
+                <ul>
+                    <li>
+                        <a href="http://www.wonderhowto.com/arts-crafts/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Arts &amp; Crafts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/beauty-style/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Beauty &amp; Style
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/dance/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Dance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/fine-art/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Fine Art
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/music-instruments/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Music &amp; Instruments
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="channel item fl mgl clearfix">
+                <a href="http://www.wonderhowto.com/tech/" class="txt-clr-light txt-shadow-btm-light title txt-lbl">
+                    Science &amp; Tech
+                </a>
+                                        
+                <ul>
+                    <li>
+                        <a href="http://www.wonderhowto.com/cars-bikes-planes/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Autos, Motorcycles &amp; Planes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/computer-programming/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Computers &amp; Programming
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/disaster-preparation/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Disaster Preparation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/education/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Education
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/electronics/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Electronics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/movies-film-theater/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Film &amp; Theater
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/software/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Software
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/weapons/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Weapons
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="channel item fl mgl clearfix">
+                <a href="http://www.wonderhowto.com/lifestyle/" class="txt-clr-light txt-shadow-btm-light title txt-lbl">
+                    Lifestyle
+                </a>
+                                        
+                <ul>
+                    <li>
+                        <a href="http://www.wonderhowto.com/alcohol/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Alcohol
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/business-money/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Business &amp; Money
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/dating-relationships/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Dating &amp; Relationships
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/diet-health/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Diet &amp; Health
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/family/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Family
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/fitness/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Fitness
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/food/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Food
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/home-garden/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Home &amp; Garden
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/hosting-entertaining/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Hosting &amp; Entertaining
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/language-lessons/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Language
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/motivation-self-help/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Motivation &amp; Self Help
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/outdoor-recreation/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Outdoor Recreation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/pets-animals/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Pets &amp; Animals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/prank-con/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Pranks &amp; Cons
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/spirituality/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Spirituality
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/sports/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Sports
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/travel/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Travel
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="channel item fl mgl clearfix">
+                <a href="http://www.wonderhowto.com/gaming/" class="txt-clr-light txt-shadow-btm-light title txt-lbl">
+                    Gaming
+                </a>
+                                        
+                <ul>
+                    <li>
+                        <a href="http://www.wonderhowto.com/gambling/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Gambling
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/games/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Games
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/hobbies-toys/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Hobbies &amp; Toys
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/magic-parlor-tricks/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Magic &amp; Parlor Tricks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.wonderhowto.com/video-games/"  class="txt-size-normal txt-clr-light txt-shadow-btm-light">
+                            Video Games
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    </ul>
+
+    <div class="clearfix mgb clearfix page-wrapper boring-stuff-container bt-dark">
+        <ul class="list-inline mgl-big">
+            <li class="mgr"><a href="http://www.wonderhowto.com/about/">About Us</a></li>
+            <li class="mgr"><a href="http://www.wonderhowto.com/privacy/">Privacy Policy</a></li>
+            <li class="mgr"><a href="http://www.wonderhowto.com/terms/">Terms &amp; Conditions</a></li>
+        </ul>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">            !window.jQuery && document.write(unescape('%3Cscript src="http://img.wonderhowto.com/js/libs/jquery-1.7.min.js?v=0515201401"%3E%3C/script%3E'))</script>
+        <script src="http://img.wonderhowto.com/js/javascript.min.js?v=0515201401" type="text/javascript"></script>
+        <script src="http://img.wonderhowto.com/js/javascript2.min.js?v=0515201401" type="text/javascript"></script>
+        <script src="http://img.wonderhowto.com/js/javascript3.min.js?v=0515201401" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        WHT.init({
+            loggedInUser : {"UserID":0,"UserName":"not_logged_in","DisplayName":"not_logged_in","UserBio":"","IsAdmin":false,"IsStaff":false,"IsUser":false,"IsCurator":false,"CanEdit":false,"UserCommentScore":0,"KudosCount":0,"KudosPower":0,"JudgementPower":0,"ReputationCount":0,"ResponseCount":0,"ImageID":"user_default_large.jpg"},
+            currentWorld : {"IsNewWorld":false,"WorldID":1124,"WorldName":"Null Byte","Description":"Null Byte is a world for anyone interested in hacking, science, networking, social engineering, security, and getting root. Any like-minded tech enthusiast looking to protect themselves from malicious script kiddies and shorcuts for everyday life will find their home here.\r\n\r\nWe\u0027re going to take it from an IP address to programing, all the way to reverse engineering, getting root, and finding zero-day vulnerabilities. \r\n\r\nIf you don\u0027t understand any of this, don\u0027t worry, this is the place to begin!\r\n\r\nJoin us and discuss topics in a secure and anonymous format in our channel #nullbyte on [http://null-byte.wonderhowto.com/blog/anonymity-darknets-and-staying-out-federal-custody-part-four-invisible-internet-0133511/ IRC2P]\r\n\r\n[https://plus.google.com/b/106653382407425784977/ Google+]\r\n[https://twitter.com/#!/NullByteWht Twitter]\r\n","Slogan":"The aspiring grey hat hacker / security awareness playground","UrlName":"null-byte","CreatedByUserID":798974,"CreatedByUserName":"occupythewebotw","CreatedByUserDisplayName":"occupytheweb","CreatedByUserImage":"635334198662847641","CreatedByUserGender":1,"CreatedByUserImagePath":"/userimages/635334198662847641","CreatedByUserProfilePath":"http://wwwwonderhowto.com/community/member/occupythewebotw/","CreatedDate":"\/Date(1316496204577)\/","LastUpdated":"\/Date(1402634289953)\/","PromotedDate":"\/Date(1316821906740)\/","OriginalHeaderGraphic":"634528927996604858.jpg","HeaderGraphic":"c634528927996604858.jpg","HeaderGraphicPreview":"s634528927996604858.jpg","HeaderHeight":38,"HeaderColor":"17302c","IsStudentWorld":false,"ShowHeaderText":true,"LargeImage":"li634528930559377360.jpg","Image":"i634528930559377360.jpg","TwitterUrl":"http://twitter.com/NullByteWht","FacebookUrl":"","GooglePlusUrl":"","HowToSubCategoryMode":1,"InspirationSubCategoryMode":0,"AllowUserPosts":true,"IsPromoted":true,"IsSuspended":false,"IsEmpty":false,"IsComplete":true,"Tags":"security, programming, hacking, Underground, anonymous, howto, Exploitation, null byte, antisec","ChannelID":2,"CategoryID":6,"SubCategoryID":0,"IsSubCategoryWorld":false,"MemberCount":3328,"ContributorCount":219,"PostCount":776,"CallToActionHeadline":"WonderHowTo Rules for Community Submissions","CallToActionMessage":"Check out the WHT rules before submitting any projects to Null Byte.","CallToActionLink":"http://blog.wonderhowto.com/how-to/wonderhowto-rules-for-community-submissions-0148554/","RequestingUserMemberLevel":-1,"IsRequestingUserModerator":false,"IsRequestingUserAdmin":false,"IsRequestingUserSubscriptionsAvailable":false,"IsRequestingUserSubscribedToNewPost":false,"IsRequestingUserSubscribedToNewFollower":false,"IsRequestingUserSubscribedToAllNewComments":false,"IsRequestingUserEmailedOnNotification":false,"IsRequestingUserFacebookedOnNotification":false,"StatSpotlightCount":3,"StatResourceCount":89,"StatForumThreadCount":249,"StatForumCommentCount":451,"StatExternalLinkCount":6,"StatBlogPostCount":0,"StatPercentComplete":83,"ImageID":"634528927996604858.jpg","CoverImage":"li634528930559377360.jpg"},
+            alerts : [],
+            ajaxControllerURL : "/ajax/",
+            urlBase: "http://null-byte.wonderhowto.com",
+            imgUrlBase : "http://img.wonderhowto.com", imgFormats : ["1014x174","w974","974x232","1280x600","1280x220","664x250","654x306","w532","w302","w240","w654","300x200","300x140","250x188","236x160","225x113","200x150","200x113","191x89","190x88","186x86","w160","150x70","146x68","135x180","100x47","88x68","w88","65x30","64x50","62x83","62x29","51x68","48x64","42x56","32x43","18x24","16x16","b300x140","b654x306","b300x52","original"]
+            });
+
+        // Second part of jquery loading
+        (function(i,s,q,l){for(q=window._q(),l=q.length;i<l;){$.apply(this,s.call(q[i++]));}window._q=undefined;}(0,Array.prototype.slice));
+    </script>
+
+    
+    
+    
+  
+    <script type="text/javascript">
+        //Prevent double posting by accident
+        var currentlyVoting = false;
+
+        // see if there any comments to init:
+        if (typeof initQueue !== 'undefined' && initQueue) {
+            for(var i = 0; i < initQueue.length; i++) {
+                initQueue[i].apply();
+            }
+        }
+
+        //initialize comments and article classes.
+        WHT.Comments.init({
+            commentList : [{"ID":94714,"VideoID":150386,"UserID":919256,"UserName":"jtech95","Created":"\/Date(1399021580087)\/","CascadeLevel":1,"CommentScore":1,"CommentVote":null,"UpdatedDate":"\/Date(-62135568000000)\/"}],
+            editURL : "",
+            updateCommentScoreURL: "http://null-byte.wonderhowto.com/ajax/updatecommentscore/",
+            submitCommentURL: "http://null-byte.wonderhowto.com/ajax/submitcomment/",
+            deleteCommentURL : "http://null-byte.wonderhowto.com/ajax/deletecomment/",
+            commentsDocX : []
+        });   
+            
+        // Init the Article + Galleries:
+        WHT.Article.init({ArticleID: 150386});
+            
+        // Follow Button:
+        var buttons = $(".article-author");
+		buttons.on("hover", ".btn", WHT.World.WorldButtonHoverHandler);
+        $(".article-author").on("hover",".follow-button",WHT.User.OnFollowButonHover);
+        $(".article-author").on("click",".follow-button",WHT.User.OnFollowUserClick);
+
+    </script>
+
+
+
+
+        <script type="text/javascript">
+            $(".share-widget:not(.notOnInit)").whtPostEditor({});
+        </script>
+    <!--[if lt IE 7 ]><script type="text/javascript" src="http://img.wonderhowto.com/js/libs/dd_belatedpng.js"></script><script type="text/javascript">DD_belatedPNG.fix('img, .png_bg');</script><![endif]-->
+    <!-- Analytics -->
+    <script type="text/javascript">
+        //<![CDATA[
+
+        // GA:
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2361644-1', { 'cookieDomain': 'wonderhowto.com', 'legacyCookieDomain': '.wonderhowto.com' });
+        ga('send', 'pageview');
+
+        // Chartbeat:
+        var _sf_async_config = { uid: 3214, domain: "wonderhowto.com", sections: "All Posts,How-Tos,No Video,Science Tech,Computers Programming,null-byte" , authors: "occupythewebotw" };
+        (function () {
+            function loadChartbeat() {
+                window._sf_endpt = (new Date()).getTime();
+                var e = document.createElement('script');
+                e.async = true;
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src',
+                (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+                "static.chartbeat.com/js/chartbeat.js");
+                document.body.appendChild(e);
+            }
+            var oldonload = window.onload;
+            window.onload = (typeof window.onload != 'function') ? loadChartbeat : function () { oldonload(); loadChartbeat(); };
+        })();
+
+        // comScore:
+        var _comscore = _comscore || [];
+        _comscore.push({ c1: 2, c2: "6035753", c3: "6035753", c4: document.location.href, c5: "Technology - News", c6: "", c15: "" });
+        (function () {
+            var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+            s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+            el.parentNode.insertBefore(s, el);
+        })();
+
+        //]]>
+    </script>
+    <noscript><img src="http://b.scorecardresearch.com/b?c1=2&amp;c2=6035753&amp;c3=6035753&amp;c4=www.wonderhowto.com&amp;c5=Technology%20-%20News&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1" style="display:none" width="0" height="0" alt="" /></noscript>
+    <!-- End Analytics -->
+        <script type="text/javascript" src="http://tags.crwdcntrl.net/c/901/cc.js?ns=_cc901" id="LOTCC_901"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            _cc901.bcp();
+            //]]>
+        </script>
+
+</body>
+</html>
